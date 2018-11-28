@@ -56,7 +56,7 @@
     author        = Bc. Peter Stanko,
     gender        = m,
     advisor       = RNDr Nikola Beneš PhD,
-    title         = {Kontr 2.0},
+    title         = {Kontr 2: Systém na automatizované spracovanie domácich úloh},
     keywords      = {keyword1, keyword2, ...},
     TeXkeywords   = {keyword1, keyword2, \ldots},
     abstract      = {This is the abstract of my thesis, which can
@@ -126,9 +126,9 @@ Proces hodnotenia prebieha spravidla v troch krokoch:
     \item Hodnotenie je prevedené na body či slovné zhrnutie a uložené v IS MU, typicky pomocou zápisu do \textit{Poznámkových blokov} IS MU.
 \end{enumerate}
 
-Všetky tri kroky tohoto procesu je možné do určitej miery automatizovať a odbremeniť tak vyučujúcich. Pre automatizáciu je možné využiť jednoduché porovnávanie výstupu, rámce a knižnice pre jednotkové testy (napr. \textit{JUnit}, \textit{Catch}), nástroje na kontrolu formátovania (\textit{clang-format}, \textit{pylint}), programátorského štýlu (\textit{clang- tidy a clang-format}, \textit{Rubocop}) alebo zložitosti kódu (\textit{rubocop}, \textit{checkstyle}). Ich hlavnými výhodami sú rýchlosť a jednotnosť (v hodnotení aj vo výstupe), ktorá garantuje rovnaké podmienky pre všetkých študentov. Študentom je tak možné rýchlejšie poskytnúť spätnú väzbu na ich riešenia, prípadne ich nasmerovať na príčinu zlyhania. Rovnako sa znižuje aj miera nejednotnosti hodnotenia, často prítomná ak je hlavným hodnotiteľom človek.
+Všetky tri kroky tohoto procesu je možné do určitej miery automatizovať a odbremeniť tak vyučujúcich. Pre automatizáciu je možné využiť jednoduché porovnávanie výstupu, rámce a knižnice pre jednotkové testy (napr. \textit{JUnit}, \textit{Catch}), nástroje na kontrolu formátovania (\textit{clang-format}, \textit{pylint}), programátorského štýlu (\textit{clang- tidy a clang-format}, \textit{Rubocop}) alebo zložitosti kódu (\textit{Rubocop}, \textit{checkstyle}). Ich hlavnými výhodami sú rýchlosť a jednotnosť (v hodnotení aj vo výstupe), ktorá garantuje rovnaké podmienky pre všetkých študentov. Študentom je tak možné rýchlejšie poskytnúť spätnú väzbu na ich riešenia, prípadne ich nasmerovať na príčinu zlyhania. Rovnako sa znižuje aj miera nejednotnosti hodnotenia, často prítomná ak je hlavným hodnotiteľom človek.
 
-Minimalizácia či odstránenie ľudského faktoru z procesu opravy úloh prináša časovú úsporu študentom i vyučujúcim, zjednocuje podmienky hodnotenia úloh, prináša jasný, kvantifikovateľný výstup a zmenšuje priestor pre chyby. Automatická kontrola odovzdaní však človeka nemá plne nahradiť, zapojenie opravujúceho je v procese výuky jednou z nevyhnutných podmienok, pretože rovnako ako zákony nie je možné vykladať na súde strojovo, ale je treba sudca, tak aj pri opravovaní úloh je potrebný ľudský zásah na rozsiahlu a personalizovanú spätnú väzbu. Cieľom automatizácie je človeku prácu zjednodušiť a študentom poskytnúť aspoň nejakú spätnú väzbu rýchlejšie.
+Minimalizácia či odstránenie ľudského faktoru z procesu opravy úloh prináša časovú úsporu študentom i vyučujúcim, zjednocuje podmienky hodnotenia úloh, prináša jasný, kvantifikovateľný výstup a zmenšuje priestor pre chyby. Automatická kontrola odovzdaní však človeka nemá plne nahradiť, zapojenie opravujúceho je v procese výuky jednou z nevyhnutných podmienok. Podobne ako zákony nie je možné vykladať na súde strojovo, ale je potrebný sudca, tak aj pri opravovaní úloh je potrebný ľudský zásah na rozsiahlu a personalizovanú spätnú väzbu. Cieľom automatizácie je človeku prácu zjednodušiť a študentom poskytnúť aspoň nejakú spätnú väzbu rýchlejšie.
 
 Z týchto dôvodov som presvedčený, že zavedenie nového, ideálne centrálne spravovaného nástroja pre automatizáciu procesu odovzdávania úloh môže byť veľkým prínosom pre mnoho programovacích predmetov vyučovaných na FI MU. Počet študentov prijímaných na FI MU stále stúpa a zefektívnenie práce vyučujúcich je preto vhodným spôsobom, ako udržať kvalitu štúdia na dobrej úrovni.
 
@@ -224,7 +224,7 @@ Zjednodušený priebeh takejto opravy je spolu so zodpovedajúcimi nahradenými 
 
 Pri spracovaní študentského riešenia úlohy je potrebné, aby systém dokázal prijímať odovzdania z rôznych zdrojov (predovšetkým zo systému \emph{git}), dokázal ich dlhodobo uložiť, spracovať ich a sprístupniť výsledky spracovania študentom aj vyučujúcim. Popis modelovaného procesu a zasadenie entity \textit{odovzdanie} do kontextu je detailne rozpracované v bakalárskej práci Bc. Barbory Kompišovej [link].
 
-Spracovanie odovzdaní je potrebné časovo plánovať. Študent má mať možnosť svoje odovzdanie zrušiť v presne definovanom časovom intervale, pred tým, než sa začne spracovávať. Rovnako je potrebné zabrániť zneužívaniu nástroja príliš častým odovzdávaním -- študent má povolený len obmedzený počet odovzdaní za určitý časový interval, čím je možné do určitej miery zabrániť preťaženiu nástroja (\emph{rate limit})\footnote{\url{https://en.wikipedia.org/wiki/Rate_limiting}}.
+Spracovanie odovzdaní je potrebné časovo plánovať. Študent má mať možnosť svoje odovzdanie zrušiť v presne definovanom časovom intervale, pred tým, než sa začne spracovávať. Rovnako je potrebné zabrániť zneužívaniu nástroja príliš častým odovzdávaním -- študent má preto povolený len obmedzený počet odovzdaní za určitý časový interval, čím je možné do určitej miery zabrániť preťaženiu nástroja (\emph{rate limit})\footnote{\url{https://en.wikipedia.org/wiki/Rate_limiting}}.
 
 Podobne ako existujúci nástroj Kontr je vhodné, aby Kontr 2 umožňoval prezeranie, hodnotenie a porovnávanie odovzdaní vyučujúcimi. Študenti si smú prezerať svoje vlastné odovzdania, spolu s prípadnými komentármi a hodnotením vyučujúceho. 
 
@@ -236,11 +236,9 @@ V budúcnosti je možné rozšíriť systém tak, aby sa hodnotenia zadané do K
 
 Pre použitie systému Kontr 2 v reálnej prevádzke je potrebné zabezpečiť správu používateľských účtov a prístupových práv, aby sa predišlo únikom informácií o úlohách a odovzdaniach. Z používateľského pohľadu tu má zásadnú úlohu autentizácia používateľov, ktorú je možné zabezpečiť integráciou s existujúcimi autentizačnými mechanizmami na FI~MU, získať prístup dostupným informáciám o užívateľoch a podrobnejšiu kontrolu používateľských oprávnení.
 
-Autorizácia používateľov musí zodpovedať ich právam v modelovanom procese výuky. Predovšetkým je nutné oprávnenia spravovať na úrovni predmetov, nie celého systému, ako s nimi pracuje súčasný Kontr. Je totiž možné, že jeden užívateľ je počas jedného semestra vyučujúci jedného predmetu a študent iného, čo mu v každom predmete pripisuje inú množinu oprávnení. 
+Autorizácia používateľov musí zodpovedať ich právam v modelovanom procese výuky. Predovšetkým je nutné oprávnenia spravovať na úrovni predmetov, nie celého systému, ako s nimi pracuje súčasný Kontr. Je totiž možné, že jeden užívateľ je počas jedného semestra vyučujúci jedného predmetu a študent iného, čo mu v každom predmete pripisuje inú množinu oprávnení. Vzhľadom na rozdielnu organizačnú štruktúru študovaných predmetov je vhodné umožniť jemnejšie oddelenie právomocí než len dve základné roly (študent/vyučujúci), čím je možné modelovať napríklad roly \emph{pomocník} či \emph{vlastník predmetu (prednášajúci)}, ktoré lepšie zodpovedajú realite.
 
-Vzhľadom na rozdielnu organizačnú štruktúru študovaných predmetov je vhodné umožniť jemnejšie oddelenie právomocí než len dve základné roly (študent/vyučujúci), čím je možné modelovať napríklad roly \emph{pomocník} či \emph{vlastník predmetu (prednášajúci)}, ktoré lepšie zodpovedajú realite.
-
-Rôzne predmety môžu mať rôzne požiadavky na priradenie rolí alebo oprávnení pre jednotlivých užívateľov. Pre predmet C++ bolo potrebné umožniť prideľovanie vyučujúceho (opravujúceho) študentom pre každú úlohu osobitne.
+Rôzne predmety môžu mať rôzne požiadavky na priradenie rolí alebo oprávnení pre jednotlivých užívateľov. Napríklad pre predmet C++ bolo potrebné umožniť prideľovanie vyučujúceho (opravujúceho) študentovi pre každú úlohu osobitne.
 
 \subsection{Požiadavky na správu a komunikáciu}
 
@@ -248,29 +246,29 @@ Administrácia systému prebieha na dvoch úrovniach -- vyučujúcimi, ktorí s�
 
 Vyučujúci predmetu má v rámci daného predmetu predovšetkým možnosť spravovať oprávnenia používateľov a jednotlivé úlohy. Principiálne ide len o konfiguráciu malej množiny funkcionality systému, špecifickej pre daný predmet. Pre pohodlnú prácu je však výhodné sprístupniť potrebné administratívne úkony v rozhraní systému, aby ich bolo možné vykonávať automatizovane.
 
-Správa celého systému zahŕňa predovšetkým nasadenie a monitorovanie všetkých jeho súčastí. Komponenty systému by malo byť možné spravovať vzdialene pomocou administrátorského rozhrania, vyžadujúceho špeciálny typ používateľa a autentizáciu na úrovni každej samostatnej súčasti systému.
+Správa celého systému zahŕňa predovšetkým nasadenie a monitorovanie všetkých jeho súčastí. Je potrebné mať možnosť komponenty systému spravovať vzdialene pomocou administrátorského rozhrania, vyžadujúceho špeciálny typ používateľa a autentizáciu na úrovni každej samostatnej súčasti systému.
 
-Bežným používateľom je vhodné funkcionalitu systému sprístupniť pomocou grafického rozhrania pre jednoduché používanie. Medzi jednotlivými komponentmi je potrebné umiestniť strojovo ľahko spracovateľné rozhrania. Rozhrania umožňujú nízku previazanosť komponentov, ich škálovateľnosť (napr. zvýšením počtu replík), využitie rôznych konkrétnych implementácií a prípadné nahradenie celej komponenty.
+Bežným používateľom je vhodné pre jednoduché používanie funkcionalitu systému sprístupniť pomocou grafického rozhrania. Medzi jednotlivými komponentmi je potrebné umiestniť strojovo ľahko spracovateľné rozhrania. Rozhrania umožňujú nízku previazanosť komponentov, ich škálovateľnosť (napr. zvýšením počtu replík), využitie rôznych konkrétnych implementácií a prípadné nahradenie celej komponenty.
 
 \section{Nefunkčné požiadavky}
 
-Okrem funkcionality je pre systém potrebné špecifikovať aj požiadavky a obmedzenia na prevádzku systému, nazývané tiež nefunkčné požiadavky. Definujú podmienky prevádzky systému ako celku v niekoľkých oblastiach. Ich cieľom je zaručiť prevádzkovú ako aj vývojovú kvalitu výsledného produktu.
+Okrem funkcionality je pre systém potrebné špecifikovať aj požiadavky a obmedzenia na prevádzku systému, nazývané tiež nefunkčné požiadavky. Definujú podmienky prevádzky systému ako celku v niekoľkých oblastiach. Ich cieľom je zaručiť kvalitu prevádzky aj procesu vývoja výsledného produktu.
 
 \subsection{Bezpečnosť}
 Bezpečnosť systému je jednou zo základných požiadaviek a zasahuje do mnohých jeho častí.
 
 Jedným aspektom je kontrola prístupu používateľov k údajom v systéme, ktorú je potrebné zabezpečiť pomocou autentizačných a autorizačných mechanizmov, detailnejšie popísaných v časti X. % TODO
 
-Druhou časťou bezpečnosti systému je nutnosť ochrany proti externým útočníkom. Predovšetkým je nutné zabezpečiť, aby všetka komunikácia vonkajšieho sveta so systémom prebiehala šifrovane, sanitizovať vstupy a znížiť dopad útokov typu DOS[cite].  
+Druhou časťou bezpečnosti systému je nutnosť ochrany proti externým útočníkom. Predovšetkým je nutné zabezpečiť, aby všetka komunikácia vonkajšieho sveta so systémom prebiehala šifrovane, sanitizovať vstupy a znížiť dopad útokov typu DOS[cite]. 
 
-Tretím bodom je zabezpečenie izolovaného prostredia spúšťania odovzdaní študentov a odstrániť tak nebezpečenstvo ovplyvňovania systému, interferencií s ostatnými odovzdaniami, úniku, poškodeniu či neoprávnenej úprave dát (napr. testov k danej úlohe).   
+Tretím bodom je zabezpečenie izolovaného prostredia spúšťania odovzdaní študentov a odstrániť tak nebezpečenstvo ovplyvňovania systému, interferencií medzi odovzdaniami, úniku a poškodeniu či neoprávnenej úprave dát (napr. testov k danej úlohe).
 
-Pre správu a audit prevádzky systému je vhodným základným mechanizmom zaznamenávanie (\emph{logovanie}) akcií používateľov. Podľa týchto záznamov by malo byť možné identifikovať aktérov, priradiť ich k vykonávaným akciám a analyzovať tak potenciálne a skutočné hrozby pre systém. V produkčnej prevádzke systému je takéto záznamy možné využiť aj pre monitorovanie systému v reálnom čase a rýchlu odozvu správcov v prípade problémov.
+Pre správu a audit prevádzky systému je vhodným základným mechanizmom zaznamenávanie (\emph{logovanie}) akcií používateľov. Podľa týchto záznamov by malo byť možné identifikovať aktérov, priradiť ich k vykonávaným akciám a analyzovať tak potenciálne a skutočné hrozby pre systém. V produkčnej prevádzke systému je takéto záznamy možné využiť aj pre monitorovanie systému v reálnom čase a rýchlu odozvu správcov v prípade problémov. Nasadenie vhodného monitorovacieho riešenia predstavuje zaujímavé a potenciálne rozsiahle rozšírenie systému, ktoré bohužiaľ v rámci tejto práce nebolo možné realizovať.
 
 \subsection{Trvácnosť}
-Systém Kontr 2 potrebuje pre dlhodobú prevádzku uchovávať svoj stav v nejakom perzistentnom úložisku. V týchto dátach, reprezentujúcich entity v systéme, je potrebné efektívne vyhľadávať a manipulovať s nimi pri bežnej prevádzke systému. 
+Systém Kontr 2 potrebuje pre dlhodobú prevádzku uchovávať svoj stav v nejakom perzistentnom úložisku. V týchto dátach, reprezentujúcich entity v systéme, je potrebné efektívne vyhľadávať a manipulovať s nimi pri bežnej prevádzke systému. Ide o štrukturované, hierarchicky organizované dáta, reprezentujúce odovzdania a s nimi súvisiace organizačné zložky malej veľkosti, ktoré je vhodné ukladať v relačnej databáze. 
 
-Pre ukladanie potenciálne veľkých súborov odovzdaní a testov a ich a priečinkovej štruktúry je potrebné použiť vhodný prístup, potenciálne iný než pre správu "prevádzkových" dát. Jednotlivé odovzdania je potrebné archivovať v logickej štruktúre, pre možnosť vyhľadávania, aktualizácie a zobrazovania previazanej s používateľmi. Jednou z možných optimalizácií potrebného diskového priestoru je zdieľanie testovacích súborov úlohy medzi odovzdaniami. Pri dlhšej prevádzke systému môže byť prínosné nepoužívané dáta komprimovať, prípadne mazať. Ďalším vhodným opatrením je klásť obmedzenia na ukladané dáta zo študentských odovzdaní v systéme, čím sa dá predchádzať zahlteniu diskového priestoru súbormi nepotrebnými pre spracovanie odovzdaní.
+Pre ukladanie potenciálne veľkých súborov odovzdaní a testov a ich a adresárovej štruktúry je potrebné použiť vhodný prístup, iný než pre správu "prevádzkových" dát. Jednotlivé odovzdania je potrebné archivovať v logickej štruktúre, pre možnosť vyhľadávania, aktualizácie a zobrazovania previazanej s používateľmi. Jednou z možných optimalizácií potrebného diskového priestoru je zdieľanie testovacích súborov úlohy medzi odovzdaniami. Pri dlhšej prevádzke systému je prínosné nepoužívané dáta komprimovať, prípadne mazať. Ďalším vhodným opatrením je klásť obmedzenia na ukladané dáta zo študentských odovzdaní v systéme, čím sa dá predchádzať zahlteniu diskového priestoru súbormi nepotrebnými pre spracovanie odovzdaní.
 
 \subsection{Škálovateľnosť a prenositeľnosť}
 
@@ -280,100 +278,85 @@ Súčasti systému by na infraštruktúru FI MU mali byť naviazané čo najmene
 
 \subsection{Ľahká rozšíriteľnosť}
 
-Cieľom projektu je vytvoriť infraštruktúru pre automatizovanú opravu domácich úloh a vytvoriť prototyp potrebných modulov na prevádzku v malej množine predmetov vyučovaných na FI MU. Dekompozícia systému a návrh komponentov však musí umožňovať jednoduché rozšírenie a úpravy pre potreby iných predmetov, aby systém mohol byť rozšírený do širšieho okruhu používateľov a potenciálnych prispievateľov.
+Cieľom projektu je vytvoriť infraštruktúru pre automatizovanú opravu domácich úloh a vytvoriť prototyp potrebných modulov na prevádzku v malej množine predmetov vyučovaných na FI MU. Dekompozícia systému a návrh komponentov však musí umožňovať jednoduché rozšírenie a úpravy pre potreby iných predmetov, aby systém mohol byť rozšírený do širšieho okruhu používateľov a potenciálnych prispievateľov. Práve širší okruh používateľov je jednou z podmienok úspechu open-source projektu Kontr 2, ktorý sa pre svoj ďalší vývoj bude spoliehať práve na prispievateľov z radov svojich používateľov.
 
 \subsection{Integrácia s externými službami}
-Využitie existujúcich služieb odstraňuje nutnosť synchronizácie dát medzi rôznymi systémami a umožňuje rýchlejší vývoj Kontru 2. Systém by sa mal dať integrovať s inými službami využívanými na FI MU pre uľahčenie práce s novým systémom. Možné prvotné spojenia sú s fakultnou inštanciou GitLabu ako s poskytovateľom identít, IS MU pre synchronizáciu predmetov a študentov v nich alebo prácu s Poznámkovými blokmi, fakultným LDAP-om pre získavanie dodatočných informácii o užívateľoch či s fakultným SMTP serverom pre odosielanie emailových notifikácií. Pre systém v prvej verzii nie je plánované využitie iných než fakultných služieb.
+Využitie existujúcich služieb odstraňuje nutnosť synchronizácie dát medzi rôznymi systémami a umožňuje rýchlejší vývoj Kontru 2. Systém by sa mal dať integrovať s inými službami využívanými na FI MU pre uľahčenie práce s novým systémom. Možné prvotné spojenia sú s fakultnou inštanciou GitLabu ako s poskytovateľom identít, IS MU pre synchronizáciu predmetov a študentov v nich alebo prácu s Poznámkovými blokmi, fakultným LDAP-om pre získavanie dodatočných informácii o užívateľoch či s fakultným SMTP serverom pre odosielanie emailových notifikácií. Pre systém v prvej verzii nie je plánované využitie iných než fakultných služieb, no principiálne je v ďalšom vývoji možné.
 
 \chapter{Návrh}
-Na základe analýzy požiadaviek na systém bolo možné vytvoriť návrh, ktorý detailne rozpracováva požadovanú funkcionalitu do štrukturálnych celkov -- komponentov, obsahujúcich kľúčové entity a procesy, a definuje rozhrania a komunikáciu medzi nimi. Kapitola predstavuje jednotlivé celky a ich časti a definuje ich zodpovednosti. Zároveň približuje riešenie nefunkčných požiadaviek pre každý súčasť systému zvlášť. Záverom návrhu je prehľad prepojenia častí systému v hlavnom prípade použitia. 
+Na základe analýzy požiadaviek na systém bolo možné vytvoriť návrh, ktorý detailne rozpracováva požadovanú funkcionalitu do štrukturálnych celkov -- komponentov, obsahujúcich kľúčové entity a procesy a definuje rozhrania a komunikáciu medzi nimi. Kapitola predstavuje jednotlivé celky a ich časti a definuje ich zodpovednosti. Zároveň približuje riešenie nefunkčných požiadaviek pre každú súčasť systému zvlášť. Záverom návrhu je prehľad prepojenia častí systému v hlavnom prípade použitia. 
 
 %Pojem \emph{Systém} popisuje Kontr 2 ako celok so všetkými komponentmi a väzbami medzi nimi. Hlavný prípad použitia systému je popísaný v kapitole analýza. \emph{Komponenta systému} je samostatná časť systému, z ktorej systém pozostáva. V systéme je možné taktiež identifikovať jednotlivé \emph{entity} a vzťahy medzi nimi. \emph{Entita} \footnote{https://www.sqa.org.uk/e-learning/MDBS01CD/page_06.htm} je akýkoľvek objekt alebo reprezentácia, ktorý chceme modelovať a ukladať o ňom informácie.
 
 \section{Entity a aktéri v systéme Kontr 2}
 
-Z hlavného prípadu použitia vyplývajú základné entity systému Kontr 2: \emph{používateľ}, \emph{kurz}, \emph{projekt} a \emph{odovzdanie}. Používatelia so systémom interagujú v rámci svojich \emph{rolí}, definovaných na úrovni predmetov. Pre možnosť ľahkého rozšírenia a dostatočného prispôsobenia role nie sú pevne dané a je možné pre každý kurz vytvoriť vlastnú sadu rolí a nastaviť pre ne rôzne úrovne \emph{oprávnení}.
+Z hlavného prípadu použitia vyplývajú základné entity systému Kontr 2: \emph{používateľ}, \emph{kurz}, \emph{projekt} a \emph{odovzdanie}. Používatelia so systémom interagujú v rámci svojich \emph{rolí}, definovaných na úrovni predmetov. Pre možnosť ľahkého rozšírenia a dostatočného prispôsobenia role a právomoci s nimi spojené nie sú pevne dané a je možné pre každý kurz vytvoriť vlastnú sadu rolí a nastaviť pre ne rôzne úrovne \emph{oprávnení}.
 
-Potreba určenia opravujúceho pre každú úlohu je splnená pomocou \emph{skupín užívateľov} v predmetoch, podobných seminárnym skupinám. Pomocou nich je možné opravujúcim (cvičiacim) pre vybraný projekt prideliť skupinu študentov. Skupiny umožňujú predovšetkým jemnejšie riadenie prístupových oprávnení k odovzdaniam, takže napr. opravujúci určitej skupiny má prístup iba k odovzdaniam študentov v tejto skupine. Rovnako je na skupinu možné naviazať notifikácie.
+Potreba určenia opravujúceho pre každú úlohu je splnená pomocou \emph{skupín užívateľov} v predmetoch, podobných seminárnym skupinám. Pomocou nich je možné opravujúcim (cvičiacim) pre vybraný projekt prideliť skupinu študentov. Skupiny umožňujú predovšetkým jemnejšie riadenie prístupových oprávnení k odovzdaniam, takže napr. opravujúcemu určitej skupiny je možné umožniť prístup iba k odovzdaniam študentov v tejto skupine. Rovnako je na skupinu možné naviazať notifikácie.
 
 
 \section{Hlavné komponenty}
 
-Celkový návrh predpokladá tri hlavné komponenty: Portál, Pracovník (Worker) a KTDK. Komponenty sú navzájom nezávislé a poskytujú rozhranie na komunikáciu a ovládanie. Každý z hlavných komponentov bude podrobnejšie rozpísaná vo vlastnej sekcii spoločne so svojimi subsystémami.
+V návrhu systému figurujú tri hlavné komponenty: Portál, KTDK (Kontr Test Development Kit) a Pracovník (Worker), z ktorých každý spracováva samostatnú časť funkcionality. Komponenty sú navzájom nezávislé a poskytujú štrukturované rozhranie na komunikáciu a ovládanie. Každý z hlavných komponentov je podrobnejšie priblížený vo vlastnej sekcii spoločne so svojimi subsystémami.
 
-Hlavné komponenty môžu byť zložené z viacerých častí a využívať rôzne moduly a knižnice, ktoré bolo potrené implementovať a zakomponovať do celého systému.
-Ide o \emph{pomocné komponenty}, ktoré sú využívané hlavnými komponentmi, pomocnými komponentmi sú napríklad: Uložisko, ktoré je využívané portálom na zabezpečenie trvácnosti dát. Jednotlivé pomocné komponenty sú rozobraté v separátnych častiach venovaných hlavným komponentom.
+Hlavné komponenty majú vlastnú vnútornú štruktúru a využívajú rôzne moduly a knižnice, ktoré bolo potrebné implementovať a integrovať. Ide o tzv. \emph{pomocné komponenty}, ktoré logicky združujú časti funkcionality svojich rodičovských komponentov. Medzi pomocné komponenty patrí napríklad \textit{Úložisko} (Storage), ktoré je využívané portálom na zabezpečenie trvácnosti súborov odovzdaní. Jednotlivé pomocné komponenty sú predstavené spolu s ich hlavnými komponentmi.
 
-\textit{Portál} je hlavným komponentom, ktorý má za úlohu prepájať ostatné časti systému, vystaviť hlavné rozhranie pre prácu so systémom, logicky modelovať organizačnú štruktúru entít a vzťahy medzi nimi. 
+\textit{Portál} je hlavným komponentom, ktorý má za úlohu logicky modelovať organizačnú štruktúru entít a vzťahy medzi nimi, vystaviť hlavné rozhranie pre prácu so systémom a orchestrovať ostatné časti systému. 
 
-\textit{Pracovník (Worker)} je komponenta, ktorá spracováva jednotlivé odovzdania a vykonáva ich v oddelenom prostredí tak, aby mali prístup len k zdrojom, ku ktorým mať prístup musia.
+\textit{KTDK (Kontr Test Development Kit)} je testovací rámec, pomocou ktorého je možné definovať a vykonávať testovacie scenáre. Scenáre popisujú logickú štruktúru akcií a zároveň definujú ich výkonný kód. Príkladom akcie v scenári je príprava testovacieho prostredia, ktorá sa skladá z nasledujúcich akcií: skopírovanie potrebných súborov, kompilácia testovacích artefaktov, spustenie testovacieho rámca, vyhodnotenie jeho výstupu a jeho transformácia do definovaného výstupného formátu. 
 
-\textit{KTDK (Kontr Tests Development Kit)} je testovací rámec, pomocou ktorého je možné definovať a vykonávať testovacie scenáre. Scenáre popisujú inštrukcie a fázy, ktoré sú potrebné pre otestovanie odovzdania. Príkladom častí testovania je, príprava testovacieho prostredia - skopírovanie potrebných súborov, kompilovanie testovacích artefaktov, samotné spustenie testov, ich vyhodnotenie a transformácia do požadovaného výstupného formátu. 
+\textit{Pracovník (Worker)} je komponent, ktorý spracováva jednotlivé odovzdania a vykonáva ich v izolovanom prostredí iba s potrebnými zdrojmi a oprávneniami. Poskytuje behové prostredie a nízkoúrovňové plánovanie vykonávania testovacích scenárov pomocou KTDK. Je hlavným miestom škálovania výkonu systému a jeho prispôsobenia potrebám jednotlivých predmetov.
 
-Vzájomná nezávislosť komponentov dovoľuje ich jednoduché nahradenie. Napríklad je možné v systéme nahradiť pracovníka vlastnou implementáciou, ktorá dodá rovnaký výstup ako očakáva portál na spracovanie. Taktiež je možné nepoužiť KTDK na vykonanie a spracovanie testov, ale dodať výstup Pracovníkovi vo formáte, ktorý očakáva.
+Vzájomná nezávislosť komponentov pomocou rozhraní dovoľuje ich jednoduché nahradenie. Napríklad je možné v systéme nahradiť pracovníka vlastnou implementáciou, ktorá portálu na ďalšie spracovanie dodá kompatibilný výstup. Podobne je možné na vykonanie a spracovanie testov použiť vlastný nástroj, a jeho výstup dodať výstup Pracovníkovi vo formáte, ktorý očakáva.
 %todo: obr
 
 \section{Portál}
 
-Portál - hlavný komponent celého systému bol navrhnutý a čiastočne implementovaný v bakalárskej práci Barbory Kompišovej[cite]. Hlavnou úlohou je vystaviť API, vďaka ktorému je možné systém ovládať, komunikovať s ostatnými komponentami v systéme. Prístup k API je potrené zabezpečiť a implementovať mechanizmy a logickú štruktúru entít, ktoré budú slúžiť na simuláciu výukového procesu a vzťahov medzi entitami.
+Portál, hlavný komponent celého systému, bol navrhnutý a implementovaný v bakalárskej práci Barbory Kompišovej[cite]. Jeho hlavnou úlohou je vytvoriť logickú štruktúru entít slúžiacich na modelovanie výukového procesu a vzťahov medzi nimi. Druhou úlohou portálu je vystaviť rozhranie, vďaka ktorému je možné systém ovládať a komunikovať s ostatnými komponentmi v systéme. Portál toto rozhranie zabezpečuje a implementuje mechanizmy riadenia prístupu. Na uchovávanie stavu systému v podobe jednotlivých entít a ich atribútov portál využíva relačnú databázu, pretože tieto dáta sú štrukturované a je v nich potrebné efektívne vyhľadávať.
 
-Portál je prepojený s databázou, v ktorej si drží svoj globálny stav a inštancie jednotlivých entít. Dáta sú štrukturované a je potrebné ich vyhľadávať na základe rôznych kritérií, jedná sa o databázu relačnú.  
+Ako orchestrátor systému je portál primárnym miestom spracovávajúcim hlavný prípad použitia systému -- vytvorenie odovzdania. Pre jedno odovzdanie ide v následnosti o tieto kroky: 
+\begin{itemize}
+  \item prijať odovzdanie a jeho parametre od študenta
+  \item skontrolovať potrebné oprávnenia a obmedzujúce podmienky na počet a frekvenciu odovzdaní
+  \item stiahnuť a uložiť súbory potrebné pre spracovanie odovzdania, predovšetkým študentovo riešenie
+  \item naplánovať vykonávanie odovzdania na pracovníkovi a odoslať mu nové odovzdanie na spracovanie
+  \item prijať výsledok spracovania od pracovníka, uložiť a vyhodnotiť~ho
+  \item notifikovať relevantných používateľov --  autora a opravujúceho tohoto odovzdania.
+\end{itemize}
 
-Hlavným príkladom použitia portálu je - prijať odovzdanie od študenta, skontrolovať potrebné oprávnenia a obmedzujúce podmienky na počet odovzdaní. Následne stiahnuť súbory potrebné pre spracovanie odovzdania, uložiť ich na disk, naplánovať vykonávanie odovzdania na pracovníkovi. Ak je pracovník úspešne vybraný, je mu odoslané nové odovzdanie pre spracovanie.
+Primárnou časťou portálu je server, ktorý vystavuje REST rozhranie, pomocou ktorého je možné s portálom komunikovať. Na rozhranie portálu je možné napojiť rôznych klientov. Hlavnými výhodami REST rozhrania je jeho väzba na \emph{HTTP protokol} a možnosť zabezpečenia pomocou \emph{SSL/TLS protokolu}, umožňujúceho šifrovanie komunikácie. Podrobnejší popis rozhrania portálu a rozpracovanie návrhových a implementačných otázok je možné nájsť v spomínanej bakalárskej práci Bc. Barbory Kompišovej.
 
-Pracovník po spracovaní odošle výsledky portálu, ktorý ich vyhodnotí a notifikuje užívateľov - autora odovzdania a opravujúceho prideleného pre toto odovzdanie.
+\subsection{Klienti portálu}
+Vďaka jednotnému rozhraniu prispôsobenému pre automatizovanú prácu bolo pre portál možné vyvinúť niekoľko samostatných klientov. 
 
-\subsection{Rozhranie portálu}
+\textbf{Frontend} pre systém Kontr 2 bol implementovaný ako súčasť práce Bc. Barbory Kompišovej. Ide o jednostránkovú webovú aplikáciu (\emph{single page application}), ktorá využíva REST rozhranie portálu a ponúka možnosť spravovať entity v systéme, vytvárať odovzdania a prezerať si výsledky. Zamýšľaným rozšírením frontendu je nástroj na prezeranie odovzdaní (\emph{review tool}) sprístupňujúci rozhranie na prezeranie výsledkov a výstupov testovania, jednotlivých súborov odovzdania, pridávanie slovného hodnotenia vo forme komentárov k súborom a prácu s poznámkovými blokmi IS~MU. 
 
-Portál je tvorený primárnou častou a to je server - backend, ktorý vystavuje REST API, pomocou ktorého je možné s portálom komunikovať, to využívajú klienti, ktorý s portálom komunikujú. Podrobnejší popis rozhrania a dôvody, prečo bolo použité je možné nájsť v spomínanej práci.
+Knižnica \textbf{kontr-api} implementovaná v jazyku Python obaľuje volania REST rozhrania portálu. Slúži ako základ pre písanie nástrojov v jazyku Python, ktoré potrebujú pracovať a komunikovať so systémom Kontr 2. V súčasnosti ju využívajú tri projekty: konzolový nástroj \emph{kontrctl}[link Implementácia Kontrctl], pomocou ktorého je možné pracovať so serverovou častou portálu, \emph{pracovník}, ktorý knižnicu používa na získanie informácii potrebných pre spracovanie odovzdania a \emph{suita testov}[link Implementácia suity testov], ktorá pomocou integračných testov a end-to-end scenárov testuje systém ako celok.
 
-Výhodou REST API je jeho väzba na \emph{HTTP} protokol a možnosť zabezpečenia pomocou \emph{SSL/TLS protokolu}, vďaka ktorému je komunikácia šifrovaná.
+%\subsection{Interné časti portálu}
 
-\subsection{Klienti pre portál}
-Aktuálne implementovaní klienti sú frontend - implementovaný ako súčasť implementácie backendu, ktorý bol implementovaný ako jednostránková aplikácia v jazyku Typescript za použitia rámca Angular 6. Podrobnejšie informácie môžete nájsť v práci Barbory Kompišovej.
-
-Druhým klientom je knižnica \emph{kontr-api}, implementovaná v jazyku Python, ktorá obaľuje volania \emph{REST API} portálu a slúži ako základ pre písanie nástrojov v jazyku Python, ktoré by chceli pracovať a komunikovať s Kontrom. Knižnica je popísaná v kapitole \emph{Implementácia Kontr-Api}.
-
-Knižnica je aktuálne využívaná tromi projektmi. Prvý z nich je CLI nástroj, \emph{kontrctl}\footnote{Kapitola: \emph{Implementácia Kontrctl}} pomocou ktorého je možné pracovať so serverovou častou portálu. 
-
-Druhým je Pracovník (Worker), ktorý knižnicu používa na získanie informácii potrebných pre spracovanie odovzdania.
-
-Tretím je \emph{testsuita}\footnote{Kapitola: \emph{Implementácia Testsuity}}, ktorá obsahuje integračné testy a end-to-end scenáre, pomocou ktorého sa systém testuje ako celok.
-
-Možnosť implementovať viacerých klientov je možné vďaka jednotnému rozhraniu prispôsobenému pre automatizovanú prácu.
-
-\subsection{Interné časti portálu}
-
-Backend portálu v sebe obsahuje integráciu s viacerými externými aj internými nástrojmi. Interné nástroje sú nástroje, ktoré vznikli pre potreby systému, medzi ne patrí napríklad knižnica pre správu uložiska dát na disku - \emph{Uložisko},
-\emph{plánovač}, ktorý plánuje na ktorého pracovníka bude odovzdanie odoslané, \emph{nástroj na spracovanie odovzdania}, ktorý definuje a pravidlá, čo sa má s odovzdaním a jeho výsledkom stať. Súčasťou internej štruktúry portálu je nástroj na \emph{asynchrónne spracovávanie dlhotrvajúcich a náročných} úloh. 
-Jednotlivé časti sú podrobnejšie popísané v separátnych častiach. 
+%Backend portálu v sebe obsahuje integráciu s viacerými externými aj internými nástrojmi. Interné nástroje sú nástroje, ktoré vznikli pre potreby systému, medzi ne patrí napríklad knižnica pre správu úložiska dát na disku - \emph{Úložisko},
+%\emph{plánovač}, ktorý plánuje na ktorého pracovníka bude odovzdanie odoslané, \emph{nástroj na spracovanie odovzdania}, ktorý definuje a pravidlá, čo sa má s odovzdaním a jeho výsledkom stať. Súčasťou internej štruktúry portálu je nástroj na \emph{asynchrónne spracovávanie dlhotrvajúcich a náročných} úloh. 
+%Jednotlivé časti sú podrobnejšie popísané v separátnych častiach. 
 
 
-\subsection{Úložisko - Storage}
+\subsection{Úložisko -- Storage}
 
-Medzi interné nástroje, ktoré v sebe portál obsahuje je modul na prácu s \emph{Uložiskom - Storage}, ktorého úloha je ukladať, spravovať a spracovávať súbory potrebné k spracovaniu odovzdania. Základné 3 kategórie súborov, ktoré je potrebné si uchovávať. 
+Medzi interné nástroje, ktoré v sebe portál obsahuje je modul \emph{Úložisko (Storage)}, ktorého úloha je ukladať, spravovať a spracovávať súbory potrebné pri spracovaní odovzdania. Potenciálne ide o veľké súbory, ktoré je potrebné členiť do stromovej štruktúry. Je preto vhodné tieto súbory ukladať priamo na disk a využiť adresárovú štruktúru. Modul rozlišuje tri základné druhy súborov: 
 
-Študentovo vypracovanie - zdrojové kódy, nad ktorými bude vykonávané testovanie, pre každé odovzdanie je potrebné si držať tieto súbory na disku v separátnych adresároch, aby bolo možné vždy k odovzdaniu priradiť aj súbory nad ktorými testovanie prebehlo.
+\textbf{Študentovo riešenie} obsahuje predovšetkým zdrojové kódy, nad ktorými bude vykonávané testovanie. Je potrebné ukladať tieto súbory oddelene pre každé odovzdanie (napr. v samostatných priečinkoch), aby bolo možné vždy k odovzdaniu priradiť súbory, nad ktorými prebehlo testovanie.
 
-Testovacie súbory - súbory potrebné k behu testov, medzi ne patria - súbory s popisom testovacích scenárov, dodané vstupy a očakávané výstupy, kusy pripravených zdrojových kódov. Tieto súbory prináležia vždy k projektu a preto je potrebné si ich držať v adresároch vytvorených pre daný projekt.
+\textbf{Testovacie súbory} označujú súbory potrebné na spustenie testov. Patria medzi ne súbory s popisom testovacích scenárov (napr. jednotkové testy), vzorové vstupy, očakávané výstupy či čiastočné implementácie riešenia, umožňujúce izolované testovanie častí odovzdania. Tieto súbory je možné zdieľať pre spracovanie všetkých odovzdaní v projekte, nemá zmysel ich kopírovať ku každému odovzdaniu.
 
-Výsledky testov - súbory vygenerované behom testov počas spracovania odovzdania.
-Medzi výsledky môžu patriť výstupy jednotlivých programov, napríklad log kompilácie alebo výstupy testovacích rámcov.
+\textbf{Výsledky testov} sú súbory vygenerované počas spracovania odovzdania. Ide predovšetkým o výstupy spustených programov, napríklad záznam kompilácie alebo výstup testovacích rámcov. Je ich potrebné jednoznačne priradiť k odovzdaniu.
 
-Súčasťou uložiska je integrácia s \emph{GITom}, kedy pomocou neho sťahuje študentovo odovzdanie a testovacie súbory. Možnosť filtrovania súborov pomocou metódy povolených \emph{glob} výrazov. Archivácia a kompresia priečinkov, ktorá má za cieľ zmenšiť veľkosť dát uložených na disku.
+Súčasťou úložiska je integrácia s \emph{Gitom}, pomocou ktorého sťahuje odovzdania študentov a testovacie súbory. Pre úsporu miesta na disku modul ponúka možnosť filtrovania ukladaných dát pomocou \emph{glob výrazov} (tzv. \emph{whitelist}) pri sťahovaní odovzdaní a kompresie priečinkov pri ich nevyužívaní.
 
-\subsection{Asynchrónne spracovávanie náročnejších úloh}
+\subsection{Asynchrónne spracovanie odovzdaní}
 
-Kontr portál vystavuje REST API, pomocou ktorého je možné s ním komunikovať.
-REST API je založené na protokole sieťovej aplikačnej vrstvy - HTTP, HTTP je protokol, ktorý je založený na koncepte \emph{požiadavka-odpoveď}. Vo webových aplikáciach je potrebné spracovávať náročnejšie úlohy asynchrónne, aby nedošlo k zbytočnému blokovaniu a čakaniu na odpoveď, ktorá ani nemusí doraziť v maximálnom časovom intervale. 
+Spracovanie odovzdania v portáli je v kontexte webových aplikácii dlhotrvajúca úloha, ktorú nie je možné dokončiť v čase akceptovateľnom pre odpoveď na požiadavku na server v modeli portálom využívaného protokolu HTTP. Vykonanie takejto požiadavky musí prebiehať asynchrónne, aby sa predišlo zbytočnému blokovaniu klientov. Na získanie výsledku spracovania musí klient požiadať samostatným dotazom.
 
-\emph{Asynchrónne úlohy} sú spracovávané nezávisle a neblokujúco, prevažne vo forme separátneho procesu alebo vlákna.
-
-V kontexte webových aplikácii požiadavka na server len vytvorí novú úlohu, ktorá sa má asynchrónne spracovať a následne nečaká na dokončenie úlohy, ale len vráti odpoveď s tým, že úloha bude spracovaná. Na stav spracovania úlohy je zväčša treba separátny dotaz na iný koncový bod. 
-
-Príkladom náročnejšej úlohy je napríklad spracovanie odovzdania, ktoré je možné rozdeliť na niekoľko jednoduchších a kratších asynchrónnych úloh.
-
-Asynchrónne úlohy, ktoré prebiehajú v portále:
+Spracovanie odovzdania portáli sa skladá z nasledujúcich asynchrónnych úloh:
 \begin{itemize}
     \item Stiahnutie vypracovania odovzdania študenta
     \item Stiahnutie testovacích súborov
@@ -382,33 +365,31 @@ Asynchrónne úlohy, ktoré prebiehajú v portále:
     \item Spracovanie výsledku testov odovzdania
 \end{itemize}
 
-Pre asynchrónne spracovanie úloh sa v portáli využíva \emph{Distribuovaný front úloh (Distributed Task Queue)}, založená na distribuovanom odosielaní správ, ktorá beží ako separátny proces. Väčšina distribuovaných frontov je založená na princípe \emph{producer-consumer}. Producent je proces v ktorom beží REST API a konzument je proces s distribuovaným frontom. 
+Pre asynchrónne spracovanie úloh sa v portáli využíva \emph{Distribuovaný front úloh (Distributed Task Queue)}, založený na distribuovanom odosielaní správ, ktorý beží ako separátny proces. Väčšina distribuovaných frontov pracuje na princípe \emph{producer-consumer}, kde producentom je proces v ktorom beží REST rozhranie a konzument je proces s distribuovaným frontom. 
 
-Na synchronizáciu a predávanie správ medzi konzumentom a producentom je potrebný tzv. \emph{Message Broker (sprostredkovateľ správ)}. Ide o službu, ktorá zabezpečuje preklad správ medzi odosielateľom (producentom) a prijímateľom (konzumentom). Jedná sa o architektonický vzor, ktorý slúži na validáciu, verifikáciu, transformáciu a smerovanie správ.
+Na synchronizáciu a predávanie správ medzi konzumentom a producentom je potrebný tzv. \emph{sprostredkovateľ správ (Message Broker)}. Ide o službu, ktorá zabezpečuje validáciu, verifikáciu, transformáciu a smerovanie správ správ medzi odosielateľom (producentom) a prijímateľom (konzumentom).[cite]
 
-Medzi hlavné výhody distribuovaného frontu úloh je, že sa jedná o separátny proces, ktorý môže byť nasadený na inom stroji alebo dokonca strojoch, ako je napríklad proces, ktorý spracováva REST dotazy. Druhým dôvodom je, že v štandardnej implementácii jazyka Python - \emph{CPython} nie je možné vykonávať viac ako jedno vlákno súbežne.
+Prínosom distribuovaného frontu úloh je to, že ide o separátny proces, ktorý môže byť nasadený na inom stroji alebo dokonca strojoch, ako je napríklad proces, ktorý spracováva REST dotazy. Druhým dôvodom je, že v štandardnej implementácii jazyka Python - \emph{CPython} nie je možné vykonávať viac ako jedno vlákno súbežne.
 
 Paralelizmus v tomto jazyku je veľmi ovplyvnený tzv. \emph{GIL - Global Interpreter Lock (Globálne uzamknutie interpretra)}\footnote{\url{https://wiki.python.org/moin/GlobalInterpreterLock}} - ide o zámok, ktorý chráni objekty v tomto jazyku a zabraňuje viacerým vláknam vykonávanie python bytekódu súbežne.
 
+\subsection{Plánovače}
 
-\subsection{Plánovač}
+Portál obsahuje dva typy plánovačov, ktoré ovládajú proces spracovania odovzdania. Ich úlohou je zabrániť preťažovaniu systému a umožniť využívanie rôznych behových prostredí.
 
-Portál v sebe obsahuje dva typy plánovačov, ktoré ovládajú proces spracovania odovzdania. Ich úlohou je zabrániť preťažovaniu systému a umožniť využívanie rôznych behových prostredí.
+Prvý plánovač slúži na vypočítanie minimálneho časového rozostupu medzi odovzdaniami, tzn. kedy je študentovi povolené vytvoriť a začať spracovávať nové odovzdanie. Konfigurácia plánovača je súčasťou projektu. Jednoduchým príkladom nastavenia plánovača je definovanie fixnej dobu čakania. Ďalšou možnosťou je progresívne zvyšovanie minimálnej doby medzi odovzdaniami na základe celkového počtu odovzdaní študenta.
 
-Prvý plánovač slúži na vypočítanie doby čakania nového odovzdania, tzn. kedy je možné vytvoriť a spracovať nové odovzdanie. Je konfigurovateľný na základe požadovaných metrík a požiadaviek definovaných pre určitý projekt. Príkladom konfigurácie je fixná doba čakania: napríklad jeden študent smie odovzdať vypracovanie pre jeden projekt maximálne raz za hodinu. Ďalšou možnosťou je progresívne zvyšovanie minimálnej doby medzi odovzdaniami na základe celkového počtu odovzdaní za jednotku času.
+Druhý plánovač rozhoduje, na ktorom pracovníkovi bude vykonané odovzdanie na základe definovaných kritérií. Do plánovacieho procesu vstupuje vyťaženie a dostupnosť pracovníkov, prítomnosť služieb či nástrojov na jednotlivých pracovníkoch a obmedzujúce podmienky definované správcom systému a zadávajúcim domácej úlohy. Príkladom obmedzení na pracovníka je maximálna miera vyťaženia systémových prostriedkov, preferovaná platforma (operačný systém, jeho verzia) alebo obmedzenie, že daný pracovník môže byť využívaný len určitou skupinou predmetov, projektov alebo študentov. 
 
-Druhý plánovač rozhoduje, na ktorom pracovníkovi bude na základe definovaných metrík vykonané odovzdanie. Do plánovacieho procesu vstupuje vyťaženie a dostupnosť pracovníka, dostupnosť služieb či nástrojov na pracovníkovi a obmedzujúce podmienky definované správcom systému a zadávajúcim domácej úlohy. Príkladom obmedzení daných na pracovníka je maximálne vyťaženie systémových prostriedkov, preferovaná platforma (operačný systém, jeho verzia), alebo obmedzenie, že daný pracovník môže byť využívaný len určitou skupinou predmetov, projektov alebo študentov. 
+Oba typy plánovačov sú súčasťou bakalárskej práce \emph{Mateja Dujavy}, TODO, ktorý sa v svojej práci podrobne venuje návrhu a implementácii oboch plánovačov a ich integrácií so systémom Kontr~2.
 
-Oba typy plánovačov sú súčasťou práce \emph{Mateja Dujavy}, TODO, ktorý sa v svojej práci podrobne venuje návrhu a implementácii oboch plánovačov a ich integrácií so systémom.
+\subsection{Nástroj na spracovanie odovzdania -- Submission processing}
 
-\subsection{Nástroj na spracovanie odovzdania - Submission processing}
+Ďalším komponentom portálu je \emph{Nástroj na spracovanie odovzdania (Submission processing)}. Skladá sa z dvoch častí konfigurovateľných zadávajúcim úlohy. Prvou časťou je definícia akcií, ktoré sa majú vykonať pred odoslaním odovzdania na Pracovníka (tzv. \emph{preprocessing}). Medzi tieto úlohy patrí napríklad odoslanie emailu študentovi o vytvorení nového odovzdania.
 
-Ďalším komponentom je \emph{Nástroj na spracovanie odovzdania - Submission processing}. Skladá sa z 2 častí, ktoré sú obe konfigurovateľné zadávajúcim úlohy(projektu). Prvou častou je definícia akcií, ktoré sa majú vykonať pred samotným odoslaním odovzdania na Pracovníka \emph{(preprocess tasks)}. Medzi tieto úlohy patrí napríklad odoslanie emailu študentovi o vytvorení nového odovzdania.
+Druhou fázou je spracovanie výsledkov odoslaných z Pracovníka do portálu \emph{(postprocessing)}. Tu je možné definovať napríklad spracovanie výsledkov z pracovníka, nastavenie bodov a stavu odovzdania, odoslanie emailu autorovi a opravujúcemu či zápis bodov do Poznámkových blokov IS~MU na základe typu odovzdania. 
 
-Druhou fázou je spracovanie výsledkov, odoslaných z Pracovníka do portálu \emph{postprocess tasks}. Medzi úlohy, ktoré môžu byť definované patrí spracovanie výsledkov odoslaných pracovníkom, nastavenie bodov a stavu odovzdania, odoslanie personalizovaného emailu na základe role autorovi a opravujúcemu. Zápis bodov do poznámkových blokov na základe typu odovzdania, napríklad ak bolo odovzdanie odovzdané s príznakom \emph{nanečisto}, žiadne body sa zapisovať nebudú, naopak ak bol nastavený príznak \emph{naostro} dôjde k zápisu bodov.
-
-Hlavná myšlienka spracovania odovzdania a nastavení jednotlivých úloh ktoré sa majú vykonať je modularita a prispôsobiteľnosť. Každý predmet alebo zadávajúci si bude môcť vybrať zo škály rôznych akcii, ktoré sa majú v jednej z častí vykonať.
-
+Spracovanie odovzdania a nastavenie vykonávaných úloh je prispôsobiteľné a modulárne. Každý predmet alebo zadávajúci si môže vybrať zo škály rôznych akcii, ktoré sa majú v jednej z častí vykonať.
 
 Nástroj na spracovanie odovzdania je opäť súčasťou práce \emph{Mateja Dujavy}, TODO, v ktorej sa podrobne venuje návrhu a implementácii.
 
@@ -417,157 +398,131 @@ Nástroj na spracovanie odovzdania je opäť súčasťou práce \emph{Mateja Duj
 Externé služby ktoré portál využíva, a s ktorými komunikuje sú Gitlab ako provider identít, LDAP na získanie dodatočných informácii o užívateľovi, SMTP server na odosielanie emailov, klient na komunikáciu s pracovníkom pomocou jeho REST API, API pre poznámkové bloky IS MUNI. 
 
 
-\subsection{Gitlab OpenID connect}
+\subsection{GitLab OpenID connect}
 
-Medzi externé nástroje, s ktorými Portál pracuje patrí aj Gitlab. Fakultná inštancia je prepojená s databázou LDAP, ktorá dodáva informácie o študentoch a učiteľoch na fakulte. Portál využiva OpenID Connect metódu autentizácie pre prihlásenie užívateľa do systému. 
-Ak užívateľ v systéme existuje a autentizácia pomocou gitlabu bola úspešná, na prihlásenie do portálu postačuje len token, ktorý gitlab pre daného užívateľa vygeneroval. Tento token sa následne použije ako súčasť autentizačného mechanizmu v portále.
+Fakultná inštancia GitLabu je jedným zo systémov, s ktorými Kontr 2 potrebuje komunikovať pre využitie metódy autentizácie používateľov \emph{OpenID Connect}, kde GitLab pre Kontr 2 predstavuje poskytovateľa identít. Vďaka napojeniu na fakultnú LDAP databázu je možné od GitLabu získať údaje o študentoch a učiteľoch na FI MU, čo umožňuje automatické vytváranie dôveryhodných používateľských účtov. Pre administráciu systému, umožnenie prístupu osobám neregistrovaným vo fakultnej databáze účtov a vnútornú organizáciu systému je však stále nutné implementovať vlastnú správu účtov. 
 
-V prípade, že užívateľ, ktorý sa pokúša prihlásiť, v systéme neexistuje, dochádza k vytvoreniu nového užívateľa na základe informácií poskytnutých fakultným gitlabom. Informácie o užívateľovi žiaľ nie sú dostatočné a medzi vyžadovanými informáciami chýba učo užívateľa, ktoré je potrebné získať iným spôsobom.
-
-\subsection{LDAP}
-Na získanie dodatočných informácii o užívateľovi je potrebné portál integrovať aj s Fakultnou službou LDAP, ktorá je dostupná len zo siete FI MU.
-
-Jednou z informácii, ktoré portál získava priamo z LDAP siete je UČO užívateľa. To je uložené v atribúte \emph{description} v LDAP zázname pre každého užívateľa.
+Na získanie dodatočných informácii o užívateľovi je potrebné portál integrovať aj s fakultnou LDAP databázou, ktorá je dostupná len zo siete FI MU. Jednou z dôležitých informácii, ktoré odtiaľto portál získava je UČO (univerzitné číslo osoby) užívateľa. To je uložené v atribúte \emph{description} v LDAP zázname každého užívateľa.
 
 \subsection{Email}
-Pre možnosť odosielania emailových správ užívateľom je potrebné integrovať portál so SMTP serverom. Obsah emailových správ je možné upraviť na úrovni Kontr~2. Emailové správy sú odosielané pri viacerých udalostiach, napríklad: vytvorenie užívateľa, zmena užívateľovho hesla, zmena členstva užívateľa v skupiny alebo jeho role v danom predmete.
+Pre možnosť odosielania emailových správ užívateľom je potrebné portál integrovať s SMTP serverom. Obsah správ a podmienky ich odosielania je možné upraviť na úrovni Kontr~2. Správy systém generuje automaticky na základe definovaných šablón a dodaných parametrov. Adresátov je možné filtrovať na základe ich členstva v kurze, skupine a ich rolí. Podnetom na odoslanie emailovej správy môžu byť napríklad tieto udalosti: vytvorenie užívateľa, zmena užívateľovho hesla, zmena členstva užívateľa v skupine alebo zmena jeho roly v danom predmete.
 
 \subsection{Poznámkové bloky IS MU}
-Jednou z notifikácii a aktualizácii, ktoré sa budú študentovi odosielať je zápis do poznámkových blokov. Pre zápis je potrebný prístupový token, ktorý si môže každý vyučujúci vygenerovať v IS MUNI. 
+Okrem emailových správ systém používateľom poskytuje spätnú väzbu aj pomocou Poznámkových blokov IS MU. Poznámkové bloky typicky obsahujú bodové, prípadne slovné hodnotenie študentských výsledkov. V prípade Kontru 2 ide o zápis redukovaného výsledku automatických testov. Na základe konfigurácie je možné automaticky zapisovať hodnotenie záväzne, prípadne vyžadovať manuálne potvrdenie výsledkov. Práca s rozhraním Poznámkových blokov IS MU vyžaduje prístupový token, ktorý môžu vyučujúci generovať v IS MU.
 
-Portál následne môže zapisovať získané body za jednotlivé odovzdania. Body sa môžu zapísať po ukončení spracovania výsledkov odovzdania alebo po udelení slovného hodnotenia opravujúcim, ktorý môže manuálne prideliť body. 
+Implementácia tejto služby nie je súčasťou tejto práce, no je dôležitá pre reálne využitie systému Kontr 2 v praxi.
 
 \subsection{Knižnica na správu a komunikáciu s Pracovníkom}
-
-Súčasťou portálu je taktiež aj knižnica ja správu a komunikáciu s pracovníkom. Pomocou nej je možné zistiť stav aktuálne vykonávaného odovzdania, spustiť testovací proces nad odovzdaným vypracovaním alebo zistiť celkový stav pracovníka - napríklad aktuálne vyťaženie.
-
+Súčasťou portálu je aj knižnica na komunikáciu s pracovníkom a jeho správu. Pomocou nej je možné zistiť stav aktuálne vykonávaného odovzdania, spustiť spracovanie odovzdaného riešenia alebo zistiť jeho aktuálne vyťaženie či definované štítky.
 
 \section{Pracovník - Worker}
+Pojem \emph{Pracovník} v systéme Kontr 2 naberá význam na dvoch úrovniach. Ako koncept označuje nástroj, ktorého vstupom je odovzdanie, a popis testovacích scenárov a výstupom je sada definovaných súborov, ktoré sú potrebné pre spracovanie a vyhodnotenie výsledkov testovania. Ako jeden z hlavných komponentov systému predstavuje konkrétnu implementáciu - samostatnú jednotku, ktorej účelom je vykonávať odovzdania na určitom stroji a platforme. 
 
-Pracovník ako jeden z hlavných komponentov systému je samostatná jednotka, ktorej účelom je vykonávať odovzdania na konkrétnom stroji a platforme. Pracovník ako koncept nástroj ktorého vstupom je odovzdanie s dodatočnými informáciami a popis testovacích scenárov a výstupom je sada definovaných súborov, ktoré sú potrebné pre spracovanie a vyhodnotenie výsledkov testovania. 
+Koncept Pracovníka je možné implementovať rôznymi spôsobmi, prispôsobeným danému prípadu užitia. Konkrétne implementácie odrážajú potreby predmetov využívajúcich Kontr 2 -- požadované platformy, výhody, služby a zdroje definovaného behového prostredia. Každá implementácia Pracovníka musí spĺňať určité požiadavky, predovšetkým musí vystaviť definované REST rozhranie na umožnenie komunikácie s portálom. 
 
-Pracovník môže mať rôzne implementácie, ktoré môžu byť prispôsobené danému prípadu užitia, môžu byť rôzne pre rôzne predmety, platformy a využívajúce odlišné výhody alebo služby daného prostredia v ktorom bežia.
+Pri implementácii a testovacej prevádzke systému bol použitý Pracovník implementovaný pre platformu Linux využívajúci \emph{kontajnerizačnú technológiu}. Využitie kontajnerov v Pracovníkovi umožňuje lepšiu izoláciu a riadenie práv spúšťaných testovacích procesov. Táto implementácia je zamýšľaná ako vzor pre ďalšie špecifické riešenia. Pre využitie platformy Windows bude potrebné overiť možnosť využitia spomínanej kontajnerizačnej technológie, prípadne vyhodnotiť dostupné alternatívy.
 
-Súčasťou tejto práce a pre testovaciu prevádzku bol použitý pracovník, ktorý bol implementovaný pre platformu Linux a využíva \emph{kontajnerizačnú technológiu}, ktorá nie je dostupná v tejto forme na všetkých platformách.
+\subsection{Priebeh spracovania}
 
-Napríklad pre možnosť behu na operačnom systéme MS Windows, je potrebné implementáciu upraviť alebo implementovať nový variant, ktorý by využil natívne prostriedky spomínanej platformy.
+Prijatie a spracovanie odovzdania pracovníkom prebieha v troch fázach:
 
-Pracovník musí vystaviť jednotné rozhranie, by s ním bolo možné jednotne komunikovať. Pre jednotnosť s portálom každý pracovník musí vystaviť REST API rozhranie, s presne definovaným rozhraním a koncovými bodmi.
+\begin{itemize}
+    \item Príprava prostredia, počas ktorej sú získané všetky potrebné dáta a informácie potrebné pre spracovanie odovzdania
+    \item Spustenie testovacích scenárov nad odovzdaním a vygenerovanie výsledkov
+    \item Spracovanie výsledkov do očakávanej výstupnej podoby a ich odoslanie do portálu
+\end{itemize}
 
-\subsection{Hlavný prípad užitia pracovníka}
+Portál odošle pracovníkovi správu o vytvorení nového odovzdania, ktoré je potrebné spracovať. Pracovník overí, či správa pochádza od jemu známej inštancie portálu a zodpovedá jeho možnostiam.  V prípade, že toto overenie zlyhá, požiadavku zamietne. Zo správnej požiadavky extrahuje základné informácie o odovzdaní -- TODO. Následne pracovník od portálu vyžiada súbory obsahujúce riešenie študenta a súbory potrebné na spustenie testovacích scenárov. Získané dáta sú uložené a pripravené na spracovanie. 
 
-Portál odošle pracovníkovi správu o novom odovzdaní, ktoré je potrebné spracovať.
-Pracovník správu overí a v prípade, že overenie zlyhalo, požiadavku zamietne.
-V prípade, že požiadavka je platná, extrahuje z nej potrebné informácie o odovzdaní. Následne žiada od portálu súbory obsahujúce riešenie študenta a súbory potrebné k spusteniu testovacích scenárov. 
+Priebeh ďalšieho spracovania je závislý na konkrétnej implementácii pracovníka. Je pritom potrebné zabezpečiť, aby spracovávané súbory a programy nekompromitovali systém pracovníka (nespôsobili jeho pád alebo poškodenie, nesprístupnili citlivé dáta neoprávneným používateľom, nemanipulovali s priebehom vyhodnotenia). 
 
-Získané dáta sú uložené a pripravené na spracovanie. Spôsob spracovania je závislý na konkrétnej implementácii. Je potrebné zabezpečiť, aby spracovávané súbory nekompromitovali systém (nespôsobili jeho pád alebo poškodenie, nesprístupnili citlivé dáta, ku ktorým by nepovolaní nemali mať prístup). 
+Po vykonaní testovacích scenárov Pracovník odošle ich výsledky portálu na spracovanie. Výsledky musia spĺňať formát definovaný v portále (\emph{postproces konfigurácia nástroja na spracovanie odovzdania} pre projekt), aby ich bolo možné správne interpretovať a vyhodnotiť. Pre tento účel portál vystavuje v rozhraní špeciálny koncový bod. Odoslaním výsledku spracovania portálu končí spracovanie odovzdania v Pracovníkovi.
 
-Po vykonaní testovacích scenárov, odosiela výsledky portálu na spracovanie, požadované výsledky musia spĺňať predpísaný formát, ktorý je definovaný v portále \emph{(postproces konfigurácia nástroja na spracovanie odovzdania)}, aby bolo možné výsledky správne interpretovať a vyhodnotiť. Výsledky nahráva na definovaný koncový bod v portál API.
+\subsection{Návrh Pracovníka s využitím LXC (Linuxových kontajnerov)}
 
-\subsection{Návrh implementácie využívajúcej LXC (Linuxové kontajnery)}
+Na demonštračné účely v rámci testovacieho nasadenia Kontru 2 bolo potrebné detailne rozpracovať a implementovať koncept Pracovníka. Dodaná implementácia má podobnú štruktúru ako portál: vystavuje REST rozhranie v časti nazvanej \emph{načúvač (listener)}, na spracovanie dlhotrvajúcich úloh využíva distribuovaný front (\emph{task worker}) a na predávanie správ medzi \emph{listenerom} a \emph{workerom} používa \emph{messsage broker}. Dôvody a výhody využitia týchto princípov sú popísané v časti \emph{Portál - Asynchrónne spracovávanie náročnejších úloh}. 
 
-Existujúca implementácia má podobnú štruktúru ako portál, vystavuje REST API v časti nazvanej \emph{načúvač (listener)}, na náročnejšie a dlhotrvajúce úlohy využíva distribuovaný front, nazvaný \emph{task worker} a na predávanie správ medzi \emph{listenerom} a \emph{workerom} používa \emph{messsage broker}.
-Dôvody a výhody tejto architektúry sú popísané v časti \emph{Portál - Asynchrónne spracovávanie náročnejších úloh}. 
+Na spracovanie jednotlivých odovzdaní dodaný Pracovník využíva \emph{kontajnerizačnú technológiu} vďaka ktorej je možné spúšťať testovacie scenáre v bezpečnejšom a odtienenom prostredí. \emph{Kontajnerizačná technológia}\footnote{\url{https://en.wikipedia.org/wiki/LXC}} je založená na metóde virtualizácie na úrovni operačného systému, ktorá umožňuje beh viacerých izolovaných linuxových systémov na jednom zdieľanom jadre. Jednou z najznámejších kontajnerových platforiem je produkt \emph{Docker}, ktorý implementácia využíva. Základnými jednotkami v platforme Docker je tzv. \emph{obraz (image)}, na základe ktorého je možné spúšťať mnoho \emph{kontajnerov} -- inštancií daného obrazu. Kontajnery izolujú spúšťané služby od hostiteľského systému a zaručujú tak ľahkú prenositeľnosť medzi rôznymi behovými prostrediami (servermi).[https://www.docker.com/resources/what-container] Všetky odovzdania sú vykonávané oddelene a je ich možné oddeliť od určitých zdrojov fyzického stroja, napríklad siete, pomocou ktorej by mohol sprístupniť citlivé informácie. Rovnako v prípade chyby alebo spustenia nevhodných alebo nebezpečných kusov kódu dôjde len k poškodeniu alebo kompromitovaniu (ľahko nahraditeľného) kontajnera, nie celého systému. Ďalšou výhodou je možnosť prispôsobenia testovacieho prostredia: do obrazu je možné vložiť konkrétne verzie potrebných nástrojov (prekladač, valgrind apod.) bez ohľadu na hosťovský systém.
 
-Na spracovanie jednotlivých odovzdaní využíva \emph{kontajnerizačnú technológiu} vďaka ktorej je možné spúšťať testovacie scenáre v bezpečnejšom a odtienenom prostredí. \emph{Kontajnerizačná technológia}\footnote{\url{https://en.wikipedia.org/wiki/LXC}} je založená na metóde virtualizácie na úrovni operačného systému, pro ktorej dochádza k behu viacerých izolovaných linuxových systémov na jednom zdielanom Linuxovom jadre.
-Jedným z najznámejších zástancov je produkt \emph{Docker}, ktorý implementácia využíva. Fyzický stroj na ktorom nástroj na ktorom kontajnerizačná technológia beží sa volá \emph{host (hostiteľ)} a kontajner, ktorý na hostiteľovi beží sa nazýva \emph{guest (hosť)}.
+Základom kontajnerov používaných na testovanie odovzdaní v Pracovníkovi sú obrazy obsahujúce všetky potrebné nástroje. Inštrukcie potrebné na jeho zostavenie sú súčasťou definície testovacích scenárov. Pracovník si testovacie obrazy rôznych úloh rôznych predmetov uchováva v \emph{lokálnom registre obrazov} dovtedy, kým nedôjde k zmene testovacích súborov. Vďaka tomu je proces testovania rýchlejší -- obrazy nie je potrebné zostavovať pre každé odovzdanie zvlášť. Obrazy sú pripravené pred spustením odovzdávania a spravované centrálne.
+%Testy spúšťané nad odovzdaním sa vykonávajú v \emph{kontajneri} vytvorenom z \emph{obrazu (image)}, ktorý je zostavený z testovacích súborov. Inštrukcie potrebné na jeho zostavenie sú súčasťou definície testovacích scenárov a spravujú ich vlastníci týchto scenárov. Obrazy sú uchovávané v \emph{lokálnom registre obrazov} dovtedy, kým nedôjde k zmene testovacích súborov. Vďaka tomu je proces testovania rýchlejší, obrazy nie je potrebné zostavovať pre každé odovzdanie zvlášť.
 
-Testy spúšťané nad odovzdaním bežia v separátnom kontajneri vytvorenom z \emph{obrazu (image)}, ktorý je zostavený z testovacích súborov a inštrukcie potrebné k zostaveniu je súčasťou definície testovacích scenárov. Obrazy sú uchovávané v \emph{lokálnom registre obrazov}, dokiaľ nedôjde k zmene testovacích súborov. Vďaka tomu je proces testovania rýchlejší, obrazy nie je potrebné zostavovať pre každé odovzdanie zvlášť.
-
-Kontajner vytvorený pre odovzdanie nemá z bezpečnostných dôvodov prístup k sieti.
-Študentovo vypracovanie je do kontejneru vložené pomocou \emph{perzistentného zväzku (persistent volume)}\footnote{https://docs.docker.com/storage/volumes/}, ktoré má nastavené úroveň oprávnení len pre čítanie \emph{(read-only)}, vďaka čomu nie je možné odovzdanie počas testov modifikovať.
-
-Druhým priečinkom vloženým do kontejneru je priečinok, do ktorého budú vložené výsledky testovania. Tento priečinok bude následne zabalený a odoslaný portálu.
-
-
-Kontajnerizačná technológia bola zvolená z viacerých dôvodov.
-Odovzdávanie je vykonávané plne oddelené od ostatných odovzdaní a je možné ho odtieniť od určitých zdrojov fyzického stroja, napríklad siete, pomocou ktorej by mohol sprístupniť citlivé informácie. V prípade chyby, nevhodných alebo nebezpečných kusov kódu dôjde len k poškodeniu alebo kompromitovaniu kontajnera, nie celého systému.
-
-Druhou výhodou je prispôsobenie si prostredia, do obrazu je možné vložiť konkrétne verzie jednotlivých nástrojov (prekladač, valgrind a pod.) a ponechať tieto verzie bez ohľadu na \emph{host} systém, na ktorom kontajnerizačná technológia beží. Základy obrazov \emph{base image}, z ktorých sa neskôr testovacie obrazy vytvárajú môžu byť predpripravené a centrálne spravované.
-
+Spracovanie každého odovzdania je spúšťané v samostatnom kontajneri, ktorý z bezpečnostných dôvodov nemá prístup k sieti. Študentovo vypracovanie je do kontejneru vložené pomocou \emph{perzistentného zväzku (persistent volume)}\footnote{https://docs.docker.com/storage/volumes/}, ktoré kontajner smie len čítať \emph{(read-only)}, vďaka čomu nie je možné odovzdanie počas testov modifikovať. Do kontajneru je podobne vložený aj priečinok, do ktorého spracovanie zapíše výsledky testovania. Tento priečinok je po skončení spracovania zabalený a odoslaný portálu.
 
 \subsection{Rozhranie}
 
-Implementácia pracovníka je voľná a samotné spracovanie odovzdania je závislé na potrebách a obmedzeniach daného predmetu alebo úlohy, ale existujú požiadavky, na ktoré musí každá implementácia pracovníka korektne odpovedať a zareagovať. Tieto požiadavky sú nevyhnutné pre správny chod portálu.
+Implementácia pracovníka je voľná a samotné spracovanie odovzdania je závislé na potrebách a obmedzeniach daného predmetu alebo úlohy. Každá implementácia pracovníka ale musí vedieť korektne odpovedať na nasledujúce požiadavky, ktoré sú nevyhnutné pre správny chod portálu:
 
 \begin{itemize}
-    \item Zaregistrovanie pracovníka do portálu
+    \item Registrácia pracovníka do portálu
     \item Požiadavka na aktuálny stav pracovníka
-    \item Požiadavka na spracovanie odovzdania
+    \item Požiadavka na začatie spracovania odovzdania
     \item Požiadavka ukončenie spracovania odovzdania
     \item Požiadavka na aktuálny stav odovzdania
 \end{itemize}
 
-\emph{Registrácia pracovníka do portálu} je nevyhnutná k ustanoveniu zabezpečeného spojenia medzi portálom a pracovníkom. Počas registrácie je potrebné odoslať prístupový pracovníka token do portálu. Portál si token uloží a odosiela ho s každou požiadavkou pracovníkovi. Pracovník následne tento token overí a na základe správnosti požiadavku spracuje alebo zamietne.
+\textbf{Registrácia pracovníka do portálu} je nevyhnutná na ustanovenie zabezpečeného spojenia medzi portálom a pracovníkom. Bližší popis sa nachádza v časti [link]
 
-Súčasťou registrácie pracovníka je odoslanie \emph{štítkov (feature tags)} do portálu, tie následne využíva plánovač portálu pre rozdeľovanie odovzdaní medzi rôznych pracovníkov. Štítky majú za úlohu informovať o možnostiach a dostupných funkciách, ktoré daný pracovník poskytuje. Napríklad aký operačný systém je na pracovníkovi nainštalovaný, alebo akú kontajnerizačnú technológiu daný pracovník podporuje.
+\textbf{Požiadavka na aktuálny stav} informuje portál o aktuálnom vyťažení pracovníka, potrebné pre plánovač portálu. Odpoveď na tento dotaz musí obsahovať informácie o maximálnom počte paralelných spracovaní odovzdaní, ktoré je pracovník schopný spracovať a aktuálny počet spracovávaných odovzdaní. Odpoveď môže obsahovať dodatočné informácie, napríklad vyťaženie prostriedkov stroja \emph{(load)}.
 
-\emph{Požiadavka na aktuálny stav} informuje portál o aktuálnom vyťažení pracovníka, stav musí obsahovať informácie o maximálnom počte paralelných spracovaní odovzdaní, ktoré je pracovník schopný spracovať, aktuálny počet spracovávaných odovzdaní. Dodatočné informácie, napríklad aktuálne vyťaženie prostriedkov stroja \emph{(load)}. Tieto informácie sú taktiež potrebné pre plánovač.
+\textbf{Požiadavka na spracovanie odovzdania} obsahuje identifikátor odovzdania, informáciu o projekte, kurze, autorovi odovzdania a dodatočné parametre, ktoré sú potrebné pre beh testov, napríklad parametre pre testovací rámec \emph{KTDK}. Požiadavka je odoslaná portálom po tom, čo je odovzdanie pripravené, tzn. všetky potrebné súbory boli stiahnuté a uplynula nastavená minimálna doba čakania.
 
-\emph{Požiadavka na spracovanie odovzdania} obsahuje identifikátor odovzdania, informáciu o projekte, kurze, autorovi odovzdania a dodatočné parametre, ktoré sú potrebné pre beh testov, napríklad parametre pre testovací rámec \emph{KTDK}.
-Požiadavka je odoslaná portálom po tom, čo je odovzdanie pripravené, tzn. všetky potrebné súbory boli stiahnuté a uplynul \emph{waiting interval}.
+\textbf{Požiadavka na aktuálny stav odovzdania} informuje portál o aktuálnom stave spracovania odovzdania s cieľom zistiť prípadné chyby pri spracovaní. Odpoveď by okrem stavu mala obsahovať aj dodatočné informácie, ktoré môžu pomôcť pri hľadaní a oprave chyby.
 
-\emph{Požiadavka na aktuálny stav odovzdania} informuje portál o aktuálnom stave odovzdania. Hlavnou úlohou je zistiť či nedošlo k chybe pri spracovaní, napríklad ak sa odovzdanie nevyhodnotilo po uplynutí tvrdých časových limitov, je potrebné zistiť v akom stave má pracovník odovzdanie. Ak napríklad dotaz vráti, že odovzdanie v pracovníkovi neexistuje - došlo k chybe pri nahraní výsledkov.
-
-\emph{Požiadavka na ukončenie spracovávania odovzdania} je potrebná, ak došlo k chybe spracovania a odovzdanie je spracovávané dlhšie ako je povolený limit a je potrebné ho násilne ukončiť.
+\emph{Požiadavka na ukončenie spracovávania odovzdania} je potrebná, ak došlo k chybe spracovania a je ho potrebné násilne ukončiť.
 
 \section{Komunikácia medzi portálom a pracovníkom}
 
-Komunikácia medzi portálom a pracovníkom prebieha pomocou REST API, jedným na strane pracovníka a druhým na strane portálu. 
+Komunikácia medzi portálom a pracovníkom prebieha pomocou REST rozhraní na strane pracovníka a portálu. 
 
 \subsection{Vzájomná autentizácia}
 
-Obe API sú zabezpečené pomocou autentizačného tokenu. Portál má v sebe entitu pracovníka, pre ktorú má vygenerovaný \emph{secret}, pomocou ktorého sa pracovník prihlási do portálu. Portál mu následne vygeneruje autentizačný token, ktorý pracovník pribaľuje ku každému požiadavku.
+Rozhranie portálu aj Pracovníka je zabezpečené pomocou autentizačného tokenu. 
 
-Pracovník musí pri štarte poznať svoj \emph{secret}, svoje meno a url portálu. Všetky tri údaje sú potrebné k prihláseniu a následnej komunikácii. 
+Registrácia novej inštancie Pracovníka začína vytvorením entity Worker s parametrami \emph{URL pracovníka}, \emph {meno pracovníka} v portáli a nastavením jeho tajomstva (\emph{secret}). Po štarte Pracovníka sa pomocou tohoto tajomstva a svojho mena Pracovník autentizuje voči portálu na známej URL, čím získa prístupový token. Následne portálu pošle svoj (nový) token, ktorý portál uloží a pripája ku všetkým nasledujúcim dotazom na Pracovníka. Tento token slúži na autentizáciu portálu voči Pracovníkovi. Neprítomnosť alebo nerozpoznanie tohoto tokenu v požiadavke znamená jej zamietnutie Pracovníkom. Po úspešnej registrácii je pracovník pripravený spracovávať odovzdania.
 
-Portál si musí uložiť \emph{URL pracovníka}, \emph{prístupový token} a \emph {meno pracovníka}.
-\emph{Prístupový token} pre komunikáciu s pracovníkom získa pomocou \emph{registrácie pracovníka}. Registráciu vykonáva pracovník, zväčša pri svojom štarte alebo krátko po ňom. Počas registrácie dôjde k notifikácií portálu, ten si aktualizuje stav a informácie o pracovníkovi. Po úspešnej registrácii je pracovník pripravený spracovávať odovzdania. Súčasť informácii odosielaných v notifikácií sú prístupový token pre komunikáciu s pracovníkom, aktualizácia \emph{tagov} a stavu pracovníka.
-
+Súčasťou registrácie pracovníka je aj zaregistrovanie \emph{štítkov (feature tags)} v portále, ktoré následne využíva plánovač portálu pre rozdeľovanie odovzdaní medzi rôznych pracovníkov. Štítky informujú o možnostiach a dostupných funkciách daného pracovníka, napríklad aký operačný systém je na pracovníkovi nainštalovaný či akú kontajnerizačnú technológiu daný pracovník podporuje. 
 
 \subsection{Spracovanie odovzdania}
-Portál pred výberom vhodného pracovníka zohľadní aktuálny stav pracovníka, stav získa pomocou požiadavky na stav. Portál vyberá len pracovníkov, ktorí sú aktívni a zaregistrovaní. Vybranému pracovníkovi sa odosiela požiadavka na spracovanie odovzdania. Pracovník po spracovaní požiadavky žiada od portálu potrebné súbory. Po skončení spracovávania odovzdania sú výsledky odoslané portálu. Ak výsledky nedorazia v definovanom čase, portál sa táže pracovníka na aktuálny stav odovzdania. V prípade, že je detekovaná chyba, portál odošle požiadavku na zastavenie vykonávania a pokúsi sa vykonať odovzdanie znova. 
+Portál pri výbere vhodného pracovníka na spracovanie nového odovzdania zohľadňuje aktuálny stav pracovníka, ktorý získa pomocou požiadavky na stav. O samotný výber sa stará plánovač, popísaný v časti [link]. Vybranému pracovníkovi sa odosiela požiadavka na spracovanie odovzdania. Po jej skontrolovaní a prijatí Pracovník od portálu vyžiada potrebné súbory. Po skončení spracovania odovzdania Pracovník nahrá riešenie do Úložiska portálu a aktualizuje stav a výsledok odovzdania v portáli. Ak výsledky nedorazia v definovanom čase, portál od Pracovníka zisťuje stav odovzdania. V prípade, že je detekovaná chyba, portál odošle požiadavku na zastavenie vykonávania a pokúsi sa spustiť spracovanie odovzdania znova. 
 
+\section{Testovací rámec KTDK - Kontr test development kit}
 
+\emph{KTDK -- Kontr test development kit} je testovací rámec slúžiaci na popis scenárov, pomocou ktorých je možné testovať a vyhodnotiť odovzdania študentov.
 
-\section{Testovací rámec KTDK - Kontr tests development kit}
-\emph{KTDK - Kontr tests development kit} je testovací rámec slúžiaci na popis scenárov, pomocou ktorých je možné testovať odovzdania študentov. Súčasťou rámca je aj \emph{CLI} nástroj slúžiaci na vykonávanie testovacích scenárov a získanie dodatočných informácií o štruktúre scenárov.
+Medzi hlavné úlohy rámca patrí definovanie logickej štruktúry testovacích scenárov, ich vykonanie a následné spracovanie výsledkov. Rámec je samostatný komponent a používa sa ako knižnica, ktorá je voľne dostupná[link]. Testy definované pomocou rámca \emph{KTDK} sú Python skripty, ktoré sú majú väzbu na konkrétnu verziu rámca, vďaka čomu je zabezpečená spätná kompatibilita. Nástroj je nezávislý od ostatných súčastí systému Kontr 2, vďaka čomu je napríklad možné využívať lokálnu inštaláciu rámca na správne otestovanie funkčnosti testov a dodaného riešenia. Spúšťanie testovacích scenárov prebieha spustením skriptu s ich definíciou v pripravenom prostredí. %skriptu využívajúceho kód rámca
 
-Rámec umožňuje definovanie testovacích scenárov, vytvorenie ich logickej štruktúry, vykonanie testovacích scenárov a následné spracovanie výsledkov spolu s bodovým ohodnotením testov.
+Pre definíciu testovacích scenárov bolo potrebné navrhnúť štruktúru a model vykonávania testov, ktorý bude ľahko rozšíriteľný a modifikovateľný. Rozhodnutie implementovať vlastný testovací rámec vyplynulo zo špecifických požiadaviek jednotlivých predmetov, predovšetkým ich rôznych postupov testovania. V niektorých predmetoch sa využívajú testy definované v existujúcom testovacom rámci pre daný jazyk (\emph{JUnit, Catch2, pytest}), iné využívajú porovnávanie výstupov aplikácie s očakávanými, pripravenými výstupmi. Ďalej bolo potrebné umožniť kontrolu riešení pomocou externých nástrojov, napr. \emph{Valgrind, Checkstyle, Clang-tidy, Clang-format, ...}.
 
-Pre definíciu testovacích scenárov bolo potrebné navrhnúť logickú štruktúru a model vykonávania testov, ktorý bude ľahko rozšíriteľný a modifikovateľný. Rozhodnutie implementovať vlastný testovací rámec vyplynulo zo špecifických požiadaviek jednotlivých predmetov, predovšetkým ich rôznych postupov testovania. V niektorých predmetoch sa využívajú testy definované v existujúcom testovacom rámci pre daný jazyk (\emph{JUnit, Catch2, pytest}), iné využívajú porovnávanie výstupov aplikácie s očakávanými, pripravenými výstupmi. Ďalej bolo potrebné umožniť testovanie pomocou externých nástrojov, napr. \emph{Valgrind, Checkstyle, Clang-tidy, Clang-format, ...}
+Na rozdiel od štandardných testovacích nástrojov KTDK oddeľuje definíciu testovacích scenárov od výkonného kódu testov aj testovaného kódu. \emph{Testované súbory} obsahujú zdrojové kódy odovzdané študentom a \emph{testovacie súbory} sú súbory obsahujúce výkonný kód testov, spúšťaný pomocou KTDK. K testovacím súborom je možné zaradiť aj rôzne podporné časti potrebné na testovanie študentovho odovzdania -- pripravené vstupy, čiastočné implementácie apod.
 
-Na rozdiel od štandardných testovacích nástrojov rámec oddeľuje testovacie scenáre od samotného výkonného (testovaného kódu) v dvoch odlišných zdrojoch (priečinkoch). \emph{Testované súbory}, sú súbory odovzdané študentom a \emph{testovacie súbory} sú súbory potrebné k testovaniu študentovho odovzdania -- popis scenárov, pripravené vstupy, kusy kódu, apod.
-
-Testovanie ako také je možné rozdeliť do niekoľkých fáz:
+Testovanie pomocou KTDK je možné na konceptuálnej úrovni rozdeliť do niekoľkých fáz:
 \begin{itemize}
-    \item \emph{Príprava prostredia} -- skombinovanie dodaných testovacích a testovaných súborov.
-    \item \emph{Kompilácia} -- preloženie dodaných súborov do binárnej podoby.
-    \item \emph{Spustenie testov nad binárnymi súbormi} -- spustenie jednotlivých testov nad výstupom kompilácie
-    \item \emph{Spracovanie výsledkov testovania} -- vyhodnotenie výsledkov a výstupov spracovania nástrojmi a priradenie výsledku a  bodov pre jednotlivé testy
+    \item \emph{Príprava prostredia}: skombinovanie dodaných testovacích a testovaných súborov.
+    \item \emph{Kompilácia}: preloženie dodaných súborov do binárnej podoby.
+    \item \emph{Spustenie testov nad binárnymi súbormi}: spustenie jednotlivých testov nad výstupom kompilácie
+    \item \emph{Spracovanie výsledkov testovania} -- vyhodnotenie výsledkov a výstupov spracovania nástrojmi a priradenie výsledku príp. bodov pre jednotlivé testy
     \item \emph{Vytvorenie výstupu} -- celkový výstup, ktorý je možné spracovať v portáli a ohodnotiť pomocou neho študentovo odovzdanie.
 \end{itemize}
 
-Rámec je samostatná komponenta a používa sa ako knižnica, ktorá je voľne dostupná. Testy definované pomocou rámca \emph{KTDK} sú Python skripty, ktoré sú majú väzbu na konkrétnu verziu rámca, vďaka čomu je zabezpečená spätná kompatibilita. Nástroj je nezávislí od ostatných súčastí preto je možné pre autora testov využívať len lokálnu inštaláciu rámca na správne otestovanie funkčnosti testov a dodaného riešenia.  
+Rôzne technológie a jazyky ale vyžadujú rozdielny priebeh testovania (napr. pre interpretované jazyky nie je potrebná kompilácia), preto je uvedený zoznam skôr orientačný. Scenáre sú v KTDK modulárne, ich výsledná podoba preto môže byť pre potreby každého predmetu a úlohy iná. 
 
 \subsection{Štruktúra priečinkov}
 
-Rámec očakáva na vstupe cesty k trom priečinkom:
+Rámec na vstupe očakáva cesty k štyrom priečinkom:
 \begin{itemize}
-    \item \emph{Priečinok s vypracovaním (testované súbory)}, obsahujúci pripravené odovzdanie študenta, ktoré bude testované.
-    \item \emph{Priečinok s testovacím súbormi} obsahujúci testovacie scenáre a súbory potrebné k testovaniu.
+    \item \emph{Priečinok s vypracovaním (testované súbory)} obsahujúci pripravené odovzdanie študenta, ktoré bude testované.
+    \item \emph{Priečinok s testovacím súbormi} obsahujúci testovacie scenáre a súbory potrebné na testovanie.
     \item \emph{Priečinok s výsledkami}, do ktorého budú uložené výsledky testovania.
+    \item \emph{Pracovný priečinok (workspace)}, do ktorého skopírujú súbory na základe definovaných pravidiel a v ktorom sa bude vykonávať samotné spustenie testov. Pracovný priečinok je po skončení testov zahodený, pretože môže obsahovať výstupy, ktoré nie sú potrebné (napríklad vygenerované binárne súbory).
 \end{itemize}
 
+\subsection{Štruktúra testovacích scenárov}
+KTDK definuje dva hlavné štrukturálne komponenty: \emph{test} a \emph{úlohu (task)}. Test je definovaný svojím \emph{menom, popisom, bodovým ohodnotením a štítkami (\emph{tags})} a tvorí "obálku" pre určitú časť testovacieho scenára. Testy je možné do seba zanorovať a vytvoriť tak stromovú štruktúru, ktorá logicky člení scenár na lepšie spravovateľné časti a zároveň zoskupuje príbuzné či previazané testy. 
 
-\subsection{Logická štruktúra}
+Na test je možné naviazať \emph{úlohy (task)} obsahujúce výkonný kód, ktoré sa v rámci testu majú vykonať. Rámec dodáva škálu základných akcií (napr. presúvanie súborov, kompilácia testov, spracovanie výstupu testovacích nástrojov) a umožňuje definíciu vlastných. Na test sa tiež viaže bodové hodnotenie a celkový výsledok, ktoré sú spočítané po skončení vykonávania testov. Podobne ako testy je možné zanorovať do seba aj úlohy a modelovať tak závislosti medzi nimi.
 
-Hlavnou jednotkou celého rámca je \emph{test}, ktorý je definovaným svojím \emph{menom, popisom, bodovým ohodnotením a štítkami (tags)}.
-Test v sebe môže obsahovať ďalšie testy, vďaka čomu vzniká \emph{stromová štruktúra} testov. Výhodou stromovej štruktúry testov je zoskupenie testov do skupín a možnosť jednoduchšieho rozhodovania, ktoré testy sa majú vykonávať.
-
-K testu je naviazané bodové ohodnotenie a celkový výsledok, ktoré sú spočítané po skončení vykonávania testov. Taktiež sa k nim viažu definované akcie, ktoré sa majú vykonávať pomocou \emph{úlohy (task)}, ktoré v sebe obsahujú výkonný kód, vzťahujúci sa k danej úlohe. Medzi úlohy patrí napríklad presunutie súborov, kompilácia testov, ich spustenie alebo spracovanie výstupov rôznych testovacích nástrojov. Úlohy majú taktiež stromovú štruktúru, ktorá definuje závislosti medzi úlohami.
-
-Testy v sebe obsahujú päť kolekcií úloh:
+Každý test obsahuje päť zoznamov úloh, vykonávaných sekvenčne:
 \begin{itemize}
     \item Úlohy, ktoré sú vykonané pred testom samotným \emph{(before all)}.
     \item Úlohy, ktoré sú viazané na test \emph{(test's tasks)}
@@ -579,115 +534,378 @@ Testy v sebe obsahujú päť kolekcií úloh:
 Existujú tri hlavné kategórie úloh:
 \begin{itemize}
     \item \emph{Vykonávacie}, ktoré vykonávajú samotné akcie a spracovávajú výsledky
-    \item \emph{Kontrolné (checked)} slúžiace na testovanie podmienok a explicitné rozhodnutie, či test zlyhal alebo prešiel.
-    \item \emph{Kontrolné vyžadované (required)} sa správajú rovnako ako predošlá skupina, ale v prípade zlyhania kontroly dôjde k ukončeniu aktuálne vykonávaného testu a všetkých jeho potomkov.
+    \item \emph{Kontrolované (checked)} slúžiace na testovanie podmienok a explicitné rozhodnutie, či test zlyhal alebo prešiel.
+    \item \emph{Kontrolované vyžadované (required)} sa správajú rovnako ako kontrolované, ale v prípade zlyhania kontroly dôjde k ukončeniu aktuálne vykonávaného testu a všetkých jeho potomkov.
 \end{itemize}
 
 
-Úlohy so sebou nesú informáciu obsahujúce meno, popis, informatívne štítky, a koeficient redukovania počtu bodov za test. \emph{Redukčný koeficient} slúži sa zníženie počtu bodov v prípade, že úloha zlyhala a je \emph{kontrolovaná}. Východzia hodnota je nastavená na $1$, v prípade zlyhania jednej úlohy sa predpokladá zlyhanie celého testu a výsledný priradený počet bodov za zlyhaný test je nula. Pre testovanie výsledku valgrind-om, je ale vhodné mať možnosť znížiť počet bodov len o daný koeficient, napríklad (0.3) a teda výsledný počet bodov bude sedemdesiat percent bodov.
+Pre úlohu je možné definovať meno, popis, informatívne štítky a koeficient redukovania počtu bodov za test. \emph{Redukčný koeficient} slúži sa zníženie počtu získaných bodov v prípade, že úloha zlyhala a je \emph{kontrolovaná}. Východzia hodnota je nastavená na 0: v prípade zlyhania jednej úlohy sa predpokladá zlyhanie celého testu a výsledný priradený počet bodov za neúspešný test je nula. Pre testovanie výsledku nástrojom \emph{valgrind} je ale vhodné mať možnosť prideliť percentuálnu časť celkového počtu bodov, napr. s koeficientom 0.7 prideliť zlyhanej valgrind úlohe 70\% plného počtu bodov.
 
 \subsection{Testovacie scenáre}
 
-Testovanie scenáre je potrebné definovať za pomoci \emph{KTDK} a dodaných entít.
-Testovací rámec je dodaný ako knižnica jazyka \emph{Python} a preto aj scenáre sa definujú pomocou neho. Vďaka tomu je možné ľahko testovací rámec rozšíriť o potrebnú funkcionalitu alebo upraviť podľa vlastných predstáv. 
+Testovanie scenáre je potrebné definovať za pomoci \emph{KTDK} a dodaných entít. Testovací rámec je dodávaný ako knižnica jazyka \emph{Python} a preto sa aj scenáre definujú pomocou neho. Vďaka tomu je možné testovací rámec ľahko rozšíriť o potrebnú funkcionalitu alebo upraviť podľa vlastných predstáv. 
 
-Testy sú zanorené v stromovej štruktúre, ktorá definuje vzťahy medzi testami. K testom sa pridávajú úlohy, ktoré definujú potrebné akcie, ktoré je treba vykonať pre daný test. 
-
-Spustenia spracovania testovacích scenárov je rozdelené do troch fáz:
+Spustenie spracovania testovacích scenárov je rozdelené do troch fáz:
 \begin{itemize}
-    \item \emph{Načítanie testovacieho scenára}, pri ktorom dôjde k spracovaniu scenára a vybudovaniu stromu závislostí (testov a priradených úloh). Načítanie a budovanie stromu je zabezpečené pomocou konceptov a štruktúr (kolekcie, objektová hierarchia) v jazyku Python.
-    \item \emph{Spustenie testovacieho scenára}, pri ktorom dôjde k spracovaniu vybudovaného stromu a vykonanie jednotlivých definovaných úloh a uloženia výsledkov pre dané testy a úlohy.
-    \item \emph{Spracovanie výsledkov}, počas ktorého sú spracované a vyhodnotené jednotlivé čiastkové výsledky do jednotného výsledku a výstupu celého testovania.
+    \item \emph{Načítanie testovacieho scenára}, pri ktorom dôjde k spracovaniu scenára a vybudovaniu stromu závislostí (testov a priradených úloh). Načítanie a budovanie stromu je zabezpečené pomocou konceptov a štruktúr (objektová hierarchia, kolekcie) v jazyku Python.
+    \item \emph{Spustenie testovacieho scenára}, pri ktorom dôjde k vykonaniu definovaných úloh v strome a uloženia výsledkov pre dané testy a úlohy.
+    \item \emph{Spracovanie výsledkov}, počas ktorého sú spracované a vyhodnotené čiastkové výsledky do jednotného výsledku a výstupu celého testovania.
 \end{itemize}
 
 \subsection{Spustenie testovacieho scenára}
 
-Spustenie testovacieho scenára je vykonané pomocou jednotky nazvanej \emph{spúšťač (runner)}, ktorý je definovaný pre každý \emph{test} a \emph{úlohu}. Spúšťač v sebe definuje spôsob, akým je do bezstavového testu alebo úlohy vložený \emph{kontext (context)}, akým spôsobom a v akom poradí sú spúšťané úlohy a potomkovia testov. 
+Spustenie testovacieho scenára je vykonávané pomocou jednotky nazvanej \emph{spúšťač (runner)}, ktorý je definovaný pre každý \emph{test} a \emph{úlohu}. Spúšťač v sebe definuje spôsob, akým je do bezstavového testu alebo úlohy vložený \emph{kontext (context)} a akým spôsobom a v akom poradí sú spúšťané úlohy a potomkovia testov. 
 
 \ssubsection{Kontext}
 
-\emph{Kontext}, je stav ktorý je postupne predávaný medzi úlohami a testami. Slúži ako uložisko \emph{premenných} a konfigurácie, ktoré sa predávajú medzi testami a úlohami. Napríklad úloha sa spustenie testov pomocou nástroja \emph{valgrind} uloží jeho výstup do premennej, ktorá je následne spracovaná úlohou na spracovanie výstupu nástroja \emph{valgrind}.
-Kontext je jediné miesto, ktorým je povolené aby si jednotlivé úlohy predávali stav. Jednotlivé časti kontextu sa postupne kopírujú po jednotlivých vetvách stromu zhora nadol. Kontext nie je dostupný pri definícii testov, ale až vo fáze vykonávania testovacieho scenára, pretože do testov a úloh je vložený až spúšťačom.
+\emph{Kontext} je entita reprezentujúca stav, ktorý je postupne predávaný medzi úlohami a testami. Slúži ako jediné možné úložisko \emph{premenných} a konfigurácie, ktoré je potrebné medzi testami a úlohami zdieľať. Jednotlivé časti kontextu sa postupne kopírujú po jednotlivých vetvách stromu zhora nadol. Príkladom využitia kontextu je úloha na kompiláciu, ktorá do kontextu uloží cesty k vytvoreným súborom a nasledujúca úloha spustí testy nad práve týmito súbormi. 
 
-Má tri zložky:
+Kontext nie je dostupný pri definícii testov, ale až vo fáze vykonávania testovacieho scenára, pretože do testov a úloh je vkladaný až spúšťačom.
 
+Kontext má tri zložky:
 \begin{itemize}
     \item \emph{Globálny}, ktorý je definovaný globálnou konfiguráciou, ktorá je predaná pri spustení celého scenára, jej obsahom sú napríklad cesty k jednotlivým priečinkom, globálne časové limity alebo prednastavené prepínače pre jednotlivé nástroje. 
-    \item \emph{Testový}, ktorý je viazaný len na jeden konkrétny test a je zdieľaný všetkými jeho deťmi a úlohami. Do testového kontextu môžu zapisovať len úlohy priamo naviazané na daný test. Pre každého potomka je tento kontext prístupný len na čítanie a úlohy potomkov k nemu prístup nemajú (tie môžu zapisovať len do kontextu naviazaného len na test ktorému patria.).
+    \item \emph{Testový}, ktorý je viazaný na jeden test a je zdieľaný všetkými jeho potomkami a úlohami. Do testového kontextu môžu zapisovať len úlohy priamo naviazané na daný test. Pre každého potomka je tento kontext prístupný len na čítanie a úlohy potomkov k nemu prístup nemajú.
     \item \emph{Kontext úlohy} je viazaný len na aktuálnu úlohu, ktorá do neho môže zapisovať a všetky jej podúlohy, ktoré ho môžu čítať.
 \end{itemize}
 
-Pre zjednodušenie práce sú všetky tri zložky pri čítaní zlúčené transparentne do jednej, pričom priority sú nasledujúce -- najskôr sa prehľadáva kontext úlohy, následne kontext testu a ako posledný sa prehľadáva globálny kontext.
-Medzi kontextami sa musí explicitne rozlišovať len v prípade nastavovania konkrétnej premennej. 
+Pre zjednodušenie práce sú všetky tri zložky pri čítaní zlúčené do jednej s nasledujúcimi prioritami: najskôr sa prehľadáva kontext úlohy, následne kontext testu a ako posledný sa prehľadáva globálny kontext. Pri zápise premennej do kontextu je potrebné určiť, do ktorej jeho zložky sa má zapisovať. 
 
+\subsection{Výber testu pre spracovanie}
 
-\ssubsection{Výber testu pre spracovanie}
+Jednou z úloh spúšťača je vybrať na základe definovaných kritérií testy, ktoré v danom behu majú byť spustené. Hlavným rozhodovacím kritériom je vyhodnotenie \emph{štítkov testov (tags)}, jednoslovných označení pomocou ktorých je možné testy filtrovať.
 
-Jednou z úloh spúšťača je vybrať na základe definovaných kritérií, ktorý test je spustený alebo preskočený. Jedným z kritérií, podľa ktorých sa rozhoduje je metóda založená na \emph{štítkoch testov (tagy)}, pomocou ktorých je možné testy filtrovať. Štítky musia byť jednoslovné označenia.
+Metóda štítkov je založená na vyhodnocovaní \emph{logických výrazov} podľa štítkov prítomných na danom teste. Výraz ako obsahuje mená štítkov a na jeho vyhodnotenie sa využíva jazyk Python. Príkladom výrazu môže byť: \texttt{naostro and not štýly}, na základe ktorého sa vykonajú len tie testy, ktoré sú označené štítkom \emph{naostro} a zároveň nie sú označené štítkom \empty{štýly}. 
 
-\emph{Metóda štítkov} je založená na tom, že každý test v sebe nesie informáciu o jemu priradených štítkoch a zároveň je testom predaný \emph{výraz}, na základe ktorého dôjde sú vybrané testy, ktoré majú byť vykonané. Výraz je formula o ktorej pravdivosti sme schopní rozhodnúť. Je zložená z mien štítkov a využíva jazyk Python na svoje vyhodnotenie. 
-
-Príkladom výrazu môže byť: \texttt{naostro and not štýly}. Ktorý hovorí, vykonaj len tie testy, ktoré sú označené štítkom \emph{naostro} a zároveň nie sú označené štítkom \empty{štýly}. 
-
-Vzhľadom na stromovú štruktúru testov je potrebné štítky z potomkov (listov) stromu propagovať ku koreňu, aby platilo, že koreň má na seba naviazané všetky štítky svojich potomkov a zároveň platilo, že potomkovia majú na seba naviazané všetky štítky ich rodičov, ale zároveň neobsahujú štítky definované len na ich súrodencoch ale nie na nich.
-
-Prípady výrazov:
-
+Pre vyhodnocovanie výrazov platia nasledujúce pravidlá:
 \begin{itemize}
-    \item Ak je výraz prázdny, vykonajú sa všetky testy bez obmedzí.
-    \item Ak je výraz len jedno slovo, vykonajú sa všetky testy označené týmto slovom ostatné sú preskočené.
-    \item Ak je výraz negácia (\texttt{not <štítok>}), vykonajú sa všetky testy, ktoré \emph{nie sú} označené týmto štítkom
-    \item Výraz môže byť zložený pomocou logických spojok: \texttt{and a or}, kde spojka \texttt{and} zaručuje, že musia byť splnené obe strany výrazu a \texttt{or}, že stačí ak práve jedna je splnená.
-    \item Výraz môže obsahovať zátvorky, vďaka ktorým je možné explicitne definovať prioritu, napríklad: \texttt{(<výraz>) and not (výraz)}. 
-    
+    \item Ak je výraz prázdny, vykonajú sa všetky testy bez obmedzení.
+    \item Ak je výraz len jedno slovo, vykonajú sa všetky testy označené týmto slovom, ostatné sú preskočené.
+    \item Ak je výraz negácia (\texttt{not <štítok>}), vykonajú sa všetky testy, ktoré nie sú označené týmto štítkom.
+    \item Výraz môže byť zložený pomocou logických spojok: \texttt{and} a \textt{or} v obvyklom logickom význame.
+    \item Výraz môže obsahovať zátvorky, vďaka ktorým je možné explicitne definovať prioritu vyhodnotenia. 
 \end{itemize}
+
+Vzhľadom na stromovú štruktúru testov je potrebné poskytnúť metódy propagácie štítkov:
+\begin{enumerate}
+    \item Potomkovia obsahujú všetky štítky definované priamo na ich rodičoch (propagácia smerom nadol)
+    \item Rodičia obsahujú všetky štítky svojich potomkov (propagácia smerom nahor). Tieto štítky sa nešíria naspäť nadol.
+\end{enumerate}
 
 \ssubsection{Možné výsledky testov a úloh}
 
-Výsledky testov a úloh môžeme rozdeliť na \emph{aktuálny výsledok}, ktorý nie je závislí na výsledkoch svojich potomkov a na \emph{efektívny výsledok}, ktorý zohľadňuje aj výsledky potomkov. V prípade, že jeden z potomkov zlyhal, efektívny výsledok, je zlyhanie.
+Výsledky testov a úloh môžeme rozdeliť na \emph{aktuálny výsledok}, ktorý nie je závislý na výsledkoch svojich potomkov a na \emph{efektívny výsledok}, ktorý zohľadňuje aj výsledky potomkov. V prípade, že jeden z potomkov zlyhal, je efektívny výsledok zlyhanie.
 
 Rozlišujeme päť možných stavov pre výsledok:
-
 \begin{itemize}
     \item Žiaden výsledok (\emph{none}) -- test alebo úloha ešte neprebehli.
     \item Úspešný výsledok (\emph{passed}) -- test alebo úloha uspeli.
-    \item Preskočený výsledok (\emph{skiped}) -- test bol preskočený a s ním všetky jeho úlohy.
+    \item Preskočený výsledok (\emph{skipped}) -- test bol preskočený a s ním všetky jeho úlohy.
     \item Zlyhaný výsledok (\emph{failed}) -- test alebo kontrola neprešli.
     \item Chyba v teste (\emph{error}) -- test alebo úloha skončili s chybou, jedná sa s najväčšou pravdepodobnosťou o chybný test, chybu v testovacom rámci alebo chybu prostredia
 \end{itemize}
 
 \ssubsection{Proces spracovania testu}
 
-Pri spracovaní testu dôjde najskôr k vytvoreniu jeho spúšťača, súčasťou ktorého je vytvorenie kontextu pre daný test. Následne dôjde ku kontrole \emph{povolených štítkov testu}, ak je test preskočený, jeho výsledok je nastavený na stav \emph{skiped}, naopak ak je test vybraný pre spracovanie, začne sa spustením úloh definovaných pre tento test ako \emph{before all}, následne sa spustia všetky úlohy z rodičovského testu definované ako \emph{before each}. Po nich nasledujú úlohy testu samotného. Ak všetky úlohy prebehnú v poriadku a nedôjde k ukončeniu vykonávaniu testu, dôjde k iterácii všetkých dcérskych testov rovnakým spôsobom. Po skončení spracovania potomkov, sa spracovávajú úlohy definované ako \emph{after all}.
+Pri spracovaní testu dochádza najskôr k vytvoreniu jeho spúšťača, súčasťou ktorého je vytvorenie kontextu pre daný test. Následne je podľa štítkov testu vyhodnotený dodaný logický výraz. V prípade, že test zadanú podmienku nespĺňa, je jeho výsledok je nastavený na stav \emph{skipped} a pokračuje sa ďalším testom. V opačnom prípade sa spustia \emph{before all} úlohy tohoto testu, následne všetky \emph{before each} úlohy z rodičovského testu. Po nich nasledujú úlohy testu samotného. Ak všetky úlohy prebehnú v poriadku a nedôjde k ukončeniu vykonávania testu, rovnakým spôsobom sú vyhodnotené všetky dcérske testy. Po skončení spracovania potomkov sa spracovávajú \emph{after each} úlohy rodiča a \emph{after all} úlohy testu.
 
-Pri spracovaní každej úlohy dôjde k vytvoreniu \emph{spúšťača úlohy}, ktorý taktiež prechádza strom úloh, ktoré postupne spúšťa a priradzuje im výsledky. Súčasťou spracovania behu úlohy je kontrola správnosti jej vykonávania a vhodné zareagovanie na chybu, ktorá nastala počas jej behu.
+Pri spracovaní každej úlohy dôjde k vytvoreniu \emph{spúšťača úlohy}, ktorý taktiež prechádza strom úloh, ktoré postupne spúšťa a priraďuje im výsledky. Súčasťou spracovania behu úlohy je kontrola správnosti jej vykonávania a vhodné reagovanie na prípadné chyby.
 
 \subsection{Spracovanie výsledkov}
 
-Fáza spracovania výsledkov nasleduje až po tom, čo prebehlo spustenie testovacích scenárov. Pri spracovaní sa prechádza vybudovaný strom testov a úloh, ktoré už majú pridelené výsledky, na základe ktorých dochádza k výslednému bodovému ohodnoteniu a extrakcii potrebných informácii, ktoré testy prešli a ktoré zlyhali.
+Fáza spracovania výsledkov nasleduje skončení behu testovacích scenárov. Pri spracovaní sa prechádza vybudovaný strom testov a úloh s pridelenými výsledkami, na základe ktorých je vypočítané výsledné bodové hodnoteniu a extrahované informácii o úspešných a neúspešných testoch.
 
-Výstupom fázy spracovania je očakávaný výstup pre portál, ktorý je neskôr ďalej v systéme spracovaný. 
+Výstup fázy spracovania obsahuje: finálny výsledok, počet získaných bodov zaokrúhlený na štyri desatinné miesta, zoznam zlyhaných testov a úloh a zoznam všetkých definovaných testov s výsledkami.
 
-
+Výstup je uložený do priečinka s výsledkami, spolu s výstupmi ostatných nástrojov, logom behu testov a zoznamom súborov vygenerovaných počas behu. Tento priečinok je neskôr predaný na spracovanie pracovníkovi, ktorý jeho obsah odosiela portálu.
 
 \section{Spracovanie nového odovzdania}
 
-Nové odovzdanie môže vytvoriť študent alebo učiteľ pomocou dotazu na API portálu. Portál musí každú požiadavku korektne spracovať. Pri vytvorení nového odovzdania je potrebné skontrolovať oprávnenia užívateľa a obmedzenia kladené na zamedzenie zneužívania systému alebo či nedošlo k prekročeniu definovaného limitu. V prípade, že potrebné obmedzenia nie sú splnené, nové odovzdanie musí byť zamietnuté.
+Nové odovzdanie môže byť vytvorené študentom alebo učiteľom dotazom na rozhranie portálu. Pri vytvorení nového odovzdania dochádza ku kontrole oprávnení užívateľa a obmedzení kladených na zamedzenie zneužívania systému alebo prekročeniu definovaných limitov. V prípade nesplnenia vyžadovaných kritérií je nové odovzdanie zamietnuté. Kontrola obmedzení prebieha v prvom plánovači portálu, ktorý zohľadňuje definované pravidlá pre danú úlohu (napríklad študent smie odovzdať vypracovanie len za určitý časový interval).
 
-Ak je odovzdanie povolené, je nutné uložiť všetky potrebné informácie a dáta, medzi ktoré patrí, kto odovzdanie vytvoril, pre ktorý predmet, zdroj súborov, nad ktorými bude vykonané testovanie a dodatočné parametre potrebné pre spracovanie odovzdania. Pre odovzdanie je nastavený časový interval, počas ktorého je možné odovzdanie zrušiť.
+V prípade, že odovzdanie je povolené, uložia sa všetky potrebné informácie o odovzdaní a dáta potrebné k jeho spracovaniu a vyhodnoteniu. Potrebné informácie sú autor odovzdania, predmet a úloha pre ktoré bolo odovzdanie vytvorené, zdroj súborov, nad ktorými bude vykonané testovanie a dodatočné parametre potrebné pre spracovanie. Pre odovzdanie je nastavený časový interval, počas ktorého je možné odovzdanie zrušiť.
 
-Po jeho uplynutí, je spracovanie presunuté do fázy prípravy. V tejto fáze dôjde k stiahnutiu potrebných súborov a ich uloženie na \emph{uložisko}. Uložisko na stiahnuté súbory aplikuje \emph{filtre} na odstránenie nepotrebných priečinkov a súborov.
+Po uplynutí, je spracovanie presunuté do fázy prípravy, v ktorej dôjde k stiahnutiu potrebných súborov a ich uloženie na \emph{úložisko}. Úložisko na stiahnuté súbory aplikuje \emph{filtre} na odstránenie nepotrebných priečinkov a súborov a skomprimuje súbory do archívu.
 
-Ak prípravná fáza skončí úspešne, nasleduje fáza plánovania, v ktorej dochádza k výberu najvhodnejšieho \emph{pracovníka} pre spracovanie odovzdania. 
+Ak prípravná fáza skončí úspešne, nasleduje plánovanie, prebiehajúce v druhom plánovači portálu, pri ktorej dochádza k výberu najvhodnejšieho \emph{pracovníka} pre spracovanie odovzdania. V prípade, že žiaden pracovník nie je dostupný, odovzdanie je odložené a jeho spracovaniu dôjde neskôr.
 
-Po úspešnom výbere nasleduje fáza testovacia, v ktorej notifikuje vybraného pracovníka, o novom odovzdaní s potrebnými informáciami. Pracovník si po prijatí notifikácie stiahne súbory prináležiace danému odovzdaniu - študentovo vypracovanie a súbory s popisom testovacích scenárov. Súbory s popisom testovacích scenárov sú následne spustené v oddelenom prostredí, tak, aby mali čo najmenšie oprávnenia a došlo k minimalizácii možnosti zasahovať do behu samotného pracovníka.
+Po úspešnom výbere pracovníka nasleduje testovanie, pri ktorom je notifikovaný vybraný pracovník, o novom odovzdaní s potrebnými informáciami. Pracovník si po prijatí notifikácie stiahne súbory prináležiace danému odovzdaniu - študentovo vypracovanie a súbory s popisom testovacích scenárov. Súbory s popisom testovacích scenárov sú následne spustené v oddelenom prostredí s čo najmenšími oprávneniami aby došlo k minimalizácii možnosti zasahovať do behu systému a jeho možnej kompromitácii.
 
 Pracovník po skončení testovacích scenárov spracuje výsledky a odošle výsledky portálu.
 
-Portál výsledky príjme a spracuje. Výsledky sa spracujú v nástroji na spracovanie odovzdaní a vykonajú sa všetky definované akcie, napríklad dôjde k notifikácií všetkých zainteresovaných užívateľov - študenta, ktorý odovzdal svoje vypracovanie a opravujúceho študentovho vypracovania. Výsledky portál uloží do úložiska a sprístupní ich k nahliadnutiu. Súčasťou výsledkov sú výstupy vygenerované pri behu testov, napríklad výstup prekladača, alebo nástrojov na spracovanie zdrojového kódu, výstupy testovacích rámcov a čokoľvek ďalšie, čo môže pomôcť pri hodnotení študentovho vypracovania.
+Portál výsledky príjme a spracuje. Výsledky sa spracujú v nástroji na spracovanie odovzdaní, kde sa vykonajú sa definované akcie, napríklad notifikácia všetkých zainteresovaných užívateľov - autora odovzdania (študenta) a opravujúceho študentovho vypracovania (učiteľa). Výsledky sú portálom uložené v úložisku a pomocou API sprístupnené k nahliadnutiu. Súčasťou výsledkov sú výstupy vygenerované behom testov, napríklad výstup prekladača alebo nástrojov na spracovanie zdrojového kódu, výstupy testovacích rámcov a čokoľvek ďalšie, čo môže pomôcť pri hodnotení študentovho vypracovania.
+
+Tieto výstupy spoločne so zdrojovými kódmi odovzdania sú dostupné k nahliadnutiu vo frontende portálu pomocou nástroja na \emph{prezeranie a hodnotenie odovzdaní (review tool)}, pomocou ktorého je možné slovne hodnotiť odovzdania študentov a zapísať im body do poznámkových blokov IS MU. Študenti si následne môžu nájsť hodnotenie priamo pri svojom vypracovaní a môžu ho na základe neho prepracovať. 
+
+\chapter{Implementácia komponentov systému}
+
+Kapitola popisuje aktuálnu implementáciu a implementačné detaily systému a jednotlivých komponent. Kapitola sa zameriava hlavne na komponenty \emph{pracovník} a \emph{testovací rámec KTDK}. Taktiež pojednáva o potrebných zmenách v portáli aby bola možná integrácia s pracovníkom a ostatnými službami.
+
+Implementácia systému nie je kompletná, vzhľadom na jeho rozsah a komplexnosť. Niektoré chýbajúce časti budú implementované ako separátne bakalárske alebo diplomové práce, poprípade ako dobrovoľnícka činnosť jednotlivcov. Pre účely testovacej prevádzky bolo potrebné niektoré časti nahradiť zjednodušenou implementáciou alebo \emph{stubom}, slúžiace len ako prototypy a bude potrebné ich neskôr nahradiť konkrétnou implementáciou.
 
 
-\chapter{Implementácia Pracovníka}
+\section{Implementácia Portálu}
+
+Samotný základ implementácie je popísaný v práci Barbory Kompišovej, ktorá sa venuje hlavne problému autentizácie, vzťahom medzi entitami systému, ich správe a konkrétnemu návrhu rozhrania. Samotná implementácia je v jazyku Python vo verzii 3.6. 
+
+
+\subsection{Štruktúra portálu}
+
+Implementácia aplikácie ako celku sa skladá z REST API rozhrania implementovanou pomocou mikrorámca \emph{Flask} a jeho rozšírení, výhodou Flasku je jeho jednoduchosť a ľahká rozšíriteľnosť, ktoré boli hlavnými faktormi pri jeho výbere.
+
+Dáta systému môžeme rozdeliť na na 2 typy, dáta popisujúce entity systému a súbory (vypracovanie odovzdania, testovacie súbory). 
+Entity sú uložené v relačnej databáze, s ktorou portál komunikuje pomocou \emph{ORM nástroja - SQLAlchemy}, ktorý umožňuje odtieniť implementačné detaily jednotlivých databázových systémov a samotné dotazy je možné zapísať pomocou konštruktov jazyka Python.
+
+Súbory sú uložené na disku, pre vhodné oddelenie implementačných detailov bola zvolená úroveň abstrakcie vo forme separátnej knižnice \emph{storage -- uložisko}, pomocou ktorej dochádza ku komunikácii medzi portálom a zápisom na disk. Uložisko zabezpečuje získanie dát, ich spracovanie a následné uloženie.
+
+\subsection{Zmeny oproti pôvodnej implementácii}
+
+Zmeny potrebné oproti pôvodnej implementácii sa dotkli hlavne asynchrónneho spracovania odovzdaní čo znamená pridanie podpory pre integráciu s  distribuovaným frontu a message brokera, potrebných pre asynchrónne spracovávanie jednotlivých úloh. 
+
+Ako \emph{message broker} bol použitý \emph{Redis (Remote Dictionary Server)}, ide o kľúč-hodnota distribuované dátové uložisko, ktoré je uložené v pamäti. Podporuje viacero dátových typov, reťazce, čísla, množiny, asociatívne polia, polia a pod. Jednotlivé asynchrónne úlohy sú uložené ako kľúče a hodnotou sú dodatočné informácie o úlohe, napríklad parametre pre úlohu. Redis bude neskôr využitý v plánovači, ktorý aktuálne nie je hotový, na uchovávanie dodatočných informácií o jednotlivých pracovníkoch.
+
+Asynchrónny front je nástroj, ktorý z Redis-u vezme úlohu a spracuje ju v separátnom procese. V portáli bol využitý nástroj \emph{Celery}, založený na distribuovanom predávaní správ a následnom spracovaní úloh. Jednou z výhod nástroja, je možnosť pozdržať vykonávanie úlohy, čo zjednoduší plánovanie, napríklad je možné nastaviť pozdržanie o 5 min (tzv. \emph{cancellation period}).
+Celery pozostáva z 3 hlavných častí. 
+
+Prvou z nich je \emph{klient}, ktorý slúži ako rozhranie pre volanie asynchrónnych úloh. Volania sú vykonávané priamo z aplikačného web servera, ktorý poskytuje REST API rozhranie.
+
+Druhou, asynchrónny pracovník pre celery \emph{(celery worker)} - nepliesť s pracovníkom ako súčasťou systému. Ide o samostatný proces (kolekciu procesov), ktorý vykonáva úlohy asynchrónne bez toho, aby priamo ovplyvňoval aplikačný web server. Samotné úlohy sú implementované taktiež v jazyku Python a majú prístup k celému kontextu aplikácie a zdieľajú kódovú základňu, tzn. priamy prístup k všetkým zdrojom a entitám v systéme, databáze a ostatným službám a komponentom.
+
+Treťou je už spomínaný \emph{message broker}, ktorý zabezpečuje komunikáciu vo forme správ medzi \emph{asynchrónnym pracovníkom} a \emph{klientom v hlavnej webovej aplikácii}.
+
+Celery okrem spracovávania asynchrónnych úloh poskytuje možnosť vykonávania periodických úloh, napríklad každých 10 min. Vďaka tomu je možné periodicky vykonávať kontrolu \emph{chýb odovzdania}, \emph{čistenie systému} a pod. 
+
+Celý systém bolo potrebné rozšíriť o asynchrónne úlohy a získanie testovacích súborov, odovzdania študenta, jeho naplánovanie, ktoré je v súčastnosti implementované pomocou fixného časového intervalu a náhodného pridelenie pracovníka vzhľadom na to, že plánovač nie je súčasťou tejto práce. Taktiež je potrebné spracovať výsledok odovzdania ako asynchrónnu úlohu, v nástroji na spracovanie odovzdania, ktorého implementácie, tiež nie je súčasťou práce a bolo potrebné napísať zjednodušenú implementáciu, ktorá nie je konfigurovateľná.
+
+Ďalšou zmenou bola integrácia LDAP knižnice pre získanie uča užívateľa z fakultného LDAP serveru, rozšírenie je dostupné len pri nastavení url pre LDAP server, v prípade, že url nie je nastavená, rozšírenie sa neaplikuje a je preskočené. LDAP fakulty informatiky funguje len v rámci jej siete, čo mierne sťažovalo samotnú implementáciu.
+
+Pre jednoduchšie načítavanie konfigurácie a zjednotenie s ostatnými nástrojmi sa použila knižnica \emph{python-dotenv}, pomocou ktorej je možné prepísať premenné prostredia použitím súboru \texttt{.env}. Táto zmena následne uľahčila nasadenie celého projektu.
+
+Medzi menšie zmeny, ktoré bolo potrebné spraviť bolo nahradenie knižnice \emph{flask-restful}, knižnicou \emph{flask-restplus}, ktorá podporuje generovanie \emph{swagger} dokumentácie pre REST API. 
+
+\subsection{Administračný CLI Nástroj}
+
+Portál môže administrátor ovládať priamo pomocou jednoduchého rozšírenia, \emph{Flask CLI}\footnote{\url{http://flask.pocoo.org/docs/1.0/cli/}}, ktoré je súčasťou \emph{rámca Flask}. CLI nástroj v sebe využíva knižnicu \emph{click}, ktorá uľahčuje písanie konzolových nástrojov. 
+
+CLI nástroj má prístup k celému kontextu portálu a jeho úloha je jednoduchá manuálna sprava a spúšťanie administračných skriptov. Utilitu \emph{Flask CLI}, portál používa aj na vygenerovanie alebo aplikovaní databázových migrácii, pomocou ktorých je možné za behu meniť schému databázy. 
+
+\section{Implementácia Pracovníka}
+
+Pracovník bol implementovaný podobným spôsobom ako portál, použitým jazykom bol Python vo verzii 3.6. Rozhranie pracovníka aj metódy autentizácie sú jednoduchšie, podstatná časť je samotné spracovanie odovzdania.
+
+Pracovník vystavuje REST API pomocou mikrorámca \emph{Flask} a jeho rozšírení. 
+Autentizácia príchodzích požiadaviek pre pracovníka je zaručená pomocou pevne definovaného \emph{tokenu}, ktorý musí byť súčasťou každého dotazu na pracovníka v autorizačnej hlavičke (\texttt{Authorization: Bearer <token>}). Toto zabezpečenie je možné rozšíriť o klientskú autentizáciu pomocou verejného \emph{SSL certifikátu}\footnote{\url{https://tools.ietf.org/html/rfc5246}}, pri ktorej dôjde k overeniu serveru aj klienta. 
+
+Pracovník na spracovanie dlhotrvajúcich úloh, rovnako ako portál, používa nástroj \emph{celery}\footnote{vid sekcia \emph{Implementácia portálu} a sekcia \emph{Asynchrónne spracovávanie náročnejších úloh} v kapitole Návrh} a \emph{Redis} ako \emph{message broker}. 
+
+\emph{Redis} slúži aj na uchovávanie stavu celého pracovníka, ktorý po spustení je vykonávaný v súbežných procesoch (replikách). Rest API je možné naškálovať na niekoľko podprocesov, rovnako ako \emph{celery worker} spúšťa viacero podprocesov, súbežné spracovávanie úloh. Dáta v pracovníkovi sa rýchlo menia a nie je potrebné ich dlhodobo uchovávať, preto redis ako databáza postačuje a nie je potrebné pridávať ďalšiu relačnú databázu.
+
+\subsection{Kontajnerizačná technológia -- Docker}
+
+Ako kontanjerizačná technológia bol použitý \emph{Docker}. \emph{Docker} je nástroj, pomocou ktorého je možné bežať aplikácie bezpečne izolované v \emph{kontajneri}, zabalené so všetkými závislosťami a knižnicami. \emph{Kontajner} je práve jedna inštancia tejto aplikácie, ktorá je vytvorená z \emph{obrazu (docker image)}. \emph{Obraz} môže byť zdieľaný viacerými kontajnermi\footnote{Analógia je podobná ako medzi programom a procesom, kde obraz je program a proces je kontajner.}. Pre vytvorenie obrazu je potrebný súbor s inštrukciami pre jeho \emph{zostavenie (build)}, súbor sa volá \testtt{Dockerfile}.
+
+Pracovník zostavuje \emph{obrazy} z aktuálnej verzie testovacích súborov automaticky, nutnou súčasťou testovacích súborov je \texttt{Dockerfile}, popisujúci inštrukcie, ktoré sa majú vykonať.
+
+Pre jazyk Python existuje oficiálna knižnica \emph{docker-py}\footnote{\url{https://docker-py.readthedocs.io/en/stable/}}, pomocou ktorej bola podpora pre \emph{docker} do projektu pridaná.
+
+
+\subsection{Spracovanie odovzdania}
+
+Pracovník po prijatí požiadavky na spracovanie nového odovzdania, extrahuje všetky potrebné informácie a ukladá ich do \emph{redis-u}. Následne vytvára asynchrónnu úlohu v ktorej sa celé spracovanie bude vykonávať.
+
+Asynchrónna úloha ako prvé skontroluje, či pracovník v sebe obsahuje aktuálnu verziu \emph{testovacích súborov}, ktorú je možné zistiť pomocou \emph{hash-u (odtlačku)}\footnote{Štandardne sa jedná o \emph{hash git commitu}}, ktorý je súčasťou požiadavku pre spracovanie odovzdania. Odtlačok je priradený portálom testovacím súborom a je uložený v databáze. Pracovník má uložený separátny zoznam aktuálnych odtlačkov pre \emph{projekty}, v prípade, že sa odtlačok nezhoduje alebo pre daný projekt doposiaľ neexistuje záznam, dôjde k stiahnutiu testovacích súborov a zostavenie \emph{obrazu}, z ktorého sú vytvárané inštancie v podobe kontajnerov v ktorých sa odohráva samotné testovanie. Odtlačok v databáze je súčasne aktualizovaný na najnovšiu verziu.
+
+Po ukončení prípravy testovacích súborov pracovník stiahne študentovo odovzdanie, to je extrahované a uložené do \emph{unikátneho adresára} pre odovzdanie, spolu s ním je vytvorený aj priečinok v ktorom sa budú nachádzať výsledky testovania. 
+
+Následne dôjde k vytvoreniu nového kontajneru, do ktorého sú oba priečinky \emph{mountované}. Študentovo odovzdanie len s oprávneniami pre čítanie, súbory s výsledkami aj s oprávnením pre zápis. Kontajner je vytvorený bez sieťového rozhrania aby sa zabránilo sieťovej komunikácii a tým sa zvýšila bezpečnosť.
+
+Kontajner je spustení s čo najnižšími oprávneniami a s  právami užívateľa, pod ktorým beží pracovník\footnote{Štandardne pokiaľ nie je povedané inak tak kontajner je spustený pod právami užívateľa \emph{root}.}, vďaka čomu dochádza k zvýšeniu bezpečnosti a všetky vytvorené súbory uložené do priečinka s výsledkami majú správne oprávnenia a je ich možné ďalej spracovávať pracovníkom.
+
+Po dokončení testovacieho procesu pracovník skomprimuje priečinok s výsledkami do jedného \emph{zip} archívu. Odošle výsledky portálu a následne vyčistí prostredie, zmaže vytvorené priečinky a súbory, odstráni docker kontajner a odstráni odovzdanie zo zoznamu aktuálne spracovávaných odovzdaní odovzdaní.
+
+Pracovník je ľahko rozšíriteľný pre natívne vykonávanie odovzdaní, tzn. bez použitia kontajnerizačnej technológie docker, alebo pre možnosť nahradiť docker inou kontajnerizačnou technológiou napríklad \emph{rkt}\footnote{\url{https://coreos.com/rkt/} -- nástroj od firmy CoreOS} alebo \emph{Windows Containers}\footnote{\url{https://docs.microsoft.com/en-us/virtualization/windowscontainers} -- nástroj od firmy Microsoft pre OS Windows}.
+
+\subsection{Administračný CLI Nástroj}
+
+Pracovník rovnako ako portál poskytuje jednoduché rozšírenie pre \emph{Flask CLI}\footnote{\url{http://flask.pocoo.org/docs/1.0/cli/}} obsahujúce administračné príkazy, pomocou ktorých je možné vykonávať jednoduché operácie nad pracovníkom, napríklad zistiť jeho stav, zaregistrovať ho do portálu, alebo manuálne vykonať odovzdanie. CLI nástroj má prístup k celému kontextu pracovníka a jeho úloha je jednoduchá manuálna správa.
+
+
+\section{Implementácia testovacieho rámca KTDK}
+
+Testovací rámec KTDK je univerzálnym testovacím rámcom, implementovaným v jazyku Python 3.6. Súčasťou rámca je aj \emph{CLI} nástroj slúžiaci na vykonávanie testovacích scenárov a získanie dodatočných informácií o štruktúre scenárov, implementovaný rovnako pomocou knižnice \emph{click}.
+
+\subsection{Konfigurácia}
+
+Konfigurácia testovacieho rámca obsahuje statické informácie, ktoré sú potrebné pre beh rámca. Medzi konfiguračné parametre patria cesty k požadovaným adresárom,
+východzie parametre pre jednotlivé aplikácie a programy (prekladač, valgrind), nastavenie behu testov (časové limity, vývojársky mód). Všetky parametre dostupné je možné aj s popisom nájsť v dokumentácii nástroja \emph{ktdk}\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/kontr-documentation/blob/master/ktdk/configuration.adoc}}.
+
+Jednotlivé parametre potrebné pre beh testov je možné nastaviť pomocou príkazového riadka, premenných prostredia alebo manuálnym prepisom za využitia konfiguračného súboru. Východzie hodnoty sa nachádzajú v \emph{YAML} súbore: \emph{ktdk/resources/config/defaults.yml}. Tento súbor má najnižšiu hodnotu a ostatné parametre prepisujú východzie hodnoty. 
+
+Konfigurácia po načítaní a spustení vykonávania testovacích scenárov je prístupná pre jednotlive \emph{úlohy a testy} pomocou objektu \emph{kontext}.
+
+\subsection{Spracovnávanie štítkov (tagov)}
+
+Každý test môže obsahovať množinu štítkov, pomocou ktorých je možné test označiť.
+Na základe týchto štítkov je možné vybrať, ktoré testy majú byť spustené.
+
+Formát výrazu popisujúci, ktoré testy na základe štítkov majú byť vykonávané, bol jeden z problémov, druhým problémom bolo ako tento formát vyhodnotiť. Pôvodná implementácia spracovávala štítky jednoduchším spôsobom, výraz obsahoval zoznam štítkov oddelených znakom medzera a v prípade, že meno štítku začínalo znakom výkričník, uvažovala sa jeho negácia\footnote{Všetky testy obsahujúce tento štítok budú vynechané}. Príklad: \texttt{"naostro !stylecheck"}, znamenal, spusti všetky testy označené štítkom \emph{naostro}, ale vynechaj všetky, ktoré obsahujú \emph{stylecheck}. Samotná implementácia si najskôr rozdelila jednotlivé štítky do množín a kontrolovala prieniky medzi množinami. 
+
+Po preskúmaní možností tejto implementácie bola ale zvolený variant pomocou ktorého je možné spracovávať logické výrazy. Napríklad: \texttt{"naostro and not stylecheck"}, ktorá explicitne hovorí že musia byť splnené obe podmienky. Zaujímavá možnosť je aj rozšírenie o výrazy so zátvorkami, pomocou ktorých je možné písať komplexné výrazy ako napríklad: \texttt{"(naostro or nanecisto) and not bonus"}. 
+
+Druhý variant môže byť vyhodnotený za pomoci interpretru jazyka Python, za pomoci funkcie \texttt{eval}. Vzhľadom na to, že funkcia \texttt{eval} je potenciálne nebezpečná, hlavne ak je spustená nad vstupom ktorý zadal užívateľ. Našťastie, je možné funkcii definovať, ku ktorým objektom, modulom a premenným má prístup a následne do nej vložiť kontext, nad ktorým môže operovať. 
+
+Implementácia interpretra štítkov odstraňuje všetky dostupné globálne a lokálne objekty a nahradzuje ich špeciálne upraveným kontextom, v ktorom každý štítok je premená, ktorá nadobúda hodnotu \emph{True} alebo \emph{False}, na základe toho, či je štítok definovaný na danom teste. 
+
+\subsection{Implementácia entít}
+
+Dve základné entity slúžiace na popis testovacích scenárov sú \emph{Test} a \emph{Task (úloha)}. Oba sú objekty, ktorým je možné pri popise scenára nastaviť pomocou konštruktora parametre potrebné k ich identifikácii. 
+
+\texttt{Task} (úloha) je objekt, ktorému je potrebné definovať metódu \texttt{run}, ktorá definuje, čo sa má vykonať v momente spustenia úlohy. Ku tzv. kontextu danej úlohy je možné pristupovať len \emph{za behu}\footnote{Nie je možné pristúpiť ku kontextu napríklad v konštruktore alebo pri inicializácii jeho stavu. Kontext je dostupný až po volaní metódy \texttt{invoke}, ktorá interne volá metódu \texttt{run}}.
+
+Spustenie testov a úloh je zabezpečené pomocou \emph{Runner}-u, ktorý definuje v akom poradí a akým spôsobom dôjde k spusteniu jednotlivých úloh a testov. Každý test a úloha môže využívať iný spúšťač, ktorý je možné definovať ako jeden z parametrov úlohy alebo testu. Existuje východzia implementácia spúšťača, ktorý vykonáva jednotlivé úlohy v sekvencii za sebou. V budúcnosti by bolo možné implementovať paralelnú variantu, ktorá by mohla časť testov vykonávať paralelne.
+
+Inštancia spúšťača pre danú úlohu alebo test sa vytvára vtedy, keď prídu je potrebné ich spracovať. Spúšťač testu skontroluje podmienky pre beh testu \emph{( napríklad štítky)} a v prípade, že test nemá byť spustený, nastaví výsledok testu na preskočený. Inak pokračuje spustením úloh a dcérskych testov v definovanom poradí.
+
+V prípade úloh spúšťač volá nad úlohou metódu \texttt{invoke}, ktorá sa vykonáva v \emph{try-catch} bloku a odchytávajú sa výnimky - \texttt{RequireFailedError} a \texttt{Exception}. Prvá z nich nastáva, ak zlyhal \emph{require assert}, ktorý hovorí, že ak je podmienka ním testovaná vyhodnotená na \texttt{False}, má dôjsť k ukončeniu vykonávania testu a výsledok testu má byť nastavený na \texttt{FAIL}.
+
+V prípade, že je zachytená všeobecná výnimka, došlo k neočakávanej chybe, ktorá nastať nemala a jedná sa chybný stav testu samotného. Výsledok testu je preto nastavený ako \texttt{ERROR}, čo značí, že test fatálne zlyhal a v ostrej prevádzke by chyba testov nastať nemala. 
+
+\subsection{Písanie testovacích scenárov}
+
+Testovacie scenáre pre automatizované testovanie je možné pridať priamo do repozirára s testovacími súbormi do priečinka \emph{kontr\_tests}. V tejto zložke dôjde k načítaniu súboru \testtt{instructions.py}, ak nie je ktdk nastavené inak.
+
+Celý priečinok \emph{kontr\_tests} je pridaný na štandardné cesty modulov jazyka \emph{python}\footnote{\url{https://docs.python.org/3/reference/import.html}}, čo zabezpečí, že všetky moduly a balíky definované v tomto priečinku sú sprístupnené spúšťaciemu skriptu.
+
+Príklady testovacích scenárov a ako ich písať je možné nájsť v \emph{dokumentácii}\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/kontr-documentation/blob/master/ktdk/writing_scenarios_in_ktdk.adoc}} a \emph{repozitároch s príkladmi}\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/examples/}}. 
+
+\section{Implementácia ostatných častí}
+
+Kontr portál predstavuje hlavnú entitu, ktorá vystavuje REST API, pomocou ktorého je možné systém ovládať. Súčasťou práce bola implementácia knižnice \emph{kontr-api} taktiež v jazyku Python, ktorá zaobaľuje REST-ové volania do sady metód a funkcii a odpovede do objektov. Knižnica rieši autentizáciu voči portálu, vykonávanie a spracovávanie požiadaviek pre portál, ktoré realizuje knižnicou \emph{requests}. 
+Knižnicu využívajú hlavne \emph{pracovník}, \emph{suita testov} a \emph{kontrctl}. 
+
+\emph{Kontrctl} je \emph{CLI} nástroj využívajúci knižnicu \emph{click} na prijatie a spracovanie príkazov a \emph{tabulate} na štrukturované zobrazovanie tabuliek. Nástroj implementuje primárne CRUD operácie nad entitami v systéme za pomoci \emph{kontr-api} a je možné pomocou neho spravovať viacero inštancii kontru, ktoré sú rozlíšené pomocou tzv. \emph{remote}. 
+
+Pre každú z nich je možné definovať vlastnú sadu parametrov a premenných ako napríklad užívateľ pod ktorým sa majú príkazy vykonávať, prístupové informácie \emph{(access\_token, refresh\_token, secret)}, \emph{url}, na ktorej je dostupné Portal API a východzie premenné ako napríklad východzí kurz (predmet), nad ktorým sa majú operácie vykonávať.
+
+Informácie a konfigurácia pre jednotlivé \emph{remote} sa nachádza v domovskom priečinku užívateľa v zložke, závislej na platforme\footnote{Pre linux je to: \texttt{~/.config/kontrctl/}, MS Windows: \emph{\%appdata\%/kontrctl}}, to je docielené pomocou funkcie dodávanej v knižnici \emph{click}\footnote{\url{http://click.palletsprojects.com/en/7.x/api/#click.get_app_dir}}.
+
+Viac o použití a nastavení \emph{kontrctl} je možné sa dozvedieť v dokumentácií\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/kontr-documentation/tree/master/kontrctl}}.
+
+\chapter{Nasadenie a popis prostredia}
+
+Kapitola nasadenia pojednáva o možnostiach nasadenia systému ako celku vo vývojovom, testovacom a produkčnom prostredí, súčasťou kapitoly je aj popis generovania výstupov vo forme knižníc a \emph{kontajnerov}, pomocou ktorých je možné systém dodať.
+
+Systém sa skladá z viacerých repozitárov, ktoré je možné nájsť na fakultnom Gitlabe\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2}}. Repozitáre obsahujúce výkonný kód majú nastavené \emph{CI/CD pipeline}, pre automatickú kontrolu zdrojového kódu a spustenie testov nad každým \emph{merge requestom} do \emph{master branch}. Vďaka čomu je možné čiastočne kontrolovať, či jednotlivé zmeny nespôsobia závady v už existujúcich častiach komponenty.
+
+\section{Nasadenie vývojovej verzie}
+
+Nasadenie vývojovej verzie je možné dvoma základnými spôsobmi, prvou z nich je \emph{natívne nasadenie}, pre ktoré je potrebné stiahnuť si aktuálne verzie repozitárov jednotlivých projektov a nastaviť ich pomocou inštrukcii definovaných v dokumentácii. Táto metóda vyžaduje mať všetky závislosti nainštalované a správne nastavené na stroji, na ktorom systém bude nasadený.
+
+Druhou metódou je nasadenie pomocou kontajnerizačného nástroja \emph{docker}. Pre každú komponentu systému je definovaný tzv. \emph{Dockerfile}, popisujúci inštrukcie potrebné k zostaveniu \emph{obrazu \emph{image}}, ktorý je možné následne spustiť vo forme kontajneru, ktorý beží izolovane so všetkými svojimi závislosťami.
+
+Už zostavené \emph{obrazy} je možné nájsť na docker registri \emph{(dockerhub)}\footnote{\url{https://hub.docker.com/u/kontr2}}. Obrazy je možné z registra stiahnuť pomocou príkazu \texttt{docker pull <meno-obrazu>}\footnote{Príklad: \texttt{docker pull kontr2/portal}, stiahne a uloží na lokálny stroj zostavenú verziu portálu}.
+
+Systém pozostáva zo siedmich kontajnerov \emph{(portal-gunicorn, portal-celery, worker-gunicorn, worker-celery, redis, postgres, frontend)}, medzi ktorými je potrebné vytvoriť prepojenia, spustiť ich so správnymi oprávneniami a pridať do nich \emph{persistent volumes} na správne destinácie. Pre zjednodušenie nastavenia a prepojenia častí bol vytvorený \emph{docker-compose súbor \texttt{(docker-compose.yml)}}\footnote{\url{https://docs.docker.com/compose/compose-file/}}, ktorý je vstupom pre nástroj slúžiaci na správu viacerých kontajnerov a zdrojov na jednom užívatelskom stroji -- \emph{docker-compose}\footnote{\url{https://docs.docker.com/compose/reference/}}. Nátroj umožnuje nasadiť celý systém pomocou troch príkazov\footnote{\texttt{docker-compose down \&\& dokcer-compose build \&\& docker-compose up}}, vďaka čomu zjednodušuje nasadenie systému pri vývoji, robí systém dostupnejším pre nových vývojárov a zjednodušuje nasadenie testovacej inštancie. Skript aj s inštrukciami je možné nájsť v pomocnom repozirári \emph{docker} \footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/docker/tree/master/platform}}, ktorý obsahuje nástroje a skripty pre prácu s nástrojom \emph{docker}.
+
+Proces nasadenia vývojovej verzie pozostáva z troch fáz. Prvou z nich je získanie potrebných repozitárov, z ktorých je systém zostavený \emph{(portál, pracovník, frontend a docker)}. Všetky repozitáre je potrebné stiahnuť pomocou verzovacieho nástroja \emph{git}. Druhou fázou je zostavenie obrazov z aktuálnych verzii repozitárov. Tretou je inicializácia dát a testovacieho prostredia, ktorá zahŕňa vytvorenie databázových tabuliek a vloženie testovacích dát a entít do systému. Jedným z krokov je aj inicializácia a zaregistrovanie pracovníka do systému, čim je zabezpečené, že systém je po spustení pripravený na spracovávanie testovacích odovzdaní.
+
+Výhodou kontajnerizacie celého systému je možné neskoršie nasadenie do systému pre automatické nasadenie, škáľovanie a manažment kontajnerizovaných aplikácii. Napríklad \emph{docker swarm}\footnote{\url{https://docs.docker.com/engine/swarm/}} alebo \emph{kubernetes}\footnote{\url{https://kubernetes.io}}. Fakulta informatiky v budúcnosti uvažuje o možnosti nasadenia niektorých svojich služieb na Kubernetes cluster.
+
+
+\section{Nasadenie produkčnej verzie}
+
+Produkčná verzia je aktuálne nasadená v Stratus.FI. \emph{Stratus.FI}\footnote{\url{https://stratus.fi.muni.cz/}} je privátny cloud pre užívateľov z FI postavený na software \emph{OpenNebula}\footnote{\url{http://www.opennebula.org/}}.
+Primárnym účelom je poskytnúť užívateľom prostredie na experimentovanie a rýchle vysúšanie alebo aj produkčné použitie softvéru, ktorý z rôznych dôvodov nemôže byť nainštalovaných priamo na serveroch spravovaných CVT FI (napríklad Anxur nebo Aisa)\cite{fi-tech-stratus}.
+
+Produkčné nasadanie pozostáva z dvoch virtuálnych strojov, z ktorých na prvom beží portál backend a frontend a na druhom pracovník. Oba stroje sú postavené na distribúcii CentOS vo verzii 7.5.
+
+Systém využíva \emph{postgres} databázu dodávanú fakultou informatiky
+
+\subsection{Produkčtné nasadenie portálu}
+
+Parametre stroja s nasadeným portálom:
+\begin{itemize}
+    \item RAM: 4GB
+    \item Procesor: 4 virtuálne jadrá
+    \item Veľkosť disku: 50GB
+\end{itemize}
+
+Stroj, na ktorom je nainštalovaný portál je dostupný z verejnej siete a má pridelenú verejnú IP a doménu \texttt{\url{https://kontr.fi.muni.cz}}, pre ktorú je vygenerovaný a podpísaný certifikát pomocou služby \emph{Let's encrypt}\footnote{\url{https://letsencrypt.org/}}, ktorá je taktiež aj certifikačnou autoritou. Využitie protokolu \emph{https}\cite{RFC2818} postaveného nad TLS\cite{RFC8446} zabezpečuje šifrovanú komunikáciu medzi portálom(serverom) a jednotlivými klientmi(worker, frontend, kontr-api).
+
+Konfigurácia \emph{HTTPS} spojenia, sprístupnenie API portálu a frontendu nástroja Kontr bolo dosiahnuté pomocou NGINX\footnote{\url{https://www.nginx.com/resources/wiki/}} http servera a reverse proxy. Backend portálu je spustený v niekoľkých inštanciách(procesoch) pomocou \emph{Python WSGI HTTP serveru -- Gunicorn}. NGINX je nastavená ako proxy, ktorá slúži ako verejné rozhranie a všetky požiadavky sú posielané cez ňu na backend API. Rovnako NGINX sprístupnuje aj statický obsah (frontend), zložený z \emph{html, typescript, css súborov a obrázkov}.
+
+\emph{Gunicorn} a \emph{Celery} bežia ako separátne služby, obsluhované pomocou \texttt{systemd}. Bolo pre ne nutné napísať vlastné \emph{servisné súbory}\footnote{\url{https://www.freedesktop.org/software/systemd/man/systemd.service.html}}. Komunikáciu pre asynchrónne spracovávanie služieb zabezpečuje služba \emph{Redis}, dostupná len na lokálnej sieti stroja.
+
+\subsection{Produkčné nasadenie pracovníka}
+
+Parametre stroja s nasadeným pracovníkom:
+\begin{itemize}
+    \item RAM: 4GB
+    \item Procesor: 4 virtuálne jadrá
+    \item Veľkosť disku: 20GB
+\end{itemize}
+
+Stroj, na ktorom je nainštalovaný pracovník sa nachádza na privátnej sieti Stratus.FI a nie je dostupný priamo z internetu. Pracovník a portál spolu komunikujú cez privátnu sieť, pretože pracovník nemôže komunikovať s portálom priamo po verejnej sieti(nastavenie FireWall-u). Naneštastie to spôsobuje problémy s validáciou certifikátu vydaného pre portál, preto bolo potrebné zmeniť v \texttt{/etc/hosts} súbore resolvovanú IP adresu portálu na privátnu IP adresu, z ktorej je portál dostupný na privátnej sieti.
+
+Na pracovníkovi je taktiež nasadený NGINX, pomocou ktorého je zabezpečené API pracovníka pomocou \emph{SSL/TLS self-signed certifikátu}, ktorý bol podpísaný zdieľanou certifikačnou autoritou pre portál a pracovníka. Problém, na ktorý sa narazilo bol ten, že knižnica \emph{requests} má v sebe vložený vlastný zoznam \emph{CA (Certifikačná autorita)}\cite{RFC5280} a ignoruje \emph{systémový trust store}. Našťastie je možné pomocou premennej prostredia prepísať cestu k \emph{zoznamu CA (CA bundle)}.
+
+Rovnako ako pre portál, aj pre pracovníka bolo potrebné vytvoriť servisné súbory pre \emph{systemd} a nainštalovať a spustiť vlastnú inštanciu \emph{Redis-u}.
+
+
+\subsection{Zabezpečenie pomocou SSL/TLS certifikátov}
+
+Komunikáciu v systéme je potrebné v produkčnom prostredí zabezpečiť, REST API portálu a pracovníka boli zabezpečené pomocou SSL/TLS, vďaka ktorému komunikácia prebieha šifrovane. 
+
+Pomocou SSL certifikátov je možné vyžadovať aj autentizáciu klienta voči serveru.
+Pre časť operácii sa pracovník správa ako klient voči portálu a pre druhú časť naopak ako server, je potrebné aby sa overovali obe strany komunikácie. Overenie vyžaduje certifikačnú autoritu, ktorá podpísala certifikát serveru aj klienta\cite{RFC2818}. Klient aj sever musia mať certifikačnú autoritu pridanú medzi \emph{trusted}. Nevýhodou tejto metódy je komplikovaná konfigurácia ako na strane serveru, tak na strane klienta a pre menej skúseného administrátora môže predstavovať netriviálnu komplikáciu.
+
+Súčasné nasadenie využíva len verifikáciu server certifikátu a klientský certifikát sa neoveruje.
+
+\subsection{Automatizácia nasadenia}
+
+V budúcom vývoji je plánované automatizovať proces nasadenia celého systému v podobe inštalátora, implementovaného napríklad v podobe \emph{Ansible playbooks}. \emph{Ansible} je nástroj, ktorý automatizuje inštalovanie systému, konfiguráciu a nasadzovanie aplikácii\cite{ansible}. 
+
+V súčasnosti existuje repozitár s \emph{Ansible playbookmi}\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/ansible}} pre automatické nasadenie a aktualizáciu aplikácii bežiacich na produkčných strojoch. Playbook \emph{pull-ne} zmeny z repozitárov v Gitlabe, nainštaluje závislosti, spustí migrácie databázy, vygeneruje novú verziu frontendu a reštartuje \emph{gunicorn a celery služby}.
+
+Pomocou tohoto skriptu je možné nasadzovať zmeny okamžite po tom, čo sú otestované, bez nutnosti zdĺhavo sa prihlasovať na server a manuálne vykonávať všetky príkazy. V budúcom vývoji je plán ako automatizovať celý proces ešte viac - kedy by sa vždy po otestovaní a prebehnutí všetkých potrebných verifikácií spustil tento skript automaticky a každá zmena bola nasadzovaná bez manuálneho zásahu.
+
+\chapter{Testovacia prevádzka}
+
+Testovacia prevádzka pr
+
+Testovacia prevádzka prebiehala na produkčných strojoch popísaných v predošlej kapitole. Do prevádzky boli zapojení vybraní študenti predmetu PB161, z ktorých sa prihlásilo sedem ľudí, testovacia prevádzka prebiehala na úlohe \emph{HW03}\footnote{\url{https://www.fi.muni.cz/pb161/hw03/zadani}}.
+
+Prácu v novom systéme si mohli vyskúšať aj všetci ľudia zapojení do spomínaného predmetu(cvičiaci, pomocníci a prednášajúci). Pre všetkých zúčastnených bolo vytvorené interné diskusné fórum v IS MU, v ktorom mohli nahlasovať chyby, pýtať sa na nejasnosti alebo navrhovať rôzne vylepšenia. 
+
+Študenti odovzdávali svoje riešenia cez frontend UI, v ktorom si následne mohli prezrieť výsledky testovania. Prepojenie odovzdania medzi starým systémom(Kontr 1) a novým sa nepodarilo, preto študenti museli súbežne odovzdávať v oboch systémoch.
+Študenti boli za testovanie a hľadanie chýb odmenení bonusovými bodmi.
+
+\section{Výstup testovania}
+Výstupy testovania je možné rozdeliť na chyby a nedostatky nájdené počas testovania a štatistiky využitia systému.
+
+\subsection{Chyby nájdené počas testovania}
+
+Pred samotným študentským testovaním boli odhalené viaceré nedostatky v \emph{logovaní udalostí}, ktoré sa v systéme dejú, hlavným problémom bolo priradenie aktéra, k danej udalosti (kto udalosť vyvolal), preto bolo potrebné pridať túto informáciu do výstupu. Logy boli rozdelené do separátnych súborov, napríklad \emph{autorizačný log}, v ktorom sa zaznamenáva len každé úspešné, ale aj neúspešné prihlásenie.
+
+Študentské testovanie, odhalilo viacero chyb a nedostatkov vo frontende, pre väčšinu z nich bola založená issue v gitlabe a časť z nich sa už podarilo opraviť.
+Závažnejšie chyby, ktoré vyplávali na povrch, sa týkali hlavne backendu a testovacieho rámca \emph{KTDK}, medzi ktoré patrilo nekorektné spracovanie odovzdania (výsledky neboli uložené), nesprávne spočítanie bodov a chybné spracovanie asynchrónnych úloh.
+
+Chyby týkajúce sa nesprávneho spracovania odovzdania a nesprávneho počítania bodov by mali byť už opravené. Problémom bol špecifický prípad, kedy test zlyhal na \texttt{SIGSEGV}\footnote{\url{http://man7.org/linux/man-pages/man7/signal.7.html}}, tak \emph{Junit výstup}, ktorý je neskôr spracovávaný, bol nevalidný\footnote{Súbor bol nekompletný, čo bolo spôsobené nedokončením zápisu z dôvodu ukončenia programu}, vzhľadom na to, že \emph{JUnit} výstup je generovaný testovacím rámcom \emph{Catch2}, nie je možné tento problém riešiť inak, ako udeliť za test nula bodov. 
+
+
+
+\subsection{Vybrané Štatistiky}
+
+Štatistiky pre testovanie HW03 (Bumberman) v predmete PB161 v semestri jeseň 2018.
+
+
+
+\begin{itemize}
+    \item Čas potrebný pre spracovanie odovzdania, aj s vytvorením testovacieho obrazu: $+- 5 min$.
+    \item Čas potrebný pre spracovanie odovzdania s vytvoreným testovacím obrazom: +- 2 min.
+\end{itemize}
+
+
 
 
 \appendix %% Start the appendices.
