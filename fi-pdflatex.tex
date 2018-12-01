@@ -97,9 +97,9 @@
 
 %kapacitne limitované, užívateľsky neprívetivé a obsahuje  
 % je poukazované na nevyhovujúci stav 
-Už niekoľko rokov je na poradách predmetov \textit{PB071} a \textit{PB161} diskutovanou témou nevyhovujúci stav automatizácie opravy domácich úloh. V súčasnosti používané riešenie je nedostatočné, kapacitne limitované a užívateľsky neprívetivé, čo pre mňa bolo impulzom na návrh a implementáciu jeho náhrady, ktorú predstavuje táto práca. %Nový nástroj spĺňa požiadavky spomínaných predmetov a je aj ľahko rozšíriteľný a použiteľný.
+Už niekoľko rokov je na poradách predmetov \textit{PB071} a \textit{PB161} diskutovanou témou nevyhovujúci stav automatizácie opravy domácich úloh. V súčasnosti používané riešenie je nedostatočné, kapacitne limitované a užívateľsky neprívetivé, čo bolo impulzom pre návrh a implementáciu jeho náhrady, ktorú predstavuje táto práca. %Nový nástroj spĺňa požiadavky spomínaných predmetov a je aj ľahko rozšíriteľný a použiteľný.
 
-Počas analýzy požiadaviek a návrhu systému som dospel k~záveru, že nástroj je z dôvodu jeho rozsiahlosti vhodné rozdeliť na viacero samostatných komponentov. Vďaka definovaným rozhraniam a využitiu technológii známych na Fakulte informatiky Masarykovej univerzity (ďalej FI MU) je možné časti systému spracovávať samostatne ako diplomové alebo bakalárske práce.
+Počas analýzy požiadaviek a návrhu systému sa dospelo k~záveru, že nástroj je z dôvodu jeho rozsiahlosti vhodné rozdeliť na viacero samostatných komponentov. Vďaka definovaným rozhraniam a využitiu technológii známych na Fakulte informatiky Masarykovej univerzity (ďalej FI MU) je možné časti systému spracovávať samostatne ako diplomové alebo bakalárske práce.
 
 % TODO: citovat Kontr, M. Miklosovu pracu
 Projekt \textit{Kontr 2} má za cieľ stať sa úspešným následníkom nástroja \textit{Kontr} z roku 2011, ktorý v predmetoch Úvod do nízkoúrovňového programování (kód PB071) a Programování v jazyce C++ (kód PB161) automatizuje prijímanie, spracovanie a hodnotenie domácich úloh. Nástroj vyučujúcim poskytuje aj webové rozhranie \textit{kontr-logs}, schopné zobrazovať jednotlivé odovzdania. Kontr má mnohé nedostatky, kvôli ktorým ho je vhodné nahradiť. Medzi najvýznamnejšie patria škálovateľnosť, využívanie zastaralých technológií, neprehľadná kódová základňa a nezanedbateľné bezpečnostné chyby.
@@ -639,15 +639,14 @@ Tieto výstupy spoločne so zdrojovými kódmi odovzdania sú dostupné k nahlia
 
 \chapter{Implementácia komponentov systému}
 
-Kapitola popisuje aktuálnu implementáciu a implementačné detaily systému a jednotlivých komponent. Kapitola sa zameriava hlavne na komponenty \emph{pracovník} a \emph{testovací rámec KTDK}. Taktiež pojednáva o potrebných zmenách v portáli aby bola možná integrácia s pracovníkom a ostatnými službami.
+Táto kapitola popisuje implementačné detaily systému a jednotlivých komponentov. Hlavnými spracovávanými komponentmi sú \emph{pracovník} a \emph{testovací rámec KTDK}. Kapitola tiež približuje potrebné zmeny v existujúcej implementácii portálu potrebné na integráciu s pracovníkom a ostatnými službami.
 
-Implementácia systému nie je kompletná, vzhľadom na jeho rozsah a komplexnosť. Niektoré chýbajúce časti budú implementované ako separátne bakalárske alebo diplomové práce, poprípade ako dobrovoľnícka činnosť jednotlivcov. Pre účely testovacej prevádzky bolo potrebné niektoré časti nahradiť zjednodušenou implementáciou alebo \emph{stubom}, slúžiace len ako prototypy a bude potrebné ich neskôr nahradiť konkrétnou implementáciou.
+Implementácia systému neodráža celý návrh z dôvodu jeho rozsiahlosti a komplexnosti. Niektoré chýbajúce časti budú implementované ako samostatné bakalárske alebo diplomové práce, poprípade ako dobrovoľnícka činnosť jednotlivcov. Pre účely testovacej prevádzky boli niektoré potrebné časti nahradené zjednodušenou implementáciou alebo \emph{stubom}, ktoré slúžia len ako prototypy a bude potrebné ich neskôr nahradiť plnou implementáciou.
 
 
 \section{Implementácia Portálu}
 
-Samotný základ implementácie je popísaný v práci Barbory Kompišovej, ktorá sa venuje hlavne problému autentizácie, vzťahom medzi entitami systému, ich správe a konkrétnemu návrhu rozhrania. Samotná implementácia je v jazyku Python vo verzii 3.6. 
-
+Návrh a prvotná implementácia Portálu je popísaný v práci Barbory Kompišovej, ktorá sa venuje hlavne problému autentizácie, vzťahom medzi entitami systému, ich správe a konkrétnemu návrhu rozhrania. Implementácia využíva jazyk Python vo verzii 3.6. 
 
 \subsection{Štruktúra portálu}
 
@@ -660,9 +659,14 @@ Súbory sú uložené na disku, pre vhodné oddelenie implementačných detailov
 
 \subsection{Zmeny oproti pôvodnej implementácii}
 
-Zmeny potrebné oproti pôvodnej implementácii sa dotkli hlavne asynchrónneho spracovania odovzdaní čo znamená pridanie podpory pre integráciu s  distribuovaným frontu a message brokera, potrebných pre asynchrónne spracovávanie jednotlivých úloh. 
+Zmeny pôvodnej implementácie Portálu sa dotkli predovšetkým asynchrónneho spracovania odovzdaní, ktoré bolo v pôvodnej verzii implementované veľmi jednoducho a umožňovalo len uloženie odovzdania do Storage, už nie jeho ďalšie spracovanie. Ďalej bolo Portál potrebné integrovať s fakultnou LDAP databázou, implementovať autentizáciu pomocou \emph{tajomstva (secret)} pre integráciu s Pracovníkom, pozmeniť rozhranie a uľahčiť konfiguráciu a nasadenie Portálu.
 
-Ako \emph{message broker} bol použitý \emph{Redis (Remote Dictionary Server)}, ide o kľúč-hodnota distribuované dátové uložisko, ktoré je uložené v pamäti. Podporuje viacero dátových typov, reťazce, čísla, množiny, asociatívne polia, polia a pod. Jednotlivé asynchrónne úlohy sú uložené ako kľúče a hodnotou sú dodatočné informácie o úlohe, napríklad parametre pre úlohu. Redis bude neskôr využitý v plánovači, ktorý aktuálne nie je hotový, na uchovávanie dodatočných informácií o jednotlivých pracovníkoch.
+\ssubsection{Asynchrónne spracovanie odovzdania}
+Pre testovaciu prevádzku systému Kontr 2 bolo potrebné dokončiť všetky akcie potrebné na spracovanie odovzdania po jeho prijatí: uloženie do Storage, získanie testovacích súborov a následné naplánovanie a odoslanie odovzdania Pracovníkovi. Ďalej bolo ako asynchrónnu úlohu potrebné implementovať spracovanie výsledku odovzdania, ktoré sa spúšťa po prijatí výsledku od Pracovníka. Implementácia plánovača ani nástroja na spracovanie odovzdania nie je súčasťou tejto práce, preto sú obe časti dodané v zjednodušenej verzii --  plánovač používa fixný interval počas ktorého je možné odovzdanie zrušiť a vyberá náhodného pracovníka, spracovanie odovzdania nie je konfigurovateľné.
+
+Pre asynchrónne spracovávanie jednotlivých úloh bolo potrebné pridať podporu pre integráciu s  distribuovaným frontom a message brokera. 
+
+Ako \emph{message broker} bol použitý \emph{Redis (Remote Dictionary Server)}, distribuované dátové úložisko typu kľúč-hodnota, uchovávané v pamäti. Podporuje viacero dátových typov (reťazce, čísla, množiny, asociatívne polia, polia a pod.). Jednotlivé asynchrónne úlohy ukladá ako kľúče, hodnoty sú dodatočné informácie o úlohe, napríklad jej parametre. Redis bude neskôr využitý aj v plánovači a to na uchovávanie dodatočných informácií o jednotlivých pracovníkoch.
 
 Asynchrónny front je nástroj, ktorý z Redis-u vezme úlohu a spracuje ju v separátnom procese. V portáli bol využitý nástroj \emph{Celery}, založený na distribuovanom predávaní správ a následnom spracovaní úloh. Jednou z výhod nástroja, je možnosť pozdržať vykonávanie úlohy, čo zjednoduší plánovanie, napríklad je možné nastaviť pozdržanie o 5 min (tzv. \emph{cancellation period}).
 Celery pozostáva z 3 hlavných častí. 
@@ -675,13 +679,15 @@ Treťou je už spomínaný \emph{message broker}, ktorý zabezpečuje komunikác
 
 Celery okrem spracovávania asynchrónnych úloh poskytuje možnosť vykonávania periodických úloh, napríklad každých 10 min. Vďaka tomu je možné periodicky vykonávať kontrolu \emph{chýb odovzdania}, \emph{čistenie systému} a pod. 
 
-Celý systém bolo potrebné rozšíriť o asynchrónne úlohy a získanie testovacích súborov, odovzdania študenta, jeho naplánovanie, ktoré je v súčastnosti implementované pomocou fixného časového intervalu a náhodného pridelenie pracovníka vzhľadom na to, že plánovač nie je súčasťou tejto práce. Taktiež je potrebné spracovať výsledok odovzdania ako asynchrónnu úlohu, v nástroji na spracovanie odovzdania, ktorého implementácie, tiež nie je súčasťou práce a bolo potrebné napísať zjednodušenú implementáciu, ktorá nie je konfigurovateľná.
+
 
 Ďalšou zmenou bola integrácia LDAP knižnice pre získanie uča užívateľa z fakultného LDAP serveru, rozšírenie je dostupné len pri nastavení url pre LDAP server, v prípade, že url nie je nastavená, rozšírenie sa neaplikuje a je preskočené. LDAP fakulty informatiky funguje len v rámci jej siete, čo mierne sťažovalo samotnú implementáciu.
 
 Pre jednoduchšie načítavanie konfigurácie a zjednotenie s ostatnými nástrojmi sa použila knižnica \emph{python-dotenv}, pomocou ktorej je možné prepísať premenné prostredia použitím súboru \texttt{.env}. Táto zmena následne uľahčila nasadenie celého projektu.
 
 Medzi menšie zmeny, ktoré bolo potrebné spraviť bolo nahradenie knižnice \emph{flask-restful}, knižnicou \emph{flask-restplus}, ktorá podporuje generovanie \emph{swagger} dokumentácie pre REST API. 
+
+implementácia Secretov
 
 \subsection{Administračný CLI Nástroj}
 
@@ -717,7 +723,7 @@ Asynchrónna úloha ako prvé skontroluje, či pracovník v sebe obsahuje aktuá
 
 Po ukončení prípravy testovacích súborov pracovník stiahne študentovo odovzdanie, to je extrahované a uložené do \emph{unikátneho adresára} pre odovzdanie, spolu s ním je vytvorený aj priečinok v ktorom sa budú nachádzať výsledky testovania. 
 
-Následne dôjde k vytvoreniu nového kontajneru, do ktorého sú oba priečinky \emph{mountované}. Študentovo odovzdanie len s oprávneniami pre čítanie, súbory s výsledkami aj s oprávnením pre zápis. Kontajner je vytvorený bez sieťového rozhrania aby sa zabránilo sieťovej komunikácii a tým sa zvýšila bezpečnosť.
+Následne dôjde k vytvoreniu nového kontajneru, do ktorého sú oba priečinky \emph{pripojené \emph{(mount)}}. Študentovo odovzdanie len s oprávneniami pre čítanie, súbory s výsledkami aj s oprávnením pre zápis. Kontajner je vytvorený bez sieťového rozhrania aby sa zabránilo sieťovej komunikácii a tým sa zvýšila bezpečnosť.
 
 Kontajner je spustení s čo najnižšími oprávneniami a s  právami užívateľa, pod ktorým beží pracovník\footnote{Štandardne pokiaľ nie je povedané inak tak kontajner je spustený pod právami užívateľa \emph{root}.}, vďaka čomu dochádza k zvýšeniu bezpečnosti a všetky vytvorené súbory uložené do priečinka s výsledkami majú správne oprávnenia a je ich možné ďalej spracovávať pracovníkom.
 
@@ -871,14 +877,9 @@ Pomocou tohoto skriptu je možné nasadzovať zmeny okamžite po tom, čo sú ot
 
 \chapter{Testovacia prevádzka}
 
-Testovacia prevádzka pr
+Testovacia prevádzka prebiehala v obmedzenom režime, vzhľadom na to, že systém stále nie je dokončený. Testovacie prostredie bolo predstavené v predchádzajúcej kapitole v sekcii, produkčné nasadenie. Testovanie bolo umožnené všetkým vyučujúcim predmetu PB161 a vybraným študentom, ktorých sa prihlásilo sedem, testovacia prevádzka prebiehala na úlohe \emph{HW03}\footnote{\url{https://www.fi.muni.cz/pb161/hw03/zadani}}. Pre všetkých zainteresovaných bolo vytvorené interné diskusné fórum v IS MU, v ktorom mohli nahlasovať chyby, pýtať sa na nejasnosti alebo navrhovať rôzne vylepšenia systému.
 
-Testovacia prevádzka prebiehala na produkčných strojoch popísaných v predošlej kapitole. Do prevádzky boli zapojení vybraní študenti predmetu PB161, z ktorých sa prihlásilo sedem ľudí, testovacia prevádzka prebiehala na úlohe \emph{HW03}\footnote{\url{https://www.fi.muni.cz/pb161/hw03/zadani}}.
-
-Prácu v novom systéme si mohli vyskúšať aj všetci ľudia zapojení do spomínaného predmetu(cvičiaci, pomocníci a prednášajúci). Pre všetkých zúčastnených bolo vytvorené interné diskusné fórum v IS MU, v ktorom mohli nahlasovať chyby, pýtať sa na nejasnosti alebo navrhovať rôzne vylepšenia. 
-
-Študenti odovzdávali svoje riešenia cez frontend UI, v ktorom si následne mohli prezrieť výsledky testovania. Prepojenie odovzdania medzi starým systémom(Kontr 1) a novým sa nepodarilo, preto študenti museli súbežne odovzdávať v oboch systémoch.
-Študenti boli za testovanie a hľadanie chýb odmenení bonusovými bodmi.
+Študenti odovzdávali svoje riešenia cez frontend UI, v ktorom si následne mohli prezrieť výsledky testovania (počet bodov a jednotlivé testy s informáciou o ich úspechu alebo neúspechu). Obmedzenia testovacej prevádzky boli napríklad, chýbajúca integrácia \emph{review toolu}, plánovača alebo duplikovanie odovzdaní medzi novým a starým systémom Kontr, ktorá prebiehala manuálne. Študenti boli za testovanie a hľadanie chýb odmenení bonusovými bodmi.
 
 \section{Výstup testovania}
 Výstupy testovania je možné rozdeliť na chyby a nedostatky nájdené počas testovania a štatistiky využitia systému.
@@ -896,14 +897,49 @@ Chyby týkajúce sa nesprávneho spracovania odovzdania a nesprávneho počítan
 
 \subsection{Vybrané Štatistiky}
 
-Štatistiky pre testovanie HW03 (Bumberman) v predmete PB161 v semestri jeseň 2018.
-
-
+Z testovania úlohy HW03 (Bomberman) v predmete PB161 v semestri jeseň 2018 vzišli nasledujúce štatistiky.
+Čas potrebný k spracovaniu odovzdania bol počítaný od momentu vytvorenia odovzdania po uloženie výsledkov do portálu.
 
 \begin{itemize}
-    \item Čas potrebný pre spracovanie odovzdania, aj s vytvorením testovacieho obrazu: $+- 5 min$.
+    \item Testovacích odovzdaní HW03 bolo 31. 
+    \item Čas potrebný pre spracovanie odovzdania, aj s vytvorením testovacieho obrazu\footnote{Pri prvom odovzdaní so zmenenými testovacími súbormi je potrebné znovu zostaviť obraz\texttt{docker build}.}: +- 5 min.
     \item Čas potrebný pre spracovanie odovzdania s vytvoreným testovacím obrazom: +- 2 min.
+    \item Dĺžka behu testovacích scenárov v \emph{KTDK}: 85s. (Starý kontr: 68s)
 \end{itemize}
+
+\textbf{Využitie miesta na disku v úložisku:}
+
+\begin{itemize}
+    \item Celková veľkosť súborov v úložisku bola $53MB$.
+    \item Priemerná veľkosť zdrojových súborov jedného odovzdania je $308KB$ a pre skomprimovaný variant $100KB$.
+    \item Priemerná veľkosť výsledkov jedného odovzdania je $500KB$ a skomprimovaný variant $66 KB$.
+    \item Maximálna veľkosť výsledkov bola $1.4MB$ a skomprimovaný variant $96KB$.
+    \item Pre 1000 odovzdaní \emph{(100 študentov po 10 odovzdaní)} je potrebných $(500 KB + 308KB \approx 1MB) * 1000 \approx 1 GB$ miesta, v prípade komprimovanej varianty je to $(66KB + 100KB \approx 200KB) * 1000 \approx 200MB$
+\end{itemize}
+
+\chapter{Záver a budúci vývoj systému}
+\addcontentsline{toc}{chapter}{Záver}
+
+Úlohou práce bolo vypracovať analýzu a vysokoúrovňový návrh systému opravy domácich úloh Kontr 2 a implementácia podsystému pre spracovanie odovzdaní. 
+Dôraz pri návrhu bol kladený na splnenie požadovaných prípadov užitia, zohľadnenie požiadaviek predmetov, ktoré by mali záujem systém používať a prípadne jeho ľahkú rozšíriteľnosť.
+
+Systém ako celok bol rozdelený do nezávislých komponent či, už ako separátne aplikácie alebo moduly(knižnice), ktoré je možné v prípade potreby nahradiť alebo jednoduchšie rozšíriť. Nezávislosť komponent vyžadovala jednoznačne definovať rozhranie a komunikačné kanály, pomocou ktorých komunikujú.
+
+Návrh jednotlivých komponent bol postupne rozpracovaný v tejto práci, ale jednalo sa len o vysokoúrovňový pohlaď, pretože komplexný návrh napríklad portálu bol súčasťou inej práce, v ktorej bol implementovaný základ, do ktorého bol integrovaný podsystém pre spracovanie odovzdaní, ktorý je výstupom tejto práce.
+Samotný podsystém nie je kompletný pretože pokročilejšie plánovanie a spracovanie výsledkov úloh, je súčasťou nadväzujúcich prác.
+
+V kapitole venujúcej sa implementácii je rozpracovaná aktuálna implementácia podsystému pre spracovanie odovzdaní, integrácia a zmeny ktoré bolo potrebné v Portály spraviť a pomocné nástroje a knižnice, ktoré bolo potrebné implementovať pre uľahčenie práce so systémom.
+
+Na implementačnú kapitolu naväzuje kapitola predstavujúca možnosti nasadenia, detailnejšie popisuje produkčné prostredie, stroje na ktorých je produkčná verzia nasadená. 
+
+Posledná kapitola popisuje priebeh testovacej prevádzky, nájdené problémy, návrhy na vylepšenie a výstupy v podobe štatistiky využitia disku, spotrebovaného času pre vykonanie úlohy.
+
+Výstupom tejto práce je systém schopný spracovať a vyhodnotiť odovzdanie, preto tvorí základ pre ďalšie rozširovanie a dopĺňanie funkcionality. Celý projekt je verejne dostupný a má otvorený zdrojový kód, preto ktokoľvek kto má záujem, má možnosť prispievať a rozšíriť ho. So systémom sa stretne každý študent, ktorý si prejde základným kurzom nízkoúrovňového programovania, preto je možné týchto ľudí zaujať a dať im možnosť vyskúšať si prispieť do projektu s otvoreným zdrojovým kódom. 
+Nástroj by mohol mať úspech minimálne tým, že je implementovaný v moderných technológiách, je vyvíjaný priamo na fakulte a bude sa dotýkať väčšiny študentov.
+
+V súčastnosti na zásadnejšie zmeny systému budú nadväzovať ďalšie práce. Rovnako autor tejto práce plánuje na práci ďalej pracovať a projekt spravovať. V systéme je ešte mnoho chýb, chýba rozsiahlejšia dokumentácia a návody, ktoré by ukázali ako so systémom pracovať a vysvetlili jednotlivé jeho časti.
+
+Systém sa bez ďalších dobrovoľníkov nezaobíde, nejde len o vývoj nových rozšírení, ale aj o testovanie, nasadenie a správu systému, všetka táto \emph{neviditeľná} práca je potrebná pre beh systému ako takého.
 
 
 
