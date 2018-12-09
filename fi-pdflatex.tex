@@ -122,12 +122,12 @@ Na FI MU je vyučovaných mnoho programovacích predmetov, súčasťou ktorých 
 
 Proces hodnotenia prebieha spravidla v~troch krokoch:
 \begin{enumerate}
-    \item Študent svoje vypracované riešenie sprístupní hodnotiteľovi (človeku alebo systému). Najviac využívanými metódami odovzdania na FI MU sú nahranie súborov do \textit{Odevzdávárny} IS MU alebo sprístupnenie kódu pomocou systému na správu verzií, napr. \textit{Git}\footnote{\url{https://git-scm.com}} alebo \textit{SVN}\footnote{\url{https://subversion.apache.org/}}. 
+    \item Študent svoje vypracované riešenie sprístupní hodnotiteľovi (človeku alebo systému). Najviac využívanými metódami odovzdania na FI MU sú nahranie súborov do \textit{Odevzdávárny}\footurl{https://is.muni.cz/napoveda/ucitel/odevzdavarny} IS MU alebo sprístupnenie kódu pomocou systému na správu verzií, napr. \textit{Git}\footurl{https://git-scm.com} alebo \textit{SVN}\footurl{https://subversion.apache.org/}. 
     \item V~definovanom termíne opravujúci získa študentovo odovzdanie, ohodnotí mieru naplnenia zadania, programátorského štýlu, efektívnosti a iných kritérií špecifických pre predmet. 
-    \item Hodnotenie je prevedené na body či slovné zhrnutie a uložené v~IS MU, typicky pomocou zápisu do \emph{Poznámkových blokov} IS~MU.
+    \item Hodnotenie je prevedené na body či slovné zhrnutie a uložené v~IS MU, typicky pomocou zápisu do \emph{Poznámkových blokov} IS~MU\footurl{https://is.muni.cz/napoveda/ucitel/bloky}.
 \end{enumerate}
 
-Všetky tri kroky tohoto procesu je možné do určitej miery automatizovať a odbremeniť tak vyučujúcich. Pre automatizáciu je možné využiť jednoduché porovnávanie výstupu, rámce a knižnice pre jednotkové testy (napr. \emph{JUnit}\footnote{\url{https://junit.org/junit5/}}, \emph{Catch2}\footnote{\url{https://github.com/catchorg/Catch2}}), nástroje na kontrolu formátovania (\emph{clang-format}\footnote{\url{https://clang.llvm.org/docs/ClangFormat.html}}, \textit{pylint}\footnote{\url{https://www.pylint.org/}}), programátorského štýlu (\textit{clang-tidy a clang-format}\footnote{\url{http://clang.llvm.org/extra/clang-tidy/}},) alebo zložitosti kódu (\textit{Rubocop}\footnote{\url{https://github.com/rubocop-hq/rubocop}}, \textit{checkstyle}). Ich hlavnými výhodami sú rýchlosť a jednotnosť (v~hodnotení aj vo výstupe), ktorá garantuje rovnaké podmienky pre všetkých študentov. Študentom je tak možné rýchlejšie poskytnúť spätnú väzbu na ich riešenia, prípadne ich nasmerovať na príčinu zlyhania. Rovnako sa znižuje aj miera nejednotnosti hodnotenia, ktorá je často prítomná ak je hlavným hodnotiteľom človek.
+Všetky tri kroky tohoto procesu je možné do určitej miery automatizovať a odbremeniť tak vyučujúcich. Pre automatizáciu je možné využiť jednoduché porovnávanie výstupu, rámce a knižnice pre jednotkové testy (napr. \emph{JUnit}\footnote{\url{https://junit.org/junit5/}}, \emph{Catch2}\footnote{\url{https://github.com/catchorg/Catch2}}), nástroje na kontrolu formátovania (\emph{clang-format}\footnote{\url{https://clang.llvm.org/docs/ClangFormat.html}}, \textit{pylint}\footnote{\url{https://www.pylint.org/}}), programátorského štýlu (\textit{clang-tidy\footnote{\url{http://clang.llvm.org/extra/clang-tidy/}} a clang-format}) alebo zložitosti kódu (\textit{Rubocop}\footnote{\url{https://github.com/rubocop-hq/rubocop}}, \textit{cppcheck}\footurl{http://cppcheck.sourceforge.net/}). Ich hlavnými výhodami sú rýchlosť a jednotnosť (v~hodnotení aj vo výstupe), ktorá garantuje rovnaké podmienky pre všetkých študentov. Študentom je tak možné rýchlejšie poskytnúť spätnú väzbu na ich riešenia, prípadne ich nasmerovať na príčinu zlyhania. Rovnako sa znižuje aj miera nejednotnosti hodnotenia, ktorá je často prítomná ak je hlavným hodnotiteľom človek.
 
 Minimalizácia či odstránenie ľudského faktoru z~procesu opravy úloh prináša časovú úsporu študentom i vyučujúcim, zjednocuje podmienky hodnotenia úloh, prináša jasný, kvantifikovateľný výstup a zmenšuje priestor pre chyby. Automatická kontrola odovzdaní ale nemôže kontrolu človekom plne nahradiť, zapojenie opravujúceho je v~procese výuky jednou z~nevyhnutných podmienok. Študentov je potrebné pripraviť aj na neskoršiu programátorskú prax, ktorej súčasťou je kontrola kódu zo strany spolupracovníkov\cite{code_reviews_atlassian}. Podobne ako zákony nie je možné vykladať na súde strojovo ale je potrebný sudca, tak aj pri opravovaní úloh je potrebný ľudský zásah na rozsiahlu a personalizovanú spätnú väzbu\cite{code-feedback}. Cieľom automatizácie je človeku prácu zjednodušiť a študentom poskytnúť spätnú väzbu rýchlejšie.
 
@@ -144,7 +144,7 @@ Aby bol systém na automatickú opravu domácich úloh použiteľný, musí byť
     \item \textit{Integrácia} - Systém je možné napojiť na služby poskytované FI~MU a~IS~MU.
 \end{itemize}
 
-Systém s~výraznými nedostatkami v~ktorejkoľvek z~týchto kategórií je v~praxi nepoužiteľný. Preto boli tieto kritériá základom môjho ďalšieho rozhodovania a hlavným dôvodom zamietnutia už existujúcich nástrojov pre potreby FI MU. Napriek tomu je podstatné uviesť existujúce riešenia a predstaviť dôvody implementácie vlastného projektu.
+Systém s~výraznými nedostatkami v~ktorejkoľvek z~týchto kategórií je v~praxi nepoužiteľný. Preto boli tieto kritériá základom ďalšieho rozhodovania a hlavným dôvodom zamietnutia už existujúcich nástrojov pre potreby FI MU. Napriek tomu je podstatné uviesť existujúce riešenia a predstaviť dôvody implementácie vlastného projektu.
 
 \section{Existujúce automatizačné nástroje}
 
@@ -152,7 +152,7 @@ V~súčasnosti existujú viaceré nástroje na automatizovanú opravu domácich 
 
 Plateným nástrojom nasadeným u~externých dodávateľov v~\emph{cloude}, som sa chcel od začiatku vyhnúť. Prichádzajú s~nimi rôzne problémy ako nemožné alebo obtiažne prispôsobenie, komplikované licenčné podmienky, nedostatočná transparentnosť a kontrola, možné komplikácie s~legislatívou a nezanedbateľný finančný faktor.
 
-Riešenie s~otvoreným zdrojovým kódom nedosahovalo dostatočnú mieru rozšíriteľnosti pre špecifické požiadavky niektorých predmetov vyučovaných na fakulte. Okrem toho bolo postavené na jazykoch, ktoré sa na fakulte nevyučujú (PHP), čo by pravdepodobne znamenalo nízku mieru zapojenia študentov a vyučujúcich do vývoja nástroja.
+Riešenie s~otvoreným zdrojovým kódom nedosahovalo dostatočnú mieru rozšíriteľnosti pre špecifické požiadavky niektorých predmetov vyučovaných na fakulte. Okrem toho bolo postavené na jazykoch, ktoré sa na fakulte nevyučujú \emph{(PHP)}, čo by pravdepodobne znamenalo nízku mieru zapojenia študentov a vyučujúcich do vývoja nástroja.
 
 Celkovo existujúce nástroje zaostávali v~ohľadoch flexibility (nízkymi možnosťami rozšírenia, platformovou závislosťou, nedostatočnou úrovňou oprávnení) alebo obsahovali nepotrebnú funkcionalitu.
 
@@ -168,7 +168,7 @@ Hlavnou výhodou CI/CD nástrojov je, že väčšina programátorov sa s~nimi st
 
 Druhým problémom je komplikovaný popis zložitejších testovacích scenárov, ktorý by pre zadávajúceho domácej úlohy znamenal netriviálnu záťaž. Konfigurácia nástrojov totiž využíva vlastné DSL (Jenkins) alebo značkovací jazyk (GitLab CI), v~ktorých je zápis rozsiahlych scenárov ťažko čitateľný a spravovateľný. Využitie tzv. \textit{scripted pipelines} systému Jenkins by vyžadovalo definíciu samostatnej knižnice pomocou jazyka Groovy, ktorý sa na FI MU nevyučuje.
 
-Treťou problematickou oblasťou je integrácia s~ďalšími službami, napr. IS MU, ktorá by pravdepodobne vyžadovala implementáciu rozšírenia daného CI/CD nástroja (\emph{plugin}).
+Treťou problematickou oblasťou je komplikovaný proces odovzdania riešenia, ktorý by od študentov vyžadoval komplexnejšie znalosti verzovacieho systému a nebol by vhodný pre úvodné kurzy programovania vyučované na fakulte.
 
 \subsection{Nástroj Kontr}
 
@@ -176,11 +176,11 @@ Na FI MU je v~súčastnosti v~predmetoch PB071 a PB161 používaný nástroj Kon
 
 Prvotná implementácia vznikla v~pomerne krátkom čase a následne sa na ňu nabaľovali rôzne rozšírenia a záplaty. Systém trpí niekoľkými zásadnými chybami v~návrhu, má nedostatočnú dokumentáciu a miestami nečitateľný kód. Všetky tieto vady majú za následok nedostatky nástroja v~rozšíriteľnosti, prenositeľnosti a bezpečnosti. O~správu nástroja a jeho úpravy sa v~súčasnosti stará Mgr. Roman Lacko. 
 
-Pomocou nástroja Kontr študent odovzdáva vypracovanie svojej úlohy spustením skriptu \texttt{odevzdavam}. Ten vytvorí nový súbor v~špeciálnom priečinku s~informáciou, pre ktorý predmet a pre ktorú úlohu bolo odovzdanie vytvorené. Následne sa v~päťminútových intervaloch spúšťa \textit{Cron job}\footnote{\url{http://pubs.opengroup.org/onlinepubs/9699919799/}}, ktorý prejde adresár a postupne spustí vykonávanie jednotlivých odovzdaní. Odovzdanie je spustené s~právami užívateľa \emph{kontr} definovaného vo fakultnej databáze používateľov. Súčasťou spracovania je stiahnutie študentovho vypracovania z~repozitáru na fakultnom GitLabe. Kontr si obsah repozitára uchováva dlhodobo (až do jeho manuálneho zmazania) a pre aktualizáciu vykonáva príkaz \texttt{git pull}. 
+Pomocou nástroja Kontr študent odovzdáva vypracovanie svojej úlohy spustením skriptu \texttt{odevzdavam}. Ten vytvorí nový súbor v~špeciálnom priečinku s~informáciou, pre ktorý predmet a pre ktorú úlohu bolo odovzdanie vytvorené. Následne sa v~päťminútových intervaloch spúšťa \textit{Cron job}\footnote{\url{http://pubs.opengroup.org/onlinepubs/9699919799/}}, ktorý prejde adresár a postupne spustí vykonávanie jednotlivých odovzdaní. Odovzdanie je spustené s~právami užívateľa \emph{kontr} definovaného vo fakultnej databáze používateľov. Súčasťou spracovania je stiahnutie študentovho vypracovania z~repozitáru na fakultnom GitLabe. Kontr si obsah repozitára uchováva dlhodobo (až do jeho manuálneho zmazania) a pre aktualizáciu vykonáva príkaz \texttt{git pull}\footurl{https://git-scm.com/docs/git-pull}. 
 
-Testovanie je vykonávané pomocou vlastného testovacieho rámca implementovaného v~jazyku Perl, ktorý je súčasťou samotného nástroja. Testovacie scenáre pre všetky domáce úlohy sú dodávané v~separátnom repozitári. Kontr po dokončení testovacieho procesu odošle email s~výsledkami študentovi aj jeho opravujúcemu pre danú domácu úlohu. Aktuálna verzia dokáže komunikovať s~rozhraním Poznámkových blokov IS MU, do ktorých zapisuje výsledky testov aj s~bodovým hodnotením.
+Testovanie je vykonávané pomocou vlastného testovacieho rámca implementovaného v~jazyku Perl, ktorý je súčasťou samotného nástroja. Testovacie scenáre pre všetky domáce úlohy sú dodávané v~separátnom repozitári. Kontr po dokončení testovacieho procesu odošle email s~výsledkami študentovi aj jeho opravujúcemu pre danú domácu úlohu. Aktuálna verzia dokáže komunikovať s~rozhraním Poznámkových blokov IS MU\footurl{https://is.muni.cz/napoveda/technicka/bloky_api}, do ktorých zapisuje výsledky testov aj s~bodovým hodnotením.
 
-Výsledky automatizovaného testovania je možné prezerať vo webovom rozhraní \textit{Kontr-logs} určenom pre opravujúcich domácich úloh. Je v~ňom možné zobraziť výsledky jednotlivých testov, výstupy behu testov a samotné odovzdania študentov. Pomocou nástroja je možné porovnávať zdrojové kódy pre jednotlivé odovzdania a znova otestovať už existujúce odovzdanie. 
+Výsledky automatizovaného testovania je možné prezerať vo webovom rozhraní \textit{Kontr-logs}\cite{KontrWeb} určenom pre opravujúcich domácich úloh. Je v~ňom možné zobraziť výsledky jednotlivých testov, výstupy behu testov a samotné odovzdania študentov. Pomocou nástroja je možné porovnávať zdrojové kódy pre jednotlivé odovzdania a znova otestovať už existujúce odovzdanie. 
 
 Napriek svojej užitočnosti je Kontr nevhodný na ďalšie používanie predovšetkým kvôli nasledujúcim vadám:
 \begin{itemize}
@@ -352,9 +352,9 @@ Primárnou časťou Portálu je server, ktorý vystavuje \emph{REST rozhranie}\c
 \subsection{Klienti Portálu}
 Vďaka jednotnému rozhraniu prispôsobenému pre automatizovanú prácu bolo pre Portál možné vyvinúť niekoľko samostatných klientov. 
 
-\textbf{Frontend} pre systém Kontr 2 bol implementovaný ako súčasť práce Bc. Barbory Kompišovej\cite{kontr-portal}. Ide o~jednostránkovú webovú aplikáciu (\emph{single page application}), ktorá využíva REST rozhranie Portálu a ponúka možnosť spravovať entity v~systéme, vytvárať odovzdania a prezerať si výsledky. Rozšírením Frontendu bude nástroj na prezeranie odovzdaní (\emph{review tool}) sprístupňujúci rozhranie na prezeranie výsledkov a výstupov testovania, jednotlivých súborov odovzdania, pridávanie slovného hodnotenia vo forme komentárov k~súborom a prácu s~Poznámkovými blokmi IS~MU. 
+\textbf{Frontend} pre systém Kontr 2 bol implementovaný ako súčasť práce Bc. Barbory Kompišovej\cite{kontr-portal}. Ide o~jednostránkovú webovú aplikáciu (\emph{single page application})\cite{single-page-app}, ktorá využíva REST rozhranie Portálu a ponúka možnosť spravovať entity v~systéme, vytvárať odovzdania a prezerať si výsledky. Rozšírením Frontendu bude nástroj na prezeranie odovzdaní (\emph{review tool}) sprístupňujúci rozhranie na prezeranie výsledkov a výstupov testovania, jednotlivých súborov odovzdania, pridávanie slovného hodnotenia vo forme komentárov k~súborom a prácu s~Poznámkovými blokmi IS~MU. 
 
-Knižnica \textbf{kontr-api} implementovaná v~jazyku Python obaľuje volania REST rozhrania Portálu. Slúži ako základ pre písanie nástrojov v~jazyku Python, ktoré potrebujú pracovať a komunikovať so systémom Kontr 2. V~súčasnosti ju využívajú dva projekty: konzolový nástroj \emph{kontrctl (\fullref{impl-other-parts})}, pomocou ktorého je možné pracovať so serverovou častou Portálu a \emph{Pracovník}, ktorý knižnicu používa na získanie informácii potrebných pre spracovanie odovzdania.
+Knižnica \textbf{kontr-api} implementovaná v~jazyku Python obaľuje volania REST rozhrania Portálu. Slúži ako základ pre písanie nástrojov v~jazyku Python, ktoré potrebujú pracovať a komunikovať so systémom Kontr 2. V~súčasnosti ju využívajú dva projekty: konzolový nástroj \emph{kontrctl (\fullref{impl-other-parts})}, pomocou ktorého je možné pracovať so serverovou častou Portálu a Pracovník, ktorý knižnicu používa na získanie informácii potrebných pre spracovanie odovzdania.
 
 
 \subsection{Úložisko -- Storage}
@@ -367,12 +367,12 @@ Medzi interné nástroje obsiahnuté v~Portále patrí modul \emph{Úložisko (S
 
 \textbf{Výsledky testov} sú súbory vygenerované počas spracovania odovzdania. Ide predovšetkým o~výstupy spustených programov, napríklad záznam kompilácie a výstup testovacích rámcov. Je ich potrebné jednoznačne priradiť k~odovzdaniu.
 
-Súčasťou Úložiska je integrácia s~Gitom, pomocou ktorého nástroj sťahuje odovzdania študentov a testovacie súbory. Pre úsporu miesta na disku modul ponúka možnosť filtrovania ukladaných dát pomocou \emph{glob výrazov} (tzv. \emph{whitelist}) pri sťahovaní odovzdaní a kompresie priečinkov pri ich nevyužívaní.
+Súčasťou Úložiska je integrácia s~Gitom, pomocou ktorého nástroj sťahuje odovzdania študentov a testovacie súbory. Pre úsporu miesta na disku modul ponúka možnosť filtrovania ukladaných dát pomocou \emph{glob výrazov\footurl{https://docs.python.org/3/library/glob.html}} (tzv. \emph{whitelist}) pri sťahovaní odovzdaní a kompresie priečinkov pri ich nevyužívaní.
 
 \subsection{Asynchrónne spracovanie odovzdaní}
 \label{design-async-process}
 
-Pre webové aplikácie je jednou z~požiadaviek aj svižnosť -- po odoslaní požiadavky je odpoveď doručená v~krátkom časovom intervale. Protokol HTTP kvôli tomu obsahuje mechanizmus tzv. \emph{timeoutov}\footurl{https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408}. Rýchlu, neblokujúcu odpoveď je možné zabezpečiť \emph{asynchrónnym spracovaním úloh}, kedy je pri prijatí požiadavky vytvorená asynchrónna úloha, ktorá je spracovaná na pozadí. Odpoveďou na túto požiadavku môže byť napríklad informácia o~zaradení úlohy do frontu asynchrónnych úloh. Na samotný výsledok je potrebné vytvoriť samostatnú požiadavku.
+Pre webové aplikácie je jednou z~požiadaviek aj svižnosť -- po odoslaní požiadavky je odpoveď doručená v~krátkom časovom intervale. Protokol HTTP\cite{RFC2616} kvôli tomu obsahuje mechanizmus tzv. \emph{timeoutov}\footurl{https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408}. Rýchlu, neblokujúcu odpoveď je možné zabezpečiť \emph{asynchrónnym spracovaním úloh}, kedy je pri prijatí požiadavky vytvorená asynchrónna úloha, ktorá je spracovaná na pozadí. Odpoveďou na túto požiadavku môže byť napríklad informácia o~zaradení úlohy do frontu asynchrónnych úloh. Na samotný výsledok je potrebné vytvoriť samostatnú požiadavku.
 
 Úlohy v~Portáli využívajúce asynchrónne spracovávanie:
 
@@ -423,12 +423,12 @@ Nástroj na spracovanie odovzdania je opäť súčasťou práce \emph{Mateja Duj
 
 \subsection{Zdroje užívateľských identít a autentizácia}
 
-Fakultná inštancia GitLabu je jedným zo systémov, s~ktorými Kontr 2 potrebuje komunikovať pre využitie metódy autentizácie používateľov \emph{OpenID Connect}\footnote{\url{https://openid.net/specs/openid-connect-core-1_0.html}}, kde GitLab pre Kontr 2 predstavuje \emph{poskytovateľa identít}. Pomocou napojenia na fakultnú LDAP databázu je možné od GitLabu získať údaje o~študentoch a učiteľoch na FI MU, čo umožňuje automatické vytváranie dôveryhodných používateľských účtov. Pre administráciu systému, umožnenie prístupu osobám neregistrovaným vo fakultnej databáze účtov a vnútornú organizáciu systému je však v~Portáli stále nutné implementovať vlastnú správu účtov. 
+Fakultná inštancia GitLabu je jedným zo systémov, s~ktorými Kontr 2 potrebuje komunikovať pre využitie metódy autentizácie používateľov \emph{OpenID Connect}\footnote{\url{https://openid.net/specs/openid-connect-core-1_0.html}}, kde GitLab pre Kontr 2 predstavuje \emph{poskytovateľa identít}. Pomocou napojenia na fakultnú \emph{LDAP databázu\footurl{https://tools.ietf.org/rfc/rfc4511.txt}} je možné od GitLabu získať údaje o~študentoch a učiteľoch na FI MU, čo umožňuje automatické vytváranie dôveryhodných používateľských účtov. Pre administráciu systému, umožnenie prístupu osobám neregistrovaným vo fakultnej databáze účtov a vnútornú organizáciu systému je však v~Portáli stále nutné implementovať vlastnú správu účtov. 
 
 Na získanie dodatočných informácii o~užívateľovi je potrebné Portál integrovať aj s~fakultnou LDAP databázou, ktorá je dostupná len zo siete FI MU. Jednou z~dôležitých informácii, ktoré odtiaľto Portál získava je UČO (univerzitné číslo osoby) užívateľa. To je uložené v~atribúte \emph{description} v~LDAP zázname každého užívateľa.
 
 \subsection{Email}
-Pre možnosť odosielania emailových správ užívateľom je potrebné Portál integrovať s~SMTP serverom. Obsah správ a podmienky ich odosielania je možné upraviť na úrovni Kontr~2. Správy systém generuje automaticky na základe definovaných šablón a dodaných parametrov. Adresátov je možné filtrovať na základe ich členstva v~kurze, skupine a ich rolí. Podnetom na odoslanie emailovej správy môžu byť napríklad tieto udalosti: vytvorenie užívateľa, zmena užívateľovho hesla, zmena členstva užívateľa v~skupine alebo zmena jeho roly v~danom predmete.
+Pre možnosť odosielania emailových správ užívateľom je potrebné Portál integrovať s~SMTP serverom\footurl{http://www.rfc-editor.org/rfc/rfc5321.txt}. Obsah správ a podmienky ich odosielania je možné upraviť na úrovni Kontr~2. Správy systém generuje automaticky na základe definovaných šablón a dodaných parametrov. Adresátov je možné filtrovať na základe ich členstva v~kurze, skupine a ich rolí. Podnetom na odoslanie emailovej správy môžu byť napríklad tieto udalosti: vytvorenie užívateľa, zmena užívateľovho hesla, zmena členstva užívateľa v~skupine alebo zmena jeho roly v~danom predmete.
 
 \subsection{Poznámkové bloky IS MU}
 Okrem emailových správ systém používateľom poskytuje spätnú väzbu aj pomocou Poznámkových blokov IS MU. Poznámkové bloky typicky obsahujú bodové, prípadne slovné hodnotenie študentských výsledkov. V~prípade Kontru 2 ide o~zápis redukovaného výsledku automatických testov. Na základe konfigurácie je možné automaticky zapisovať hodnotenie záväzne, prípadne vyžadovať manuálne potvrdenie výsledkov. Práca s~rozhraním Poznámkových blokov IS MU vyžaduje prístupový token, ktorý môžu vyučujúci generovať v~IS MU.
@@ -443,7 +443,7 @@ Pojem \emph{Pracovník (Worker)} v~systéme Kontr 2 naberá význam na dvoch úr
 
 Koncept Pracovníka je možné implementovať rôznymi spôsobmi, ktoré sú prispôsobené danému prípadu použitia. Konkrétne implementácie odrážajú potreby predmetov využívajúcich systém Kontr 2 -- požadované platformy, výhody, služby a zdroje definovaného behového prostredia. Každá implementácia Pracovníka musí spĺňať určité požiadavky, predovšetkým musí vystaviť definované REST rozhranie na umožnenie komunikácie s~Portálom. 
 
-Konkrétna implementácia Pracovníka je jedným z~výstupov tejto práce a bola použitá pri testovacej prevádzke. Ide o~Pracovníka implementovaného pre platformu Linux využívajúceho \emph{kontajnerizačnú technológiu}\footnote{\url{https://opensource.com/resources/what-are-linux-containers}}. Využitie kontajnerov v~Pracovníkovi umožňuje lepšiu izoláciu a riadenie práv spúšťaných testovacích procesov. Táto implementácia je zamýšľaná ako vzor pre ďalšie špecifické riešenia. Pre využitie platformy Windows bude potrebné overiť možnosť využitia spomínanej kontajnerizačnej technológie a prípadne vyhodnotiť dostupné alternatívy.
+Konkrétna implementácia Pracovníka je jedným z~výstupov tejto práce a bola použitá pri testovacej prevádzke. Ide o~Pracovníka implementovaného pre platformu Linux využívajúceho \emph{kontajnerizačnú technológiu}\footnote{\url{https://opensource.com/resources/what-are-linux-containers}}. Využitie kontajnerov v~Pracovníkovi umožňuje lepšiu izoláciu a riadenie práv spúšťaných testovacích procesov. Táto implementácia je zamýšľaná ako vzor pre ďalšie špecifické riešenia. Pre využitie platformy \emph{MS Windows}\footurl{https://www.microsoft.com/en-us/windows} bude potrebné overiť možnosť využitia spomínanej kontajnerizačnej technológie a prípadne vyhodnotiť dostupné alternatívy.
 
 \subsection{Priebeh spracovania}
 
@@ -526,9 +526,9 @@ Portál pri výbere vhodného Pracovníka na spracovanie nového odovzdania zoh�
 
 \emph{KTDK -- Kontr test development kit} je testovací rámec slúžiaci na popis scenárov, pomocou ktorých je možné testovať a vyhodnotiť odovzdania študentov.
 
-Rámec je samostatný komponent a používa sa ako knižnica, ktorá je voľne dostupná\footnote{\url{https://pypi.org/project/ktdk/}}. Testy definované pomocou rámca \emph{KTDK} sú Python skripty, ktoré sú majú väzbu na konkrétnu verziu rámca, vďaka čomu je zabezpečená spätná kompatibilita. Nástroj je nezávislý od ostatných súčastí systému Kontr~2, vďaka čomu je napríklad možné využívať lokálnu inštaláciu rámca na správne otestovanie funkčnosti testov a dodaného riešenia. Spúšťanie testovacích scenárov prebieha spustením skriptu s~ich definíciou v~pripravenom prostredí.
+Rámec je samostatný komponent a používa sa ako knižnica, ktorá je voľne dostupná\footnote{\url{https://pypi.org/project/ktdk/}}. Testy definované pomocou rámca \emph{KTDK} sú Python skripty, ktoré sú majú väzbu na konkrétnu verziu rámca, čím je zabezpečená spätná kompatibilita. Nástroj je nezávislý od ostatných komponent systému Kontr~2, čo umožňuje využívať lokálnu inštaláciu rámca  otestovanie funkčnosti alebo ladenie testov s~dodaným riešením. Spúšťanie testovacích scenárov prebieha spustením skriptu s~ich definíciou v~pripravenom prostredí.
 
-Pre definíciu testovacích scenárov bolo potrebné navrhnúť štruktúru a model vykonávania testov, ktorý bude ľahko rozšíriteľný a modifikovateľný. Rozhodnutie implementovať vlastný testovací rámec vyplynulo zo špecifických požiadaviek jednotlivých predmetov, predovšetkým ich rôznych postupov testovania. V~niektorých predmetoch sa využívajú testy definované v~existujúcom testovacom rámci pre daný jazyk (\emph{JUnit, Catch2, pytest}), iné využívajú porovnávanie výstupov aplikácie s~očakávanými, pripravenými výstupmi. Ďalej bolo potrebné umožniť kontrolu riešení pomocou externých nástrojov, napr. \emph{Valgrind, Checkstyle, Clang-tidy, Clang-format, ...}.
+Pre definíciu testovacích scenárov bolo potrebné navrhnúť štruktúru a model vykonávania testov, ktorý bude ľahko rozšíriteľný a modifikovateľný. Rozhodnutie implementovať vlastný testovací rámec vyplynulo zo špecifických požiadaviek jednotlivých predmetov, predovšetkým ich rôznych postupov a nástrojov, ktoré sa pri testovaní využívajú. V~niektorých predmetoch sa využívajú testy definované v~existujúcom testovacom rámci pre daný jazyk (\emph{JUnit, Catch2, pytest}), iné využívajú porovnávanie výstupov aplikácie s~očakávanými, pripravenými výstupmi. Ďalej bolo potrebné umožniť kontrolu riešení pomocou externých nástrojov, napr. \emph{Valgrind, Checkstyle, Clang-tidy, Clang-format, a ďalšie}.
 
 Na rozdiel od štandardných testovacích nástrojov KTDK oddeľuje definíciu testovacích scenárov od výkonného kódu testov aj testovaného kódu. \emph{Testované súbory} obsahujú zdrojové kódy odovzdané študentom a \emph{testovacie súbory} sú súbory obsahujúce výkonný kód testov, spúšťaný pomocou KTDK. K~testovacím súborom je možné zaradiť aj rôzne podporné časti potrebné na testovanie študentovho odovzdania -- pripravené vstupy, čiastočné implementácie apod.
 
@@ -565,9 +565,9 @@ Rámec na vstupe očakáva cesty k~štyrom priečinkom (obr. \ref{fig:ktdk-io}):
 \label{design-struct-test-scenarios}
 KTDK definuje dva hlavné štrukturálne komponenty: \emph{test} a \emph{úlohu (task)}. Test je definovaný svojím \emph{menom, popisom, bodovým ohodnotením a štítkami (\emph{tags})} a tvorí "obálku" pre určitú časť testovacieho scenára. Testy je možné do seba zanorovať a vytvoriť tak stromovú štruktúru, ktorá logicky člení scenár na lepšie spravovateľné časti a zároveň zoskupuje príbuzné či previazané testy. 
 
-Na test je možné naviazať \emph{úlohy (task)} obsahujúce výkonný kód, ktoré sa majú počas testu vykonať. Rámec dodáva škálu základných akcií (napr. presúvanie súborov, kompilácia testov, spracovanie výstupu testovacích nástrojov) a umožňuje definíciu vlastných. Na test sa tiež viaže bodové hodnotenie a celkový výsledok, ktoré sú spočítané po skončení vykonávania testov. Podobne ako testy je možné zanorovať do seba aj úlohy a modelovať tak závislosti medzi nimi.
+Na test je možné naviazať \emph{úlohy (task)}, predstavujúce konkrétne akcie s výkonným kódom, ktorý sa má počas testu vykonať. Rámec dodáva škálu základných akcií (napr. presúvanie súborov, kompilácia testov, spracovanie výstupu testovacích nástrojov) a umožňuje definíciu vlastných. Na test sa tiež viaže bodové hodnotenie a celkový výsledok, ktoré sú spočítané po skončení vykonávania testov. Podobne ako testy je možné zanorovať do seba aj úlohy a modelovať tak závislosti medzi nimi.
 
-Každý test obsahuje päť zoznamov úloh, vykonávaných sekvenčne:
+Každý test obsahuje päť kolekcií úloh, vykonávaných sekvenčne:
 \begin{enumerate}
     \item Úlohy vykonané pred testom samotným \emph{(before all)}.
     \item Úlohy viazané na test \emph{(test's tasks)}
@@ -578,12 +578,12 @@ Každý test obsahuje päť zoznamov úloh, vykonávaných sekvenčne:
 
 Existujú tri hlavné kategórie úloh:
 \begin{itemize}
-    \item \emph{Vykonávacie}, ktoré vykonávajú samotné akcie a spracovávajú výsledky
-    \item \emph{Kontrolované (checked)} slúžiace na overenie podmienok pre splnenie požiadaviek pre daný test a explicitné rozhodnutie o~výsledku jedného testu -- splnenie (\texttt{PASS}) alebo zlyhanie (\texttt{FAIL}).
+    \item \emph{Vykonávacie}, ktoré vykonávajú akcie a spracovávajú výsledky
+    \item \emph{Kontrolované (checked)} slúžiace na overenie podmienok pre splnenie požiadaviek pre daný test a explicitné rozhodnutie o~výsledku jedného testu -- \emph{splnenie (\texttt{PASS})} alebo \emph{zlyhanie (\texttt{FAIL})}.
     \item \emph{Kontrolované vyžadované (required)} sa správajú rovnako ako kontrolované, ale v~prípade zlyhania kontroly dôjde k~ukončeniu aktuálne vykonávaného testu a všetkých jeho potomkov.
 \end{itemize}
 
-Pre úlohu je možné definovať meno, popis, informatívne štítky a koeficient redukovania počtu bodov za test. \emph{Redukčný koeficient} slúži sa zníženie počtu získaných bodov v~prípade, že úloha zlyhala a je \emph{kontrolovaná}. Východzia hodnota je nastavená na 0: v~prípade zlyhania jednej úlohy sa predpokladá zlyhanie celého testu a výsledný priradený počet bodov za neúspešný test je nula. Pre testovanie výsledku nástrojom \emph{valgrind} je ale vhodné mať možnosť prideliť percentuálnu časť celkového počtu bodov, napr. s~koeficientom 0.7 prideliť zlyhanej valgrind úlohe 70\% plného počtu bodov.
+Pre úlohu je možné definovať meno, popis, informatívne štítky a koeficient redukovania počtu bodov za test. \emph{Redukčný koeficient} slúži sa zníženie počtu získaných bodov v~prípade, že úloha zlyhala a je \emph{kontrolovaná}. Východzia hodnota je nastavená na $0$: v~prípade zlyhania jednej úlohy sa predpokladá zlyhanie celého testu a výsledný priradený počet bodov za neúspešný test je nula. Pre testovanie výsledku nástrojom \emph{valgrind} je ale vhodné mať možnosť prideliť percentuálnu časť celkového počtu bodov, napr. s~koeficientom $0.7$ prideliť zlyhanej valgrind úlohe $70\%$ plného počtu bodov.
 
 \subsection{Testovacie scenáre}
 
@@ -604,13 +604,14 @@ Spustenie testovacieho scenára je vykonávané pomocou jednotky nazvanej \emph{
 
 \emph{Kontext} je entita reprezentujúca postupne predávaný stav medzi úlohami a testami. Slúži ako jediné možné úložisko premenných a konfigurácie, ktoré je potrebné medzi testami a úlohami zdieľať. Jednotlivé časti kontextu sa postupne kopírujú po jednotlivých vetvách stromu zhora nadol. Príkladom využitia kontextu je úloha na kompiláciu, ktorá do kontextu uloží cesty k~vytvoreným súborom a nasledujúca úloha spustí testy nad práve týmito súbormi.
 
-Kontext nie je dostupný pri definícii testov, ale až vo fáze vykonávania testovacieho scenára, pretože do testov a úloh je vkladaný až spúšťačom.
+
+Kontext je vkladaný do testov a úloh až spúšťačom, preto nie je dostupný pri samotnej definícii testov, ale až vo fáze vykonávania testovacieho scenára.
 
 Kontext má tri zložky:
 \begin{itemize}
-    \item \emph{Globálny}, ktorý je definovaný globálnou konfiguráciou, ktorá je predaná pri spustení celého scenára. Jej obsahom sú napríklad cesty k~jednotlivým priečinkom, globálne časové limity alebo prednastavené prepínače pre jednotlivé nástroje. 
-    \item \emph{Testový}, ktorý je viazaný na jeden test a je zdieľaný všetkými jeho potomkami a úlohami. Do testového kontextu môžu zapisovať len úlohy priamo naviazané na daný test. Pre každého potomka je tento kontext prístupný len na čítanie a úlohy potomkov k~nemu prístup nemajú.
-    \item \emph{Kontext úlohy} je viazaný len na aktuálnu úlohu, ktorá do neho môže zapisovať a všetky jej podúlohy, ktoré ho môžu čítať.
+    \item \emph{Globálnu}, ktorá je definovaná globálnou konfiguráciou, predanou pri spustení celého scenára. Jej obsahom sú napríklad cesty k~jednotlivým priečinkom, globálne časové limity alebo prednastavené prepínače pre jednotlivé nástroje. 
+    \item \emph{Testovú}, ktorá je viazaná na jeden test a je zdieľaná všetkými jeho potomkami a úlohami. Do testového kontextu môžu zapisovať len úlohy priamo naviazané na daný test. Pre každého potomka je tento kontext prístupný len na čítanie a úlohy potomkov k~nemu prístup nemajú.
+    \item \emph{Kontext úlohy}, ktorý je viazaný len na aktuálnu úlohu, ktorá do neho môže zapisovať a všetky jej podúlohy, ktoré ho môžu čítať.
 \end{itemize}
 
 Pre zjednodušenie práce sú všetky tri zložky pri čítaní zlúčené do jednej s~nasledujúcimi prioritami: najskôr sa prehľadáva kontext úlohy, následne kontext testu a ako posledný sa prehľadáva globálny kontext. Pri zápise premennej do kontextu je potrebné určiť, do ktorej jeho zložky sa má zapisovať. 
@@ -676,19 +677,19 @@ Pri spracovaní testu dochádza najskôr k~vytvoreniu jeho spúšťača, súčas
 
 Po vytvorení kontextu je podľa štítkov testu vyhodnotený dodaný logický výraz. V~prípade, že test zadanú podmienku nespĺňa, je jeho výsledok je nastavený na stav \emph{skipped} a pokračuje sa ďalším testom. V~opačnom prípade sa spustia \emph{before all} úlohy tohoto testu, následne všetky \emph{before each} úlohy z~rodičovského testu. Po nich nasledujú úlohy testu samotného. Ak všetky úlohy prebehnú v~poriadku a nedôjde k~ukončeniu vykonávania testu, rovnakým spôsobom sú vyhodnotené všetky dcérske testy. Po skončení spracovania potomkov sa spracovávajú \emph{after each} úlohy rodiča a \emph{after all} úlohy testu.
 
-Pri spracovaní každej úlohy dôjde k~vytvoreniu \emph{spúšťača úlohy}, ktorý taktiež prechádza strom úloh, ktoré postupne spúšťa a priraďuje im výsledky. Súčasťou spracovania behu úlohy je kontrola správnosti jej vykonávania a vhodné reagovanie na prípadné chyby.
+Pri spracovaní každej úlohy dôjde k~vytvoreniu \emph{spúšťača úlohy}, ktorý prechádza strom úloh, ktoré postupne spúšťa a priraďuje im výsledky. Súčasťou spracovania behu úlohy je kontrola správnosti jej vykonávania a vhodné reagovanie na prípadné chyby.
 
 \subsection{Spracovanie výsledkov}
 
-Fáza spracovania výsledkov nasleduje po skončení behu testovacích scenárov. Pri spracovaní sa prechádza vybudovaný strom testov a úloh s~pridelenými výsledkami, na základe ktorých je vypočítané výsledné bodové hodnotenie a extrahované informácie o~úspešných a neúspešných testoch.
+Fáza spracovania výsledkov nasleduje po skončení behu testovacích scenárov, dochádza k priechodu vybudovaného stromu testov a úloh s~pridelenými výsledkami, na základe ktorých je vypočítané výsledné bodové hodnotenie a extrahované informácie o~úspešných a neúspešných testoch.
 
 Výstup fázy spracovania obsahuje: finálny výsledok, počet získaných bodov zaokrúhlený na štyri desatinné miesta, zoznam zlyhaných testov a úloh a zoznam všetkých definovaných testov s~výsledkami.
 
-Výstup je uložený do priečinka s~výsledkami spolu s~výstupmi ostatných nástrojov, logom behu testov a zoznamom súborov vygenerovaných počas behu. Tento priečinok je neskôr predaný na spracovanie Pracovníkovi, ktorý jeho obsah odosiela Portálu.
+Výstup je uložený do priečinka s~výsledkami spolu s~výstupmi ostatných nástrojov, logom behu testov a zoznamom súborov vygenerovaných počas behu. Tento priečinok je predaný na spracovanie Pracovníkovi, ktorý jeho obsah odosiela Portálu.
 
 \section{Celkový priebeh spracovania nového odovzdania}
 
-\begin{figure}[!ht]
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{imgs/create-subm.png}
   \end{center}
@@ -697,7 +698,7 @@ Výstup je uložený do priečinka s~výsledkami spolu s~výstupmi ostatných n�
 \end{figure}
 
 
-Nové odovzdanie vytvorené študentom je odoslané na rozhranie Portálu (\ref{fig:create-subm}). Pri vytvorení nového odovzdania dochádza ku kontrole oprávnení užívateľa a obmedzení kladených na zamedzenie zneužívania systému alebo prekročeniu definovaných limitov. V~prípade nesplnenia vyžadovaných kritérií je nové odovzdanie zamietnuté. Kontrola obmedzení prebieha v~prvom plánovači Portálu, ktorý zohľadňuje definované pravidlá pre danú úlohu (napríklad študent smie odovzdať vypracovanie len za určitý časový interval).
+Nové odovzdanie vytvorené študentom je odoslané na rozhranie Portálu (obr. \ref{fig:create-subm}). Pri vytvorení nového odovzdania dochádza ku kontrole oprávnení užívateľa a obmedzení kladených na zamedzenie zneužívania systému alebo prekročeniu definovaných limitov. V~prípade nesplnenia vyžadovaných kritérií je nové odovzdanie zamietnuté. Kontrola obmedzení prebieha v~prvom plánovači Portálu, ktorý zohľadňuje definované pravidlá pre danú úlohu (napríklad študent smie odovzdať vypracovanie len za určitý časový interval).
 
 V~prípade, že odovzdanie je povolené, uložia sa všetky potrebné informácie o~odovzdaní a dáta potrebné na jeho spracovanie a vyhodnotenie. Pre odovzdanie je nastavený časový interval, počas ktorého je možné odovzdanie zrušiť.
 
@@ -707,13 +708,13 @@ Následne sa v~druhom plánovači vyberie najvhodnejší Pracovník pre spracova
 
 Po úspešnom výbere Pracovníka nasleduje jeho notifikácia o~novom odovzdaní. Po prijatí notifikácie Pracovník stiahne súbory prináležiace danému odovzdaniu - študentovo vypracovanie a súbory s~popisom testovacích scenárov. Súbory s~popisom testovacích scenárov sú následne spustené v~oddelenom prostredí s~čo najmenšími oprávneniami pre minimalizáciu možnosti zasahovať do behu systému a jeho možnej kompromitácie.
 
-Pracovník po skončení testovacích scenárov spracuje výsledky a odošle ich Portálu (\ref{fig:proc-result}).
+Pracovník po skončení testovacích scenárov spracuje výsledky a odošle ich Portálu (obr. \ref{fig:proc-result}).
 
 Portál výsledky prijme a spracuje. Výsledky sa spracujú v~nástroji na spracovanie odovzdaní, kde sa vykonajú sa definované akcie, napríklad notifikácia všetkých zainteresovaných užívateľov - autora odovzdania (študenta) a opravujúceho študentovho vypracovania (učiteľa). Výsledky sú Portálom uložené v~Úložisku a pomocou rozhrania Portálu sprístupnené na prezeranie. Súčasťou výsledkov sú výstupy vygenerované behom testov, napríklad výstup prekladača alebo nástrojov na spracovanie zdrojového kódu, výstupy testovacích rámcov a čokoľvek ďalšie, čo môže pomôcť pri hodnotení študentovho vypracovania.
 
 Tieto výstupy sú spoločne so zdrojovými kódmi odovzdania dostupné vo Frontende Portálu pomocou (zatiaľ nedokončeného) nástroja na \emph{prezeranie a hodnotenie odovzdaní (review tool)}, pomocou ktorého je možné slovne hodnotiť odovzdania študentov a zapísať im body do Poznámkových blokov IS~MU. Študenti si následne môžu nájsť hodnotenie priamo pri svojom vypracovaní a môžu ho na základe neho prepracovať. 
 
-\begin{figure}[!ht]
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{imgs/process-result.png}
   \end{center}
@@ -735,7 +736,7 @@ Návrh a prvotná implementácia Portálu je popísaná v~bakalárskej práci Bc
 
 \subsection{Štruktúra Portálu}
 
-Hlavnou úlohou Portálu je poskytnúť organizačnú štruktúru a možnosť správy odovzdaní. Základné časti Portálu sú preto hierarchia entít, súbory potrebné na spracovanie odovzdaní a REST rozhranie poskytované webovou aplikáciou implementovanou pomocou mikrorámca \emph{Flask} a jeho rozšírení. 
+Hlavnou úlohou Portálu je poskytnúť organizačnú štruktúru a možnosť správy odovzdaní. Základné časti Portálu sú preto hierarchia entít, súbory potrebné na spracovanie odovzdaní a REST rozhranie poskytované webovou aplikáciou implementovanou pomocou mikrorámca \emph{Flask\footurl{http://flask.pocoo.org/}} a jeho rozšírení. 
 
 Portál pracuje s~dvoma typmi dát:
 \begin{itemize}
@@ -777,7 +778,7 @@ Autentizácia pomocou \emph{tajomstiev (secretov)} bola v~pôvodnej implementác
 Výhodou tajomstiev je možnosť ich využitia v~automatizovanmých skriptoch alebo externých nástrojoch, ktoré by inak vyžadovali manuálne zadané alebo uložené heslo užívateľa, čo z~bezpečnostných dôvodov nie je vhodné. Autentizácia pomocou tajomstva je doporučenou metódou autentizácie pomocou nástroja \emph{kontrctl}\footnote{\fullref{impl-other-parts}}.
 
 \ssubsection{Ostatné zmeny}
-Pre jednoduchšie načítavanie konfigurácie a zjednotenie s~ostatnými nástrojmi som použil knižnicu \emph{python-dotenv}, pomocou ktorej je možné prepísať premenné prostredia v~súbore \texttt{.env}. Táto zmena následne uľahčila nasadenie celého projektu. Medzi menšie zmeny, ktoré bolo potrebné spraviť, bolo nahradenie knižnice \emph{flask-restful}, knižnicou \emph{flask-restplus}, ktorá podporuje generovanie \emph{swagger} dokumentácie pre REST API a úprava rozhrania Portálu pridaním nových koncových bodov.
+Pre jednoduchšie načítavanie konfigurácie a zjednotenie s~ostatnými nástrojmi som použil knižnicu \emph{python-dotenv}, pomocou ktorej je možné prepísať premenné prostredia v~súbore \texttt{.env}. Táto zmena následne uľahčila nasadenie celého projektu. Medzi menšie zmeny, ktoré bolo potrebné spraviť, bolo nahradenie knižnice \emph{flask-restful}, knižnicou \emph{flask-restplus}\footurl{https://flask-restplus.readthedocs.io/en/0.12.1/}, ktorá podporuje generovanie \emph{swagger}\emph{https://swagger.io/specification/} dokumentácie pre REST API a úprava rozhrania Portálu pridaním nových koncových bodov.
 
 \subsection{Administračný CLI Nástroj}
 
@@ -839,13 +840,13 @@ Po načítaní a spustení vykonávania testovacích scenárov je konfigurácia 
 
 Dve základné entity slúžiace na popis testovacích scenárov v~KTDK sú \emph{Test} a \emph{Task (úloha)}. Oba sú objekty, ktorým je pri popise scenára možné pomocou konštruktora nastaviť parametre potrebné na ich identifikáciu. 
 
-\texttt{Task} (úloha) je objekt, ktorému je potrebné implementovať metódu \texttt{\_run}, ktorá definuje, čo sa má vykonať v~momente spustenia úlohy. 
+\texttt{Task} (úloha) je objekt, ktorému je potrebné implementovať \emph{protected} metódu \texttt{\_run}, ktorá je volaná pri procese spracovania úlohy.
 
 Spustenie testov a úloh je zabezpečené pomocou tzv. \emph{spúšťača} (\emph{Runner}), ktorý definuje, v~akom poradí a akým spôsobom dôjde k~spusteniu jednotlivých úloh a testov. Každý test a úloha môže využívať iný spúšťač. Existujú východzie implementácie spúšťača, ktoré vykonávajú úlohy sekvenčne. V~budúcnosti by bolo možné implementovať paralelnú variantu, ktorá by mohla časť testov vykonávať súčasne. Poradie spúšťania definované dodanými spúšťačmi je priblížené v~časti \fullref{design-struct-test-scenarios}.
 
 Inštancia spúšťača pre danú úlohu alebo test sa vytvára pri začatí ich spracovania. Spúšťač testu skontroluje podmienky pre beh testu, napríklad štítky, a v~prípade, že test nemá byť spustený, nastaví výsledok testu na preskočený. Inak pokračuje spustením úloh a dcérskych testov v~definovanom poradí.
 
-V~prípade úloh spúšťač nad úlohou volá metódu \texttt{invoke}, ktorá sa vykonáva v~\emph{try-catch} bloku a odchytávajú sa výnimky \texttt{RequireFailedError} a \texttt{Exception}. Prvá z~nich nastáva, ak zlyhal \emph{require assert}, ktorý hovorí, že ak je podmienka ním testovaná vyhodnotená na \texttt{False}, má sa ukončiť vykonávanie testu a výsledok testu má byť nastavený na \texttt{FAIL}. Zachytenie všeobecnej výnimky znamená neočakávanú chybu -- chybný stav testovacieho rámca samotného. Výsledok testu je preto nastavený ako \texttt{ERROR} a mal by byť ďalej spracovaný administrátormi a vývojármi systému.
+Spúšťač nad úlohou volá metódu \texttt{invoke}, vykonávanú v~\emph{try-catch} bloku, v ktorom sú očakávané výnimky \texttt{RequireFailedError} a všeobecná \texttt{Exception}. Prvá z~nich nastáva, ak zlyhal \emph{require assert}, ktorý hovorí, že ak je ním testovaná podmienka vyhodnotená na \texttt{False}, má sa ukončiť vykonávanie testu a výsledok testu je vyhodnotený ako \texttt{FAIL}. Zachytenie všeobecnej výnimky znamená neočakávanú chybu -- chybný stav testovacieho rámca samotného. Výsledok testu je preto nastavený ako \texttt{ERROR} a mal by byť ďalej spracovaný administrátormi a vývojármi systému.
 
 \subsection{Definícia testovacích scenárov}
 
@@ -872,9 +873,9 @@ Súčasťou tejto práce bola implementácia ďalších, podporných projektov u
 
 Knižnica \textbf{kontr-api} v~jazyku Python zaobaľuje REST-ové volania rozhrania Portálu do sady metód a odpovede na ne do objektov. Knižnica umožňuje autentizáciu voči Portálu a vykonávanie požiadaviek na Portál, ktoré realizuje knižnicou \emph{requests}\footurl{http://docs.python-requests.org/en/master/}. Knižnicu v~súčasnosti využívajú Pracovník a kontrctl. 
 
-\textbf{Kontrctl} je konzolový nástroj využívajúci knižnicu \emph{click} na prijímanie a spracovanie príkazov a \emph{tabulate}\footurl{https://pypi.org/project/tabulate/} na štrukturované zobrazovanie tabuliek. Nástroj implementuje predovšetkým CRUD operácie nad entitami Portálu cez kontr-api. Ďalej je pomocou neho možné spravovať viacero inštancii Kontru 2, ktoré sú rozlíšené pomocou tzv. \emph{remote}, predstavujúcich konfiguráciu inštancie pre kontrctl.
+\textbf{Kontrctl} je konzolový nástroj využívajúci knižnicu \emph{click} na prijímanie a spracovanie príkazov a \emph{tabulate}\footurl{https://pypi.org/project/tabulate/} na štrukturované zobrazovanie tabuliek. Nástroj implementuje predovšetkým \emph{CRUD} operácie nad entitami Portálu cez kontr-api. Ďalej je pomocou neho možné spravovať viacero inštancii Kontru 2, ktoré sú rozlíšené pomocou tzv. \emph{remote}, predstavujúcich konfiguráciu inštancie pre kontrctl.
 
-Pre každú spravovanú inštanciu je možné definovať vlastnú sadu parametrov a premenných, napríklad užívateľa, pod ktorým sa majú príkazy vykonávať, prístupové informácie \emph{(access\_token, refresh\_token, secret)}, \emph{url}, na ktorej je dostupné rozhranie Portálu či východzie premenné. Informácie a konfigurácia pre jednotlivé \emph{remote} sa nachádza v~domovskom priečinku užívateľa v~zložke závislej na platforme\footnote{Pre linux je to: \texttt{~/.config/kontrctl/}, pre MS Windows: \emph{\%appdata\%/kontrctl}}.
+Pre každú spravovanú inštanciu je možné definovať vlastnú sadu parametrov a premenných, napríklad užívateľa, pod ktorým sa majú príkazy vykonávať, prístupové informácie \emph{(access\_token, refresh\_token, secret)}, \emph{URL}, na ktorej je dostupné rozhranie Portálu či východzie premenné. Informácie a konfigurácia pre jednotlivé \emph{remote} sa nachádza v~domovskom priečinku užívateľa v~zložke závislej na platforme\footnote{Pre linux je to: \texttt{~/.config/kontrctl/}, pre MS Windows: \emph{\%appdata\%/kontrctl}}.
 
 Viac informácii o~\emph{kontrctl} obsahuje jeho dokumentácia\footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/kontr-documentation/tree/master/kontrctl}}.
 
@@ -890,7 +891,7 @@ Nasadenie vývojovej verzie je možné dvoma základnými spôsobmi. Prvou z~nic
 
 Druhou metódou je nasadenie pomocou kontajnerizačného nástroja \emph{Docker}. Pre každý komponent systému je definovaný Dockerfile popisujúci inštrukcie potrebné na zostavenie obrazu. Spustením obrazu vzniká kontajner obsahujúci danú komponentu a všetky jej závislosti. Zostavené \emph{obrazy} je možné nájsť v~docker registri \emph{(Docker~Hub)}\footnote{\url{https://hub.docker.com/u/kontr2}}. Obrazy je možné z~registra stiahnuť pomocou príkazu \texttt{docker pull <meno-obrazu>}.
 
-Systém pozostáva zo siedmich kontajnerov \emph{(portal-gunicorn, portal-celery, worker-gunicorn, worker-celery, redis, postgres, frontend)}, medzi ktorými je potrebné vytvoriť prepojenia, spustiť ich so správnymi oprávneniami a pridať do nich \emph{persistent volumes} na správne destinácie. Pre zjednodušenie nastavenia a prepojenia častí bol vytvorený \emph{docker-compose súbor}\footnote{\url{https://docs.docker.com/compose/compose-file/}}, ktorý je vstupom pre nástroj slúžiaci na správu viacerých kontajnerov a zdrojov na jednom užívatelskom stroji \emph{docker-compose}\footnote{\url{https://docs.docker.com/compose/reference/}}. Nástroj umožnuje nasadiť celý systém pomocou troch príkazov\footnote{\texttt{docker-compose down \&\& docker-compose build \&\& docker-compose up}}. Tento systém umožňuje jednoduché nasadenie systému pri vývoji, robí systém dostupnejším pre nových vývojárov a zjednodušuje nasadenie testovacej inštancie. Skript aj s~inštrukciami je možné nájsť v~pomocnom repozitári \emph{docker} \footnote{\url{https://gitlab.fi.muni.cz/grp-kontr2/docker/tree/master/platform}}.
+Systém pozostáva zo siedmich kontajnerov \emph{(portal-gunicorn, portal-celery, worker-gunicorn, worker-celery, redis, postgres, frontend)}, medzi ktorými je potrebné vytvoriť prepojenia, spustiť ich so správnymi oprávneniami a pridať do nich \emph{persistent volumes} na správne destinácie. Pre zjednodušenie nastavenia a prepojenia častí bol vytvorený \emph{docker-compose súbor}\footnote{\url{https://docs.docker.com/compose/compose-file/}}, ktorý je vstupom pre nástroj slúžiaci na správu viacerých kontajnerov a zdrojov na jednom užívatelskom stroji \emph{docker-compose}\footnote{\url{https://docs.docker.com/compose/reference/}}. Nástroj umožnuje nasadiť celý systém pomocou troch príkazov\footnote{\texttt{docker-compose down \&\& docker-compose build \&\& docker-compose up}}. Táto metóda umožňuje jednoduché nasadenie systému pri vývoji, robí systém dostupnejším pre nových vývojárov a zjednodušuje nasadenie testovacej inštancie. Skript aj s~inštrukciami je možné nájsť v~pomocnom repozitári \emph{docker} \footurl{https://gitlab.fi.muni.cz/grp-kontr2/docker/tree/master/platform}.
 
 Proces nasadenia vývojovej verzie pozostáva z~troch fáz. Prvou z~nich je získanie potrebných repozitárov, z~ktorých je systém zostavený: \emph{(Portál, Pracovník, Frontend a docker)}. Všetky repozitáre je potrebné stiahnuť pomocou verzovacieho nástroja Git. Druhou fázou je zostavenie obrazov z~aktuálnych verzii repozitárov. Treťou je inicializácia dát a vývojárskeho prostredia, ktorá zahŕňa vytvorenie databázových tabuliek a vloženie testovacích dát a entít do systému. Jedným z~krokov je aj inicializácia a zaregistrovanie Pracovníka do systému, čim je zabezpečené, že je systém po spustení pripravený na spracovávanie testovacích odovzdaní.
 
@@ -902,7 +903,7 @@ Výhodou kontajnerizacie celého systému je možné neskoršie nasadenie do sys
 Produkčná verzia je aktuálne nasadená v~službe \emph{Stratus.FI}\footnote{\url{https://stratus.fi.muni.cz/}}, privátnom cloude pre užívateľov z~FI MU postavenom na software \emph{OpenNebula}\footnote{\url{http://www.opennebula.org/}}.
 Primárnym účelom je poskytnúť užívateľom prostredie na experimentovanie a rýchle vyskúšanie alebo aj produkčné použitie softvéru, ktorý z~rôznych dôvodov nemôže byť nainštalovaný priamo na serveroch spravovaných CVT FI, napríklad Anxur alebo Aisa\cite{fi-tech-stratus}.
 
-Produkčné nasadanie pozostáva z~dvoch virtuálnych strojov. Na prvom beží backend a frontend Portálu a na druhom Pracovník. Oba stroje sú postavené na distribúcii CentOS vo verzii 7.5.
+Produkčné nasadanie pozostáva z~dvoch virtuálnych strojov. Na prvom beží backend a frontend Portálu a na druhom Pracovník. Oba stroje sú postavené na distribúcii CentOS\footurl{https://www.centos.org} vo verzii 7.5.
 
 Systém využíva \emph{PostgreSQL} databázu dodávanú Fakultou informatiky pre študentské projekty ale aj služby bežiace na fakultnej infraštruktúre (napríklad GitLab). Výhodou tejto databázovej inštancie sú pravidelné zálohy a podpora zo strany CVT FI.
 
@@ -929,9 +930,9 @@ Veľkosť pevného disku&  50GB \\
 
 \end{table}
 
-Virtuálny stroj \emph{(viď \ref{tab:machine-portal})}, na ktorom je nainštalovaný Portál je dostupný z~verejnej siete a má pridelenú verejnú IP adresu a doménu \texttt{\url{https://kontr.fi.muni.cz}}. Pre doménu je vygenerovaný a podpísaný certifikát pomocou služby \emph{Let's encrypt}\footnote{\url{https://letsencrypt.org/}}, ktorá slúži aj ako certifikačná autorita. Využitie protokolu \emph{HTTPS}\cite{RFC2818} postaveného nad TLS\cite{RFC8446} zabezpečuje šifrovanú komunikáciu medzi Portálom (serverom) a jednotlivými klientmi (Pracovník, Frontend, kontr-api).
+Virtuálny stroj \emph{(viď \ref{tab:machine-portal})}, na ktorom je nainštalovaný Portál je dostupný z~verejnej siete a má pridelenú verejnú IP adresu a doménu \texttt{\url{https://kontr.fi.muni.cz}}. Pre doménu je vygenerovaný a podpísaný certifikát od certifikačnej autority \emph{Let's encrypt}\footnote{\url{https://letsencrypt.org/}}. Využitie protokolu \emph{HTTPS}\cite{RFC2818} postaveného nad TLS\cite{RFC8446} zabezpečuje šifrovanú komunikáciu medzi Portálom (serverom) a jednotlivými klientmi (Pracovník, Frontend, kontr-api).
 
-Konfigurácia HTTPS spojenia, sprístupnenie rozhrania Portálu a Frontendu nástroja Kontr bolo dosiahnuté pomocou \textit{NGINX}\footnote{\url{https://www.nginx.com/resources/wiki/}} HTTP servera a reverse proxy. Backend Portálu je spustený v~niekoľkých inštanciách (procesoch) pomocou Python WSGI HTTP serveru \emph{Gunicorn}\footurl{https://gunicorn.org/}. NGINX je nastavená ako proxy, slúži ako verejné rozhranie a všetky požiadavky na rozhranie Portálu sú posielané cez ňu. Rovnako NGINX sprístupňuje aj statický obsah (Frontend), zložený z~HTML, Typescript, css súborov a obrázkov.
+Konfigurácia HTTPS spojenia, sprístupnenie rozhrania Portálu a Frontendu nástroja Kontr bolo dosiahnuté pomocou \textit{NGINX}\footnote{\url{https://www.nginx.com/resources/wiki/}} HTTP servera a \emph{reverse proxy}. Backend Portálu je spustený v~niekoľkých inštanciách (procesoch) pomocou Python WSGI HTTP serveru \emph{Gunicorn}\footurl{https://gunicorn.org/}. NGINX je nastavená ako proxy, slúži ako verejné rozhranie a všetky požiadavky na rozhranie Portálu sú posielané cez ňu. Rovnako NGINX sprístupňuje aj statický obsah (Frontend), zložený z~HTML, Typescript, css súborov a obrázkov.
 
 Gunicorn a Celery bežia ako samostatné služby obsluhované pomocou \texttt{systemd}. Bolo pre ne nutné napísať vlastné \emph{servisné súbory}\footnote{\url{https://www.freedesktop.org/software/systemd/man/systemd.service.html}}. Komunikáciu pre asynchrónne spracovávanie služieb zabezpečuje služba Redis, dostupná len na lokálnej sieti stroja.
 
@@ -975,7 +976,7 @@ Pomocou tohoto skriptu je možné nasadzovať zmeny okamžite po tom, čo sú ot
 
 Súčasťou výstupov tejto práce sú tiež tri balíčky, dostupné na stránke \emph{PyPi}\footurl{https://pypi.org/} -- repozitár balíčkov tretích strán pre jazyk Python. Balíčky je možné vďaka tomu nainštalovať pomocou nástroja \emph{pip}\footurl{https://pypi.org/project/pip/} (viď \ref{tab:packages}).
 
-Balíčky boli zostavené pomocou \emph{setuptools}\footurl{https://pypi.org/project/setuptools/} skriptu v~súbore \texttt{setup.py} dostupnom v~každom repozitári pre daný projekt.
+Balíčky pri zostavovaní využívajú knižnicu \emph{setuptools}\footurl{https://pypi.org/project/setuptools/} a zostavovací skript \texttt{setup.py}, dostupný v~každom repozitári pre daný projekt.
 
 Generovanie balíčkov je popísané v~oficiálnej dokumentácii \footurl{https://packaging.python.org/tutorials/packaging-projects/}, podľa ktorej boli balíčky zostavené. Výstupom procesu zostavenia sú archív s~dodanou implementáciou a \emph{wheel}\footurl{https://wheel.readthedocs.io/en/stable/} súbor metadátami o~balíčku. Tieto súbory sú následne nahrané do Python repozitára PyPi, pre nahranie bol použitý nástroj \emph{Twine}\footurl{https://pypi.org/project/twine/}. Odoslať balíčky do repozitáru môže len registrovaný užívateľ, preto bolo potrebné vytvoriť nového užívateľa, ktorý je aj správcom balíčkov.
 
@@ -1048,13 +1049,13 @@ Veľkosť jedného odovzdania v~starom Kontri & $30MB$ & -- \\
 Z~dát \emph{(viď \ref{tab:storage-used})} pre Kontr 2 vyplýva, že pre 1000 odovzdaní \emph{(100 študentov po 10 odovzdaní)} je potrebných $(500 KB + 308KB \approx 1MB) * 1000 \approx 1 GB$ miesta, v~prípade komprimovanej varianty je to $(66KB + 100KB \approx 200KB) * 1000 \approx 200MB$. Pre starý Kontr znamená 1000 odovzdaní v~nekomprimovanom stave spotrebu \emph{30GB}.
 
 Jedno odovzdanie v~starom Kontri obsahuje zdrojové súbory, výsledky testovania ale aj zostavené binárne súbory, ktoré sa v~Kontri~2 nachádzajú v~priečinku \emph{workspace}, ktorá je po skončení testovania zahodená.
-Miesto spotrebované nástrojom Kontr~2 je v~nekomprimovanej podobe 30krát menšie než v~pôvodnom Kontri. Pre komprimovaný variant je spotreba miesta na disku pre Kontr~2 menšia 150krát.
+Miesto spotrebované nástrojom Kontr~2 je v~nekomprimovanej podobe 30-krát menšie než v~pôvodnom Kontri. Pre komprimovaný variant je spotreba miesta na disku pre Kontr~2 menšia 150-krát.
 
 Jedným z~problémov Kontru je neustále prekračovanie kvóty na stroji Aisa, ktoré malo za následok zavedenie špeciálnych opatrení, ako napríklad obmedzenie maximálnej veľkosti študentských repozitárov. Pre Kontr 2 by na základe uvedených odhadov tento problém nemusel byť tak závažný.
 
 \subsection{Jednoduché záťažové testy}
 
-Testovacia inštancia prešla aj jednoduchými záťažovými testami, aby sa odhalili limity aktuálneho nasadenia. Namerané výsledky sú zobrazené v~tabuľke \fullref{tab:timelimits}.
+Testovacia inštancia prešla aj jednoduchými záťažovými testami, aby sa odhalili limity aktuálneho nasadenia. Namerané výsledky sú zobrazené v~tabuľke \ref{tab:timelimits}.
 Uvedené dĺžky sú počítané ako rozdiel časov vytvorenia odovzdania a skončenia jeho vykonávania pre najdlhšie bežiace odovzdanie danej série.
 
 \begin{table}[h]
@@ -1067,7 +1068,7 @@ Počet súbežných odovzdaní & dĺžka vykonávania odovzdania  \\ [0.5ex]
 4 & 7.5 min \\  
 5 & Odovzdania nedobehli v~časovom limite \\
 \end{tabular}
-\caption{Čas potrebný pre spracovanie N odovzdaní} \label{tab:timelimits}
+\caption{Čas potrebný pre spracovanie $N$ odovzdaní} \label{tab:timelimits}
 
 \end{table}
 
